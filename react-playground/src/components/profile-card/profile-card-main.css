@@ -1,0 +1,62 @@
+.card {
+  background-color: rgba(243, 244, 246, 1);
+  padding: 2rem;
+  max-width: 320px;
+  border-radius: 10px;
+  box-shadow: 0 20px 30px -20px rgba(5, 5, 5, 0.24);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  grid-gap: 1rem;
+  gap: 1rem;
+}
+
+.header .image {
+  height: 4rem;
+  width: 4rem;
+  border-radius: 9999px;
+  object-fit: cover;
+  background-color: royalblue;
+}
+
+.designation {
+  color: rgba(107, 114, 128, 1);
+  margin-top: 0;
+}
+
+.name {
+  margin-bottom: 0;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  --tw-text-opacity: 1;
+  color: rgba(55, 65, 81, 1);
+}
+
+.message {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  margin-top: 1rem;
+  color: rgba(107, 114, 128, 1);
+  text-align: justify;
+}
+
+.skill-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.skill {
+  padding: 2px 12px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+}
