@@ -1,0 +1,70 @@
+@import url("https:fonts.googleapis.com/css2?family=Abril+Fatface&display=swap");
+@import url("https:fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap");
+
+.accordion-container {
+  width: 90vw;
+}
+
+.accordion-main-title {
+  margin-bottom: 0.5rem;
+  text-align: center;
+  font-family: "Abril Fatface", cursive;
+  color: #2e8074;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* deco lines */
+  &:before,
+  &:after {
+    content: "";
+    display: block;
+    margin: 0 0.2rem;
+    flex: 1;
+    border-bottom: 1px solid #2e8074;
+  }
+}
+.accordion-wrapper {
+  width: 80%;
+  margin: auto;
+  font-family: "Source Sans Pro", sans-serif;
+  @media (max-width: 768px) {
+    width: auto;
+    padding: 0 0.3rem;
+  }
+}
+
+.accordion-title {
+  width: 90%;
+  margin: 20px auto;
+  padding-inline: 20px;
+  border-radius: 50px;
+  color: #2e8074;
+  border: 1px solid;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  /* aligned arrow */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.accordion-number,
+.accordion-titles,
+.accordion-icon {
+  font-size: 24px;
+  font-weight: 500;
+  color: #2e8074;
+  margin: 7px;
+}
+
+.accordion-content {
+  width: 80%;
+  margin: 0 auto;
+  padding: 0 0.3rem;
+  line-height: 1.6;
+  color: #2e8074;
+  border: 1px solid;
+  border-width: 0 1px;
+  transition: all 0.2s;
+}

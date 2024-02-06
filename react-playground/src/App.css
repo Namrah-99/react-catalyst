@@ -1,3 +1,63 @@
+/* * {
+  box-sizing: border-box;
+} */
+
+/*custom font*/
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+/*basic reset*/
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+  /*Image only BG fallback*/
+
+  /*background = gradient + image pattern combo*/
+  /* background: linear-gradient(rgba(196, 102, 0, 0.6), rgba(155, 89, 182, 0.6)); */
+}
+
 body {
-  background-color: #2c3e50;
+  font-family: montserrat, arial, verdana;
+  background-color: #1b1717;
+}
+
+.layout {
+  display: grid;
+  grid:
+    ". . . . . span0 span0 . . . . ." 1fr
+    ". span1 span1 span1 span1 . . span2 span2 span2 span2 ." 1fr
+    ". span3 span3 span3 span3 span3 span3 span3 span3 span3 span3 ." 1fr
+    ". span4 span4 span4 span4 . . span5 span5 span5 span5 ." 1fr
+    ". span6 span6 span6 span6 span6 span6 span6 span6 span6 span6 ." 1fr
+    / 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 8px;
+
+  align-items: center;
+  justify-items: center;
+}
+.span0 {
+  grid-area: span0;
+  color: #f5f7fa;
+}
+
+.span1 {
+  grid-area: span1;
+}
+.span2 {
+  grid-area: span2;
+}
+.span3 {
+  grid-area: span3;
+}
+.span4 {
+  grid-area: span4;
+}
+.span5 {
+  grid-area: span5;
+}
+.span6 {
+  grid-area: span6;
 }

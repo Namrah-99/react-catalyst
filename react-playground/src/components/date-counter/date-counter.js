@@ -91,7 +91,9 @@ function Counter() {
         {count !== 0 || step !== 1 ? (
           <div>
             <br />
-            <button onClick={handleReset}>Reset</button>
+            <button class="date-counter-reset" onClick={handleReset}>
+              Reset
+            </button>
           </div>
         ) : null}
       </div>
