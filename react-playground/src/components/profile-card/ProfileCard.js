@@ -1,4 +1,4 @@
-import "./profile-card-main.css";
+import "./ProfileCard.css";
 export default function ProfileCardMain() {
   return (
     <div className="profile-card-card">

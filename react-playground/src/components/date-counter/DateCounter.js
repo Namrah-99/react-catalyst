@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./date-counter.css";
+import "./DateCounter.css";
 export default function DateCounterMain() {
   return (
     <div className="card-conteiner-2">

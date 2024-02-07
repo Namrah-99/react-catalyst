@@ -1,4 +1,4 @@
-import "./accordion.css";
+import "./Accordion.css";
 import { useState } from "react";
 const faqs = [
   {

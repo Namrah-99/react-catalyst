@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./flash-cards.css";
+import "./FlashCards.css";
 
 const questions = [
   {

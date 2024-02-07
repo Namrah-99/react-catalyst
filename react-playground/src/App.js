@@ -1,33 +1,54 @@
 import "./App.css";
-import DateCounterMain from "./components/date-counter/date-counter";
-import ProfileCardMain from "./components/profile-card/profile-card-main";
-import FlashCardsMain from "./components/flash-cards/flash-cards";
-import AccordionMain from "./components/accordion/accordion";
-import TipCalculatorMain from "./components/tip-calculator/tip-calculator";
-import StepsMain from "./components/steps/steps";
+import DateCounterMain from "./components/date-counter/DateCounter";
+import ProfileCardMain from "./components/profile-card/ProfileCard";
+import FlashCardsMain from "./components/flash-cards/FlashCards";
+import AccordionMain from "./components/accordion/Accordion";
+import TipCalculatorMain from "./components/tip-calculator/TipCalculator";
+import StepsMain from "./components/steps/MultiStepsForm";
+import PizzaMenuMain from "./components/pizza-menu/PizzaMenu";
+import FarAwayTravelListMain from "./components/far-away-travel-list/FarAwayTravelList";
 export default function App() {
   return (
     <div className="main-div-container layout">
-      <div class="span0">
-        <h1>React Components</h1>
+      <div className="span0">
+        <h1 className="components-header">React Components</h1>
       </div>
-      <div class="span1">
+      <div className="span1">
+        <h1 className="components-header"> Pizza Menu </h1>
+        <PizzaMenuMain />
+      </div>
+      <div className="span2">
+        <h1 className="components-header"> Profile Card </h1>
         <ProfileCardMain />
       </div>
-      <div class="span2">
+      <div className="span3">
+        <h1 className="components-header"> Date Counter </h1>
         <DateCounterMain />
       </div>
-      <div class="span3">
+      <div className="span4">
+        <h1 className="components-header">Flash Cards</h1>
         <FlashCardsMain />
       </div>
-      <div class="span4">
+      <div className="span5">
+        <h1 className="components-header">Multip Step Form</h1>
         <StepsMain />
       </div>
-      <div class="span5">
+      <div className="span6">
+        {/* <h1 className="components-header">Tip Calculator</h1> */}
         <TipCalculatorMain />
       </div>
-      <div class="span6">
+      <div className="span7">
+        <h1 className="components-header">Accordion</h1>
         <AccordionMain />
+      </div>
+      <div className="span8">
+        <h1 className="components-header">Far Away Travel List</h1>
+        <FarAwayTravelListMain />
+      </div>
+      <div className="span9">
+        <br />
+        <br />
+        <br />
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import "./tip-calculator.css";
+import "./TipCalculator.css";
 import { useState } from "react";
 export default function TipCalculatorMain() {
   const [bill, setBill] = useState("");

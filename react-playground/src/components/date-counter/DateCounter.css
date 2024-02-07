@@ -178,12 +178,12 @@ button {
   }
 }
 /* -------------------------------------------------------------------------- */
-.input-container {
+.card-content-2 .input-container {
   position: relative;
   display: inline-block;
 }
 
-.input {
+.card-content-2 .input {
   padding: 10px;
   height: 40px;
   border: 2px solid var(--color-headline);
@@ -195,12 +195,12 @@ button {
   transition: all 0.5s;
 }
 
-.input:focus {
+.card-content-2 .input:focus {
   box-shadow: none;
   transition: all 0.5s;
 }
 
-.label {
+.card-content-2 .label {
   position: absolute;
   top: 10px;
   left: 10px;
@@ -210,7 +210,7 @@ button {
   z-index: -1;
 }
 
-.input-container .topline {
+.card-content-2 .input-container .topline {
   position: absolute;
   content: "";
   background-color: var(--color-headline);
@@ -221,12 +221,12 @@ button {
   transition: all 0.5s;
 }
 
-.input-container input[type="text"]:focus ~ .topline {
+.card-content-2 .input-container input[type="text"]:focus ~ .topline {
   width: 35%;
   transition: all 0.5s;
 }
 
-.input-container .underline {
+.card-content-2 .input-container .underline {
   position: absolute;
   content: "";
   background-color: var(--color-headline);
@@ -237,24 +237,24 @@ button {
   transition: all 0.5s;
 }
 
-.input-container input[type="text"]:focus ~ .underline {
+.card-content-2 .input-container input[type="text"]:focus ~ .underline {
   width: 100%;
   transition: all 0.5s;
 }
 
-.input-container input[type="text"]:focus ~ .label {
+.card-content-2 .input-container input[type="text"]:focus ~ .label {
   top: -10px;
   transform: scale(1);
   transition: all 0.5s;
 }
 /* --------------------------------------------------------------------------- */
-.inline-elements {
+.card-content-2 .inline-elements {
   display: flex;
   gap: 15px;
   align-items: end;
   margin: 15px 0px;
 }
-.card-result {
+.card-content-2 .card-result {
   margin-top: 15px;
   color: var(--color-headline);
   text-align: center;

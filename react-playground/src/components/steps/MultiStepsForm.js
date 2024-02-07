@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./steps.css";
+import "./MultiStepsForm.css";
 
 export default function MultiStepForm() {
   const [step, setStep] = useState(1);
