@@ -7,9 +7,10 @@ import TipCalculatorMain from "./components/tip-calculator/TipCalculator";
 import StepsMain from "./components/steps/MultiStepsForm";
 import PizzaMenuMain from "./components/pizza-menu/PizzaMenu";
 import FarAwayTravelListMain from "./components/far-away-travel-list/FarAwayTravelList";
+import TextExpanderMain from "./components/text-expander/TextExpander";
 export default function App() {
   return (
-    <div className="main-div-container layout">
+    <div className="layout">
       <div className="span0">
         <h1 className="components-header">React Components</h1>
       </div>
@@ -46,9 +47,8 @@ export default function App() {
         <FarAwayTravelListMain />
       </div>
       <div className="span9">
-        <br />
-        <br />
-        <br />
+        <h1 className="components-header">Text Expander</h1>
+        <TextExpanderMain />
       </div>
     </div>
   );

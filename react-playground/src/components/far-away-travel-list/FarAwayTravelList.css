@@ -2,7 +2,7 @@
 
 .travel-list-main {
   width: 80vw;
-  height: 90vh;
+  height: max-content;
 
   --color-primary-btn-bg: #333333;
   --color-secondary-btn-bg: #030303;

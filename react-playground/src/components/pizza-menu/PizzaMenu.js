@@ -133,7 +133,7 @@ function PizzaMenuFooter() {
 }
 function Order({ closeHour, openHour }) {
   return (
-    <div className=".pizza-menu-order">
+    <div className="pizza-menu-order">
       <p>
         We're open from {openHour}:00 to {closeHour}:00. Come visit us or order
         online.
