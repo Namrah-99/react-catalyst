@@ -1,19 +1,21 @@
-.card-conteiner-2 {
-  cursor: default;
+:root {
   --color-primary: #275efe;
   /* --color-headline: #3f4656; */
   --color-headline: #1b1717;
   --color-text: #99a3ba;
 }
+
 .card-content-2 {
   width: 100%;
-  max-width: 320px;
-  padding: 36px 32px;
+
+  max-width: 400px;
+  padding: 2rem;
   background: #f5f7fa;
   border-radius: 10px;
   /* box-shadow: 0 1px 4px rgba(255, 255, 255, 0.12); */
   /* Modified box shadow color */
   box-shadow: 0 1px 4px rgba(255, 255, 255, 0.8);
+  cursor: default;
 }
 
 .card-content-2 .card-title {
@@ -250,6 +252,8 @@ button {
 /* --------------------------------------------------------------------------- */
 .card-content-2 .inline-elements {
   display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 15px;
   align-items: end;
   margin: 15px 0px;
@@ -258,7 +262,7 @@ button {
   margin-top: 15px;
   color: var(--color-headline);
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 /* ----------------------------------------------------------------- */
 

@@ -40,8 +40,9 @@
   margin-left: auto;
   color: #e8e8e8;
   text-decoration: none;
-  padding: 10px;
-  margin-top: 14px;
+  padding: 0.7rem 1.3rem;
+  margin-top: 2rem;
+  font-size: 1.5rem;
   font-weight: 600;
   border: none;
   cursor: pointer;
@@ -67,7 +68,7 @@
 /* ------------------------------------------------ */
 .form__group {
   position: relative;
-  padding: 20px 0 0;
+  padding: 1rem 0;
   width: 100%;
   margin-block: 20px;
   max-width: 400px;

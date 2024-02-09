@@ -1,5 +1,6 @@
 import "./TipCalculator.css";
 import { useState } from "react";
+
 export default function TipCalculatorMain() {
   const [bill, setBill] = useState("");
   const [percentage1, setPercentage1] = useState("");
@@ -15,7 +16,7 @@ export default function TipCalculatorMain() {
   return (
     <div className="tip-calulator-card">
       <div className="tip-calulator-content">
-        <h1 className="tip-calulator-heading">Tip Calculator</h1>
+        {/* <h1 className="tip-calulator-heading">Tip Calculator</h1> */}
         <div className="tip-calulator-form">
           <FormFields
             fieldType="input"

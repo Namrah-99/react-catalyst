@@ -16,14 +16,10 @@ html {
 }
 
 body {
-  /* box-sizing: border-box; */
+  box-sizing: border-box;
   font-family: montserrat, arial, verdana;
   background-color: #1b1717;
   color: #f5f7fa;
-}
-
-.components-header {
-  margin-block: 50px;
 }
 
 .layout {
@@ -31,17 +27,27 @@ body {
   grid:
     ". . . . span0 span0 span0 span0 . . . ." auto
     ". span1 span1 span1 span1 span1 span1 span1 span1 span1 span1 ." 1fr
-    ". span2 span2 span2 span2 . . span3 span3 span3 span3 ." 1fr
+    ". span2 span2 span2 span2 . . span3 span3 span3 span3 ." auto
     ". span4 span4 span4 span4 span4 span4 span4 span4 span4 span4 ." auto
-    ". span5 span5 span5 span5 . . span6 span6 span6 span6 ." 1fr
+    ". span5 span5 span5 span5 . . span6 span6 span6 span6 ." auto
     ". span7 span7 span7 span7 span7 span7 span7 span7 span7 span7 ." auto
     ". span8 span8 span8 span8 span8 span8 span8 span8 span8 span8 ." auto
     ". span9 span9 span9 span9 span9 span9 span9 span9 span9 span9 ." auto
+    ". span10 span10 span10 span10 span10 span10 span10 span10 span10 span10 ." auto
     / 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  gap: 8px;
+  gap: 10rem 1rem;
 
   align-items: center;
   justify-items: center;
+}
+
+.layout > div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .span0 {
@@ -81,5 +87,23 @@ body {
   grid-area: span8;
 }
 .span9 {
+  /* Text Expander */
   grid-area: span9;
+}
+.span10 {
+  /* Eat 'N Split ' */
+  grid-area: span10;
+}
+
+.span1 .components-header,
+.span7 .components-header,
+.span8 .components-header,
+.span9 .components-header,
+.span10 .components-header {
+  margin-right: auto;
+  margin-block: 50px;
+}
+
+.components-header {
+  margin-block: 50px;
 }

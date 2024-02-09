@@ -1,14 +1,7 @@
 import { useState } from "react";
 import "./DateCounter.css";
-export default function DateCounterMain() {
-  return (
-    <div className="card-conteiner-2">
-      <Counter />
-    </div>
-  );
-}
 
-function Counter() {
+export default function DateCounterMain() {
   const [count, setCount] = useState(0);
   const [step, setStep] = useState(1);
 

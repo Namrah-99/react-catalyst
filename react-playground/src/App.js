@@ -8,6 +8,7 @@ import StepsMain from "./components/steps/MultiStepsForm";
 import PizzaMenuMain from "./components/pizza-menu/PizzaMenu";
 import FarAwayTravelListMain from "./components/far-away-travel-list/FarAwayTravelList";
 import TextExpanderMain from "./components/text-expander/TextExpander";
+import EatNSplitMain from "./components/eat-'n-split/eat-n-split";
 export default function App() {
   return (
     <div className="layout">
@@ -35,7 +36,7 @@ export default function App() {
         <StepsMain />
       </div>
       <div className="span6">
-        {/* <h1 className="components-header">Tip Calculator</h1> */}
+        <h1 className="components-header">Tip Calculator</h1>
         <TipCalculatorMain />
       </div>
       <div className="span7">
@@ -49,6 +50,12 @@ export default function App() {
       <div className="span9">
         <h1 className="components-header">Text Expander</h1>
         <TextExpanderMain />
+      </div>
+      <div className="span10">
+        <h1 className="components-header">Eat 'N Split</h1>
+        <EatNSplitMain />
+        <br />
+        <br />
       </div>
     </div>
   );
