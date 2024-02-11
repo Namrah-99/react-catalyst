@@ -9,6 +9,7 @@ import PizzaMenuMain from "./components/pizza-menu/PizzaMenu";
 import FarAwayTravelListMain from "./components/far-away-travel-list/FarAwayTravelList";
 import TextExpanderMain from "./components/text-expander/TextExpander";
 import EatNSplitMain from "./components/eat-'n-split/eat-n-split";
+import CurrencyConverterMain from "./components/currency-converter/CurrencyConverter";
 export default function App() {
   return (
     <div className="layout">
@@ -54,8 +55,9 @@ export default function App() {
       <div className="span10">
         <h1 className="components-header">Eat 'N Split</h1>
         <EatNSplitMain />
-        <br />
-        <br />
+      </div>
+      <div className="span11">
+        <CurrencyConverterMain />
       </div>
     </div>
   );

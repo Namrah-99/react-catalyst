@@ -1,13 +1,40 @@
 :root {
-  --color-primary: #6741d9;
-  --color-primary-light: #7950f2;
-  --color-text: #dee2e6;
-  --color-text-dark: #adb5bd;
+  --color-primary: #e50914;
+  /* --color-primary-light: #dc0000; */
+  --color-primary-light: #ec5858;
+  --color-text: #ffffff;
+  --color-text-dark: #e9e9e9;
   --color-background-100: #343a40;
   --color-background-500: #2b3035;
   --color-background-900: #212529;
-  --color-red: #fa5252;
+  --color-red: #f86254;
   --color-red-dark: #e03131;
+
+  /* Dark Mode Theme:
+
+  Primary Color: Dark gray or black (#121212)
+  Secondary Color: Red (#E50914) for highlights or accents
+  Accent Colors: White (#FFFFFF) or light gray (#EDEDED) for contrast
+  Font Color: Light gray or white for text on dark backgrounds
+  Light Mode Theme:
+  
+  Primary Color: White (#FFFFFF)
+  Secondary Color: Red (#E50914) for highlights or accents
+  Accent Colors: Dark gray (#121212) or black for contrast
+  Font Color: Dark gray or black for text on light backgrounds
+  Gradient Theme:
+  
+  Use a gradient background with shades of dark gray to black for the primary background
+  Overlay vibrant colors like red, blue, or purple in subtle gradients for accents or highlights
+  Font Color: Light gray or white for text to ensure readability against the gradient background
+  Cinematic Theme:
+  
+  Primary Color: Dark blue (#0F1624) or navy blue (#0C2340) for a cinematic feel
+  Secondary Color: Gold (#FFC800) or yellow for accents reminiscent of movie theater curtains or spotlights
+  Accent Colors: Dark gray or black for contrast
+  Font Color: Light gray or white for text on dark backgrounds
+
+ */
 }
 
 * {
@@ -52,9 +79,11 @@ body {
 .box {
   width: 42rem;
   max-width: 42rem;
+  height: max-content;
+  min-height: 100vh;
   background-color: var(--color-background-500);
   border-radius: 0.9rem;
-  overflow: scroll;
+  /* overflow: scroll; */
   position: relative;
 }
 
@@ -138,7 +167,7 @@ body {
 .list {
   list-style: none;
   padding: 0.8rem 0;
-  overflow: scroll;
+  /* overflow: scroll; */
 }
 
 .list-watched {
@@ -198,7 +227,7 @@ body {
   border: none;
   background-color: var(--color-red);
   color: var(--color-background-900);
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s;
@@ -295,7 +324,8 @@ body {
   background-color: var(--color-primary);
   color: var(--color-text);
   border: none;
-  border-radius: 10rem;
+  /* border-radius: 10rem; */
+  border-radius: 1rem;
   font-size: 1.4rem;
   padding: 1rem;
   font-weight: bold;

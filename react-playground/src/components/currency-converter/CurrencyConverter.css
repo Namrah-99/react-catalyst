@@ -1,0 +1,142 @@
+:root {
+  --color-primary: #11998e;
+  --color-secondary: #38ef7d;
+  --color-white: #fff;
+  --color-gray: #9b9b9b;
+}
+.currency-converter-container {
+  width: 100%;
+  max-width: max-content;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.currency-converter-container h1 {
+  background-image: linear-gradient(
+    to right,
+    var(--color-primary),
+    var(--color-secondary)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.output-currency-converter {
+  width: 100%;
+  border-bottom: 2px solid var(--color-gray);
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-image: linear-gradient(
+    to right,
+    var(--color-primary),
+    var(--color-secondary)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.currency-converter-container select:first-of-type {
+  margin-inline-end: 3em;
+}
+
+.currency-converter-container select {
+  font-size: 1.3rem;
+  background-color: transparent;
+  color: #ffffff;
+  border: 0;
+  border-bottom: 2px solid var(--color-gray);
+  font-weight: bold;
+  letter-spacing: 0.15em;
+  border-radius: 0;
+  &:focus,
+  &:active {
+    outline: 0;
+    background-image: linear-gradient(
+      to right,
+      var(--color-primary),
+      var(--color-secondary)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border-bottom: 3px solid transparent;
+  }
+}
+.currency-converter-container option {
+  background-color: #1b1717;
+  color: #ffffff;
+}
+/* ---------------------------------------------------- Input  */
+
+.currency-converter-container .form__group {
+  position: relative;
+  padding: 15px 0 0;
+  margin-top: 10px;
+  max-width: 100%;
+}
+
+.currency-converter-container .form__field {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid var(--color-gray);
+  outline: 0;
+  font-size: 1.3rem;
+  color: var(--color-white);
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+
+  &::placeholder {
+    color: transparent;
+  }
+
+  &:placeholder-shown ~ .currency-converter-container .form__label {
+    font-size: 1.3rem;
+    cursor: text;
+    top: 20px;
+  }
+}
+
+.currency-converter-container .form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: var(--color-gray);
+}
+
+.currency-converter-container
+  .form__field:focus
+  + .currency-converter-container
+  .form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.currency-converter-container .form__field:focus {
+  padding-bottom: 6px;
+  font-weight: 700;
+  border-width: 3px;
+  border-image: linear-gradient(
+    to right,
+    var(--color-primary),
+    var(--color-secondary)
+  );
+  border-image-slice: 1;
+}
+
+/* reset input */
+.currency-converter-container .form__field {
+  &:required,
+  &:invalid {
+    box-shadow: none;
+  }
+}

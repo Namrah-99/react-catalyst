@@ -34,6 +34,7 @@ body {
     ". span8 span8 span8 span8 span8 span8 span8 span8 span8 span8 ." auto
     ". span9 span9 span9 span9 span9 span9 span9 span9 span9 span9 ." auto
     ". span10 span10 span10 span10 span10 span10 span10 span10 span10 span10 ." auto
+    ". span11 span11 span11 span11 span11 span11 span11 span11 span11 span11 ." auto
     / 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   gap: 10rem 1rem;
 
@@ -93,6 +94,10 @@ body {
 .span10 {
   /* Eat 'N Split ' */
   grid-area: span10;
+}
+.span11 {
+  /* Currency Converter */
+  grid-area: span11;
 }
 
 .span1 .components-header,
