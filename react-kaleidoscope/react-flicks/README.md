@@ -4,8 +4,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Screenshots
 
-![Movies list and Watched Movie Details](/react-playground/public/assets/readmefileImages/1.png)
-![Movies list and Watched Movies Summary and list](/react-playground/public/assets/readmefileImages/2.png)
+![Movies list and Watched Movie Details](/react-kaleidoscope/react-flicks/public/assets/readmefileImages/1.png)
+![Movies list and Watched Movies Summary and list](/react-kaleidoscope/react-flicks/public/assets/readmefileImages/2.png)
 
 ## Available Scripts
 
