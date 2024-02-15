@@ -10,6 +10,9 @@ import FarAwayTravelListMain from "./components/far-away-travel-list/FarAwayTrav
 import TextExpanderMain from "./components/text-expander/TextExpander";
 import EatNSplitMain from "./components/eat-'n-split/eat-n-split";
 import CurrencyConverterMain from "./components/currency-converter/CurrencyConverter";
+import UseGeoLocationMain from "./components/useGeolocate/UseGeolocate";
+import ClassyWeather from "./components/classy-weather/ClassyWeather";
+
 export default function App() {
   return (
     <div className="layout">
@@ -58,6 +61,14 @@ export default function App() {
       </div>
       <div className="span11">
         <CurrencyConverterMain />
+      </div>
+      <div className="span12">
+        <h1 className="components-header">useGeolocation</h1>
+        <UseGeoLocationMain />
+      </div>
+      <div className="span13">
+        <h1 className="components-header">Classy Weather</h1>
+        <ClassyWeather />
       </div>
     </div>
   );

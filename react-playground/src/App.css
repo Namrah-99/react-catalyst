@@ -35,6 +35,8 @@ body {
     ". span9 span9 span9 span9 span9 span9 span9 span9 span9 span9 ." auto
     ". span10 span10 span10 span10 span10 span10 span10 span10 span10 span10 ." auto
     ". span11 span11 span11 span11 span11 span11 span11 span11 span11 span11 ." auto
+    ". span12 span12 span12 span12 span12 span12 span12 span12 span12 span12 ." auto
+    ". span13 span13 span13 span13 span13 span13 span13 span13 span13 span13 ." auto
     / 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   gap: 10rem 1rem;
 
@@ -99,12 +101,22 @@ body {
   /* Currency Converter */
   grid-area: span11;
 }
+.span12 {
+  /* useGeolocation (Custom Hooks) */
+  grid-area: span12;
+}
+.span13 {
+  /* Classy Weather */
+  grid-area: span13;
+}
 
 .span1 .components-header,
 .span7 .components-header,
 .span8 .components-header,
 .span9 .components-header,
-.span10 .components-header {
+.span10 .components-header,
+.span12 .components-header,
+.span13 .components-header {
   margin-right: auto;
   margin-block: 50px;
 }

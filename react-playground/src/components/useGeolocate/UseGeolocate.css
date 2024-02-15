@@ -1,0 +1,126 @@
+:root {
+  --color-primary-geolocation: #0077cc; /* Ocean blue */
+  --color-secondary-geolocation: #66aaff; /* Lighter blue */
+  --color-background-geolocation: #ffffff;
+  --color-gray-geolocation: #cccccc; /* Light gray */
+}
+
+/* :root {
+  --color-primary-geolocation: #ff5722;
+  --color-secondary-geolocation: #ffc107; 
+  --color-background-geolocation: #ffffff;
+  --color-gray-geolocation: #cccccc; 
+} */
+
+/* :root {
+  --color-primary-geolocation: #4caf50; 
+  --color-secondary-geolocation: #8bc34a; 
+  --color-background-geolocation: #ffffff;
+  --color-gray-geolocation: #cccccc; 
+} */
+
+/* 
+:root {
+  --color-primary-geolocation: #3aafa9;
+  --color-secondary-geolocation: #2b7a78;
+  --color-background-geolocation: #f5f5f5;
+  --color-accent: #ffc857;
+} */
+
+.use-geolocation-container {
+  width: 100%;
+  background-color: var(--color-background-geolocation);
+  color: #000000;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  /* align-items: center;
+  justify-content: center; */
+}
+
+.use-geolocation-cont-2 {
+  width: 100%;
+
+  display: flex;
+  gap: 16px;
+  align-items: flex-end;
+  justify-content: space-evenly;
+}
+
+.get-my-position-cont-1 {
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--color-gray-geolocation);
+}
+.marginLeft {
+  margin-left: auto;
+}
+
+.marginRight {
+  margin-right: auto;
+  padding: 1rem 2.5rem;
+  border-radius: 5px;
+  background-color: var(--color-gray-geolocation);
+  opacity: 0.8;
+}
+
+.use-geolocation-container h1 {
+  margin-top: 0;
+  color: var(--color-primary-geolocation);
+}
+
+.use-geolocation-container p {
+  margin-bottom: 10px;
+}
+
+.use-geolocation-container span {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: var(--color-gray-geolocation);
+}
+
+.use-geolocation-container button {
+  width: 50%;
+  margin: 0 auto;
+  background-color: var(--color-primary-geolocation);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.use-geolocation-container button:hover {
+  background-color: var(--color-secondary-geolocation);
+}
+
+.use-geolocation-container button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.use-geolocation-container .error {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+.use-geolocation-container a {
+  color: var(--color-primary-geolocation);
+  text-decoration: none;
+}
+
+.use-geolocation-container a:hover {
+  color: var(--color-secondary-geolocation);
+  text-decoration: underline;
+}
+
+.view-on-map {
+  margin-top: 20px;
+}
