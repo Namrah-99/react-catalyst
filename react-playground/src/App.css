@@ -37,9 +37,9 @@ body {
     ". span11 span11 span11 span11 span11 span11 span11 span11 span11 span11 ." auto
     ". span12 span12 span12 span12 span12 span12 span12 span12 span12 span12 ." auto
     ". span13 span13 span13 span13 span13 span13 span13 span13 span13 span13 ." auto
+    ". span14 span14 span14 span14 span14 span14 span14 span14 span14 span14 ." auto
     / 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   gap: 10rem 1rem;
-
   align-items: center;
   justify-items: center;
 }
@@ -109,6 +109,10 @@ body {
   /* Classy Weather */
   grid-area: span13;
 }
+.span14 {
+  /* React Quiz */
+  grid-area: span14;
+}
 
 .span1 .components-header,
 .span7 .components-header,
@@ -116,7 +120,8 @@ body {
 .span9 .components-header,
 .span10 .components-header,
 .span12 .components-header,
-.span13 .components-header {
+.span13 .components-header,
+.span14 .components-header {
   margin-right: auto;
   margin-block: 50px;
 }

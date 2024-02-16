@@ -10,63 +10,68 @@ html {
   font-size: 62.5%;
 } */
 
-.app {
+.classy-weather-main-container {
+  width: 100%;
   font-family: "Cinzel Decorative", cursive;
-  font-size: 2rem;
+  /* font-size: 2rem; */
   height: 100vh;
   color: #222;
   background-color: #eabfb9;
   display: flex;
   align-items: center;
   justify-content: center;
+}
 
+.classy-weather-app {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 112rem;
+  width: 90%;
   gap: 4rem;
-  padding: 6rem 0;
+  padding: 3rem 0;
   border: 2px solid #222;
   outline: 2px solid #222;
   outline-offset: 1.2rem;
 }
 
-h1 {
+.classy-weather-app h1 {
   font-weight: 400;
-  font-size: 6rem;
+  font-size: 2rem;
   letter-spacing: 2px;
   word-spacing: 5px;
 }
 
-h2 {
+.classy-weather-app h2 {
   text-align: center;
   margin-bottom: 2.4rem;
 }
 
-input {
+.classy-weather-app input {
   font-family: inherit;
   color: inherit;
-  font-size: 2rem;
+  font-size: 1rem;
   background-color: #f0d2ce;
   padding: 1.6rem 3.2rem;
   border: none;
-  width: 32rem;
+  /* width: 32rem; */
 }
 
-input:focus {
+.classy-weather-app input:focus {
   outline: 2px solid #222;
 }
 
 .weather {
   list-style: none;
   display: flex;
-  gap: 2.4rem;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 1.5rem;
 }
 
 .day {
   background-color: #f0d2ce;
   padding: 1.6rem 0 2rem;
-  width: 12.8rem;
+  /* width: 12.8rem; */
 
   display: flex;
   flex-direction: column;

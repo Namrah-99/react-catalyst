@@ -12,6 +12,7 @@ import EatNSplitMain from "./components/eat-'n-split/eat-n-split";
 import CurrencyConverterMain from "./components/currency-converter/CurrencyConverter";
 import UseGeoLocationMain from "./components/useGeolocate/UseGeolocate";
 import ClassyWeather from "./components/classy-weather/ClassyWeather";
+import ReactQuiz from "./components/react-quiz/ReactQuiz";
 
 export default function App() {
   return (
@@ -69,6 +70,13 @@ export default function App() {
       <div className="span13">
         <h1 className="components-header">Classy Weather</h1>
         <ClassyWeather />
+      </div>
+      <div className="span14">
+        <h1 className="components-header">React Quiz</h1>
+        <ReactQuiz />
+        <br />
+        <br />
+        <br />
       </div>
     </div>
   );
