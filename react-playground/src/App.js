@@ -13,6 +13,7 @@ import CurrencyConverterMain from "./components/currency-converter/CurrencyConve
 import UseGeoLocationMain from "./components/useGeolocate/UseGeolocate";
 import ClassyWeather from "./components/classy-weather/ClassyWeather";
 import ReactQuiz from "./components/react-quiz/ReactQuiz";
+import BankAccount from "./components/bank-account/BankAccount";
 
 export default function App() {
   return (
@@ -74,6 +75,10 @@ export default function App() {
       <div className="span14">
         <h1 className="components-header">React Quiz</h1>
         <ReactQuiz />
+      </div>
+      <div className="span15">
+        <h1 className="components-header">Bank Account (useReducer)</h1>
+        <BankAccount />
         <br />
         <br />
         <br />
