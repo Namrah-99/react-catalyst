@@ -6,6 +6,10 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
+
+  /* font-family: "Segoe UI Emoji", "Segoe UI", "Helvetica Neue", Arial, sans-serif; */
+  font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji",
+    sans-serif;
 }
 
 .row {
@@ -21,9 +25,13 @@
 }
 
 .flag {
+  width: 5rem; /* Set the width of the image */
+  height: 5rem; /* Set the height of the image */
+  object-fit: contain; /* Maintain the aspect ratio and fit the image inside the specified dimensions */
+
   position: absolute;
-  right: 1rem;
-  top: 2.7rem;
+  right: 2%;
+  top: 35%;
   font-size: 2.8rem;
 }
 
