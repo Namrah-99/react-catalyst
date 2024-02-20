@@ -3,7 +3,11 @@
 ![Main Page](/react-kaleidoscope/journey-mapper/public/readmefileImages/1.png)
 ![Product Page](/react-kaleidoscope/journey-mapper/public/readmefileImages/2.png)
 ![Pricing Page](/react-kaleidoscope/journey-mapper/public/readmefileImages/3.png)
-![Sidebar](/react-kaleidoscope/journey-mapper/public/readmefileImages/4.png)
+![Main App](/react-kaleidoscope/journey-mapper/public/readmefileImages/4.png)
+![Current Location](/react-kaleidoscope/journey-mapper/public/readmefileImages/5.png)
+![Filtered Countries](/react-kaleidoscope/journey-mapper/public/readmefileImages/6.png)
+![Add City](/react-kaleidoscope/journey-mapper/public/readmefileImages/7.png)
+![Login Page](/react-kaleidoscope/journey-mapper/public/readmefileImages/8.png)
 
 # React
 
