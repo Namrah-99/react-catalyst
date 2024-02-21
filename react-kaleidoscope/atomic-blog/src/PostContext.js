@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState, useContext } from "react";
+import { createContext, useMemo, useState, useContext } from "react";
 import { faker } from "@faker-js/faker";
 
 function createRandomPost() {
@@ -35,19 +35,19 @@ function PostProvider({ children }) {
     setPosts([]);
   }
 
+  const value = useMemo(() => {
+    return {
+      posts: searchedPosts,
+      onAddPost: handleAddPost,
+      onClearPosts: handleClearPosts,
+      searchQuery,
+      setSearchQuery,
+    };
+  }, [searchQuery, searchedPosts]);
+
   return (
     // 2) PROVIDE THE CONTEXT VALUE
-    <PostContext.Provider
-      value={{
-        posts: searchedPosts,
-        onAddPost: handleAddPost,
-        onClearPosts: handleClearPosts,
-        searchQuery,
-        setSearchQuery,
-      }}
-    >
-      {children}
-    </PostContext.Provider>
+    <PostContext.Provider value={value}>{children}</PostContext.Provider>
   );
 }
 // custom hook, create like an API
