@@ -68,7 +68,7 @@ function FormFields({ children, fieldType, formId, stateVar, stateFunc }) {
           value={stateVar}
           onChange={(e) => stateFunc(Number(e.target.value))}
         >
-          <option value="" disabled selected hidden></option>
+          <option value="" disabled defaultValue={""} hidden></option>
           <option value="0">Dissatisfied (0%)</option>
           <option value="5">It was okay (5%)</option>
           <option value="10">It was good (10%)</option>
@@ -84,7 +84,7 @@ function FormFields({ children, fieldType, formId, stateVar, stateFunc }) {
           onChange={(e) => stateFunc(Number(e.target.value))}
         />
       )}
-      <label className="form__label" for={formId}>
+      <label className="form__label" htmlFor={formId}>
         {children}
       </label>
     </div>
