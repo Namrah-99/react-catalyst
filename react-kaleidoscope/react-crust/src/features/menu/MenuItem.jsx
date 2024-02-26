@@ -11,10 +11,8 @@ function MenuItem({ pizza }) {
   const isInCart = currentQuantity > 0;
 
   const dispatch = useDispatch();
-  // console.log(pizza);
 
   function handleAddToCart() {
-    // console.log(id);
     const newItem = {
       pizzaId: id,
       name,
