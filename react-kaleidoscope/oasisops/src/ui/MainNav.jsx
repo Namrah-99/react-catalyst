@@ -91,7 +91,7 @@ function MainNav() {
           </StyledNavLink>
         </li>
         <li>
-          <StyledNavLink to="/users">
+          <StyledNavLink to="/settings">
             <span>
               <HiOutlineCog6Tooth />
             </span>
