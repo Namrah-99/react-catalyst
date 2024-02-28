@@ -38,7 +38,7 @@ const Error = styled.span`
   color: var(--color-red-700);
 `;
 
-function FormRowComp({ label, error, children }) {
+function FormRow({ label, error, children }) {
   return (
     <StyledFormRow>
       {label && <Label htmlFor={children.props.id}>{label}</Label>}
@@ -48,10 +48,10 @@ function FormRowComp({ label, error, children }) {
   );
 }
 
-FormRowComp.propTypes = {
+FormRow.propTypes = {
   label: PropTypes.string,
   children: PropTypes.element,
-  error: PropTypes.object.isRequired, // Assuming errors is an object
+  error: PropTypes.object, // Assuming errors is an object
 };
 
-export default FormRowComp;
+export default FormRow;
