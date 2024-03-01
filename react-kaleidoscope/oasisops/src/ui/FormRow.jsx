@@ -50,7 +50,7 @@ function FormRow({ label, error, children }) {
 
 FormRow.propTypes = {
   label: PropTypes.string,
-  children: PropTypes.element,
+  children: PropTypes.any,
   error: PropTypes.object, // Assuming errors is an object
 };
 
