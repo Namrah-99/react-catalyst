@@ -95,6 +95,7 @@ async function createBookings() {
   });
 
   console.log(finalBookings);
+  console.log(finalBookings.length);
 
   const { error } = await supabase.from("bookings").insert(finalBookings);
   if (error) console.log(error.message);
@@ -109,7 +110,7 @@ function Uploader() {
     await deleteBookings();
     await deleteGuests();
     await deleteCabins();
-
+    console.log("uploadAll");
     // Bookings need to be created LAST
     await createGuests();
     await createCabins();
@@ -121,6 +122,7 @@ function Uploader() {
   async function uploadBookings() {
     setIsLoading(true);
     await deleteBookings();
+    console.log("uploadBookings");
     await createBookings();
     setIsLoading(false);
   }

@@ -75,39 +75,38 @@ function CheckinBooking() {
       </Row>
 
       <BookingDataBox booking={booking} />
-
-      <Box>
-        <Checkbox
-          checked={addBreakfast}
-          onChange={() => {
-            setAddBreakfast((add) => !add);
-            setConfirmPaid(false);
-          }}
-          id="breakfast"
-        >
-          Want to add breakfast for {formatCurrency(optionalBreakfastPrice)}?
-        </Checkbox>
-      </Box>
-
       {!hasBreakfast && (
         <Box>
           <Checkbox
-            checked={confirmPaid}
-            onChange={() => setConfirmPaid((confirm) => !confirm)}
-            id="confirm"
-            disabled={confirmPaid || isCheckingin}
+            checked={addBreakfast}
+            onChange={() => {
+              setAddBreakfast((add) => !add);
+              setConfirmPaid(false);
+            }}
+            id="breakfast"
           >
-            I confirm that {guests.fullName} has paid the total amount of
-            {!addBreakfast
-              ? formatCurrency(totalPrice)
-              : `${formatCurrency(
-                  totalPrice + optionalBreakfastPrice
-                )} (${formatCurrency(totalPrice)} +
-                  ${formatCurrency(optionalBreakfastPrice)})
-                `}
+            Want to add breakfast for {formatCurrency(optionalBreakfastPrice)}?
           </Checkbox>
         </Box>
       )}
+
+      <Box>
+        <Checkbox
+          checked={confirmPaid}
+          onChange={() => setConfirmPaid((confirm) => !confirm)}
+          id="confirm"
+          disabled={confirmPaid || isCheckingin}
+        >
+          I confirm that {guests.fullName} has paid the total amount of
+          {!addBreakfast
+            ? formatCurrency(totalPrice)
+            : `${formatCurrency(
+                totalPrice + optionalBreakfastPrice
+              )} (${formatCurrency(totalPrice)} +
+                  ${formatCurrency(optionalBreakfastPrice)})
+                `}
+        </Checkbox>
+      </Box>
 
       <ButtonGroup>
         <Button onClick={handleCheckin} disabled={!confirmPaid || isCheckingin}>

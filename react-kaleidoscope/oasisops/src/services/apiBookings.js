@@ -87,6 +87,16 @@ export async function getStaysAfterDate(date) {
 
 // Activity means that there is a check in or a check out today
 export async function getStaysTodayActivity() {
+  const today = getToday();
+
+  const { data: d1, error: e1 } = await supabase
+    .from("bookings")
+    .select("startDate")
+    .eq("status", "checked-in")
+    .eq("endDate", getToday())
+    .order("created_at");
+  console.log({ ...d1, today });
+
   const { data, error } = await supabase
     .from("bookings")
     .select("*, guests(fullName, nationality, countryFlag)")
@@ -105,6 +115,39 @@ export async function getStaysTodayActivity() {
   }
   return data;
 }
+
+// export async function getStaysTodayActivity() {
+//   const { data: unconfirmedQuery } = await supabase
+//     .from("bookings")
+//     .select("*, guests(fullName, nationality, countryFlag)")
+//     .eq("status", "unconfirmed")
+//     .eq("startDate", getToday());
+//   // .order("created_at");
+//   console.log(unconfirmedQuery);
+//   const { data: checkedInQuery } = await supabase
+//     .from("bookings")
+//     .select("*, guests(fullName, nationality, countryFlag)")
+//     .eq("status", "checked-in")
+//     .eq("endDate", getToday());
+//   // .order("created_at");
+//   console.log(checkedInQuery);
+//   // const [unconfirmedData, checkedInData] = await Promise.all([
+//   //   unconfirmedQuery,
+//   //   checkedInQuery,
+//   // ]);
+
+//   // const data = [...unconfirmedData.data, ...checkedInData.data];
+
+//   // console.log(data);
+
+//   // if (unconfirmedData.error || checkedInData.error) {
+//   //   console.error(unconfirmedData.error || checkedInData.error);
+//   //   throw new Error("Bookings could not get loaded");
+//   // }
+
+//   // return data;
+//   return [];
+// }
 
 export async function updateBooking(id, obj) {
   const { data, error } = await supabase
