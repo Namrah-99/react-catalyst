@@ -14,8 +14,8 @@ import DropDownIconsMenu from "../../ui/Navbar/DropDownIconsMenu";
 const Navbar = () => {
   return (
     <>
-      <header className="text-gray-600 body-font relative font-primary">
-        <div className="container mx-auto flex flex-wrap p-3 flex-col md:flex-row items-center">
+      <header className="text-gray-600 body-font relative">
+        <div className="flex flex-wrap p-3 flex-col md:flex-row items-center">
           <Logo />
           <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center my-3 md:mt-0">
             <MenuItem text="Women" href="#" />
@@ -77,7 +77,7 @@ const Navbar = () => {
                 <p className="font-semibold text-p-md">
                   Your Shopping Bag is empty
                 </p>
-                <a className="inline-block underline font-normal">
+                <a className="inline-block underline underline-offset-4 font-normal">
                   Shop What&#39;s New
                 </a>
               </div>
@@ -269,13 +269,15 @@ const UserForm = () => (
       placeholder="Password"
     />
     <button className="bg-stone-950 text-stone-50 p-2">Sign in</button>
-    <a href="#" className="inline-block underline">
+    <a href="#" className="inline-block underline underline-offset-4">
       Forgotten Your Password?
     </a>
     <hr className="border-blue-gray-50" tabIndex="-1" role="menuitem" />
     <p className="font-semibold">
       Don&#39;t have an account? &nbsp;
-      <a className="inline-block underline font-normal">Register now</a>
+      <a className="inline-block underline underline-offset-4 font-normal">
+        Register now
+      </a>
     </p>
   </form>
 );

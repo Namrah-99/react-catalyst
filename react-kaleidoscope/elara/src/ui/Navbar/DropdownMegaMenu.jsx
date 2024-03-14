@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 
-export default function DropdownMenu({ text, classes, children }) {
+export default function DropdownMegaMenu({ text, classes, children }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <a className="mr-5 hover:text-gray-900 ">
@@ -23,7 +23,7 @@ export default function DropdownMenu({ text, classes, children }) {
   );
 }
 
-DropdownMenu.propTypes = {
+DropdownMegaMenu.propTypes = {
   text: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   classes: PropTypes.string,

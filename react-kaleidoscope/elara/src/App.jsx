@@ -1,9 +1,12 @@
-import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Main/Footer";
+import Navbar from "./components/Main/Navbar";
 
 function App() {
   return (
-    <div className="theme-size-md theme-font-family">
+    <div className="container mx-auto theme-size-md theme-font-family font-primary">
       <Navbar />
+
+      <Footer />
     </div>
   );
 }

@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 import daisyui from "daisyui";
+// import tailwindForms from "@tailwindcss/forms";
 export default {
   important: true,
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],

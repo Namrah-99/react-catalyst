@@ -3,7 +3,7 @@ import lightlogo from "../../assets/images/light-logo.png";
 export default function Logo() {
   return (
     <>
-      <a className="w-20 title-font items-center text-gray-900">
+      <a className="w-20 title-font items-center">
         <img
           src={lightlogo}
           alt="logo"
