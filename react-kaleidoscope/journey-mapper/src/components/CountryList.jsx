@@ -21,7 +21,7 @@ function CountryList() {
             ...arr,
             {
               country: city.country,
-              emoji: city.emoji,
+              countryCode: city.countryCode,
               key: `${city.country}-${index}`,
             },
           ]

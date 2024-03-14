@@ -25,13 +25,13 @@
 }
 
 .flag {
-  width: 5rem; /* Set the width of the image */
-  height: 5rem; /* Set the height of the image */
+  width: 4rem; /* Set the width of the image */
+  height: 4rem; /* Set the height of the image */
   object-fit: contain; /* Maintain the aspect ratio and fit the image inside the specified dimensions */
 
   position: absolute;
-  right: 2%;
-  top: 35%;
+  right: 2.5%;
+  top: 43%;
   font-size: 2.8rem;
 }
 

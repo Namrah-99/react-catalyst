@@ -10,7 +10,8 @@
         "lat": 38.727881642324164,
         "lng": -9.140900099907554
       },
-      "id": "73930385"
+      "id": "73930385",
+      "countryCode": "PT"
     },
     {
       "cityName": "Madrid",
@@ -22,7 +23,8 @@
         "lat": 40.46635901755316,
         "lng": -3.7133789062500004
       },
-      "id": "17806751"
+      "id": "17806751",
+      "countryCode": "ES"
     },
     {
       "cityName": "Berlin",
@@ -34,31 +36,8 @@
         "lat": 52.53586782505711,
         "lng": 13.376933665713324
       },
-      "id": "98443197"
-    },
-    {
-      "id": "0eaa",
-      "cityName": "Drancy",
-      "country": "France",
-      "emoji": "🇫🇷",
-      "date": "2024-02-20T13:44:59.755Z",
-      "notes": "Amazing!!!",
-      "position": {
-        "lat": "48.92154772048621",
-        "lng": "2.4345613493329754"
-      }
-    },
-    {
-      "id": "5793",
-      "cityName": "Dudley",
-      "country": "United Kingdom of Great Britain and Northern Ireland (the)",
-      "emoji": "🇬🇧",
-      "date": "2024-02-20T13:54:38.755Z",
-      "notes": "yuyyu",
-      "position": {
-        "lat": "52.45387374267366",
-        "lng": "-2.0239713995570368"
-      }
+      "id": "98443197",
+      "countryCode": "DE"
     },
     {
       "id": "5dc0",
@@ -70,7 +49,34 @@
       "position": {
         "lat": "33.774369917654",
         "lng": "73.03710937500001"
-      }
+      },
+      "countryCode": "PK"
+    },
+    {
+      "id": "fd9b",
+      "cityName": "Are",
+      "country": "Sweden",
+      "emoji": "🇸🇪",
+      "date": "2024-03-14T19:01:25.847Z",
+      "notes": "",
+      "position": {
+        "lat": "63.921332012285404",
+        "lng": "13.224791850933046"
+      },
+      "countryCode": "SE"
+    },
+    {
+      "id": "f99b",
+      "cityName": "Petermann",
+      "country": "Australia",
+      "emoji": "🇦🇺",
+      "date": "2024-03-14T19:50:56.550Z",
+      "notes": "",
+      "position": {
+        "lat": "-25.49772162495635",
+        "lng": "130.78125000000003"
+      },
+      "countryCode": "AU"
     }
   ]
 }

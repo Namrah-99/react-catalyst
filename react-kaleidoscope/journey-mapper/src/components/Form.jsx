@@ -83,6 +83,7 @@ function Form() {
       date,
       notes,
       position: { lat, lng },
+      countryCode,
     };
     await createCity(newCity);
     navigate("/app/cities");
@@ -114,7 +115,7 @@ function Form() {
         />
         <img
           className={styles.flag}
-          src={`https://flagcdn.com/${countryCode.toLowerCase()}.svg`}
+          src={`https://flagcdn.com/256x192/${countryCode.toLowerCase()}.png`}
         />
       </div>
 

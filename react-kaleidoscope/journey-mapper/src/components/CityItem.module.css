@@ -25,6 +25,17 @@
   line-height: 1;
 }
 
+.flag {
+  width: 4rem; /* Set the width of the image */
+  height: 4rem; /* Set the height of the image */
+  object-fit: contain; /* Maintain the aspect ratio and fit the image inside the specified dimensions */
+
+  /* position: absolute;
+  right: 2.5%;
+  top: 43%;
+  font-size: 2.8rem; */
+}
+
 .name {
   font-size: 1.7rem;
   font-weight: 600;
