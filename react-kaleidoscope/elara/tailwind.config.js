@@ -1,9 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 import daisyui from "daisyui";
-// import tailwindForms from "@tailwindcss/forms";
+import twElementsReactPlugin from "tw-elements-react/dist/plugin.cjs";
 export default {
   important: true,
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/tw-elements-react/dist/js/**/*.js",
+  ],
   theme: {
     fontSize: {
       "h-sm": "var(--text-h-sm)",
@@ -79,7 +83,7 @@ export default {
       },
     },
   },
-  plugins: [daisyui],
+  plugins: [daisyui, twElementsReactPlugin],
   daisyui: {
     themes: false,
   },
