@@ -39,7 +39,6 @@ function App() {
             <Route
               element={
                 <ProtectedRoute>
-                  {" "}
                   <AppLayout />
                 </ProtectedRoute>
               }

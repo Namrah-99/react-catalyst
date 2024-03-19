@@ -1,14 +1,46 @@
-import Footer from "./components/Main/Footer";
-import Header from "./components/Main/Header";
-import Navbar from "./components/Main/Navbar";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import AppLayout from "./ui/AppLayout";
+import Login from "./pages/Login";
+import PageNotFound from "./pages/PageNotFound";
+import Home from "./pages/Home";
+import Account from "./pages/Account";
+import ProductListing from "./pages/ProductListing";
+import ProductDetails from "./pages/ProductDetails";
+import Cart from "./pages/Cart";
+import Wishlist from "./pages/Wishlist";
+import Orders from "./pages/Orders";
+import Checkout from "./pages/Checkout";
+// (CMS): Explore Node.js CMS solutions like Contentful or Prismic to create and manage dynamic content pages like About Us, Contact Us, etc
+import About from "./pages/AboutUs";
+import Contact from "./pages/ContactUs";
+
+import Others from "./Others/Others";
 
 function App() {
   return (
-    <div className="theme-size-md theme-font-family font-primary">
-      <Navbar />
-      <Header />
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="login" element={<Login />}></Route>
+        <Route path="*" element={<PageNotFound />}></Route>
+        <Route element={<AppLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="others" element={<Others />}></Route>
+          <Route path="account" element={<Account />}></Route>
+          <Route path="products" element={<ProductListing />}></Route>
+          <Route
+            path="products/:productId"
+            element={<ProductDetails />}
+          ></Route>
+          <Route path="cart" element={<Cart />}></Route>
+          <Route path="wishlist" element={<Wishlist />}></Route>
+          <Route path="orders" element={<Orders />}></Route>
+          <Route path="checkout" element={<Checkout />}></Route>
+          <Route path="about-us" element={<About />}></Route>
+          <Route path="contact-us" element={<Contact />}></Route>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
