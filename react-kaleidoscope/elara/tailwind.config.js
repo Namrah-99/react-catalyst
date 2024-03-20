@@ -13,6 +13,7 @@ export default {
       "h-sm": "var(--text-h-sm)",
       "h-md": "var(--text-h-md)",
       "h-lg": "var(--text-h-lg)",
+      "h-xl": "var(--text-h-xl)",
       "p-xs": "var(--text-p-xs)",
       "p-sm": "var(--text-p-sm)",
       "p-md": "var(--text-p-md)",

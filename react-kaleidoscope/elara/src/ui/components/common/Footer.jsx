@@ -74,11 +74,11 @@ export default function Footer() {
           <div className="flex flex-col space-y-8">
             <div>
               <p className="text-gray-600 uppercase font-medium">need help?</p>
-              <p>
+              <p className="text-p-sm">
                 For any enquiries please visit ELARA &nbsp;
                 <a
                   href="#"
-                  className="cursor-pointer underline underline-offset-4 hover:bg-gray-100"
+                  className="cursor-pointer underline underline-offset-4 hover:text-[#0eb1ea] hover:font-semibold hover:tracking-wide"
                 >
                   Customer Care
                 </a>
@@ -230,7 +230,7 @@ export default function Footer() {
                 brands & be dressed for any occasion - &nbsp;
                 <a
                   href="#"
-                  className="cursor-pointer underline underline-offset-4 hover:bg-gray-100"
+                  className="cursor-pointer underline underline-offset-4 hover:text-[#0eb1ea] hover:font-semibold hover:tracking-wide"
                 >
                   visit MRPORTER.COM
                 </a>
@@ -248,7 +248,7 @@ export default function Footer() {
                 Lenders Law license -&nbsp;
                 <a
                   href="#"
-                  className="cursor-pointer underline underline-offset-4 hover:bg-gray-100"
+                  className="cursor-pointer underline underline-offset-4 hover:text-[#0eb1ea] hover:font-semibold hover:tracking-wide"
                 >
                   find out more here.
                 </a>

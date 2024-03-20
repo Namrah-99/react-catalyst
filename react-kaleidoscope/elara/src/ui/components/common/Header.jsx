@@ -53,7 +53,7 @@ function MainHeader() {
                 <img
                   key={item.id}
                   src={item.image}
-                  className="w-full h-full object-contain object-center mx-h-full"
+                  className="w-full h-full object-contain object-center max-h-full"
                   alt="..."
                 />
               ))}
@@ -100,12 +100,7 @@ export function Carousel({
   useEffect(() => {
     if (!autoSlide) return;
     const slideInterval = setInterval(next, autoSlideInterval);
-    function changeBg() {
-      document
-        .getElementById("main-header-div")
-        .classList.add(`bg-${slides[curr].color}`);
-    }
-    changeBg();
+
     return () => clearInterval(slideInterval);
   }, []);
   return (

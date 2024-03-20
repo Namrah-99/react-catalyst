@@ -6,17 +6,17 @@ import headerPay from "../assets/images/header/header-pay.png";
 import headerMakeit from "../assets/images/header/header-makeit.png";
 
 // -------- newinItems
-import newin1 from "../assets/images/newin/Untitled design (1).png";
-import newin2 from "../assets/images/newin/Untitled design (3).png";
-import newin3 from "../assets/images/newin/Untitled design (4).png";
-import newin4 from "../assets/images/newin/Untitled design (5).png";
-import newin5 from "../assets/images/newin/Untitled design (6).png";
-import newin6 from "../assets/images/newin/Untitled design (7).png";
-import newin7 from "../assets/images/newin/Untitled design (8).png";
-import newin8 from "../assets/images/newin/Untitled design (9).png";
-import newin9 from "../assets/images/newin/Untitled design (10).png";
-import newin10 from "../assets/images/newin/Untitled design (11).png";
-import newin11 from "../assets/images/newin/Untitled design (12).png";
+import newin1 from "../assets/images/newin/1.png";
+import newin2 from "../assets/images/newin/2.png";
+import newin3 from "../assets/images/newin/3.png";
+import newin4 from "../assets/images/newin/4.png";
+import newin5 from "../assets/images/newin/5.png";
+import newin6 from "../assets/images/newin/6.png";
+import newin7 from "../assets/images/newin/7.png";
+import newin8 from "../assets/images/newin/8.png";
+import newin9 from "../assets/images/newin/9.png";
+import newin10 from "../assets/images/newin/10.png";
+import newin11 from "../assets/images/newin/11.png";
 // import newin from "../assets/images/newin/";
 
 export const carouselItems = [
@@ -264,16 +264,39 @@ export const carouselItems = [
 ];
 
 export const newinItems = [
-  { image: newin1, title: "erdem" },
-  { image: newin2, title: "erdem" },
-  { image: newin3, title: "erdem" },
-  { image: newin4, title: "erdem" },
-  { image: newin5, title: "erdem" },
-  { image: newin6, title: "erdem" },
-  { image: newin7, title: "erdem" },
-  { image: newin8, title: "erdem" },
-  { image: newin9, title: "erdem" },
-  { image: newin4, title: "erdem" },
-  { image: newin9, title: "erdem" },
-  { image: newin2, title: "erdem" },
+  { imageUrl: newin2, title: "erdem", link: "#" },
+  { imageUrl: newin5, title: "erdem", link: "#" },
+  { imageUrl: newin10, title: "erdem", link: "#" },
+  { imageUrl: newin6, title: "erdem", link: "#" },
+  { imageUrl: newin8, title: "erdem", link: "#" },
+  { imageUrl: newin7, title: "erdem", link: "#" },
+  { imageUrl: newin3, title: "erdem", link: "#" },
+  { imageUrl: newin11, title: "erdem", link: "#" },
+  { imageUrl: newin4, title: "erdem", link: "#" },
+];
+
+export const threecard = [
+  {
+    title: "Dress devotee",
+    description:
+      "Your ultimate dress edit is here – find a style for every date in your diary",
+    linkTitle: "Shop dresses",
+    image: headerFashion,
+  },
+
+  {
+    title: "Trending Tops",
+    description:
+      "Explore our curation of this season’s most-wanted tops – think statement shoulders, sumptuous silks and more",
+    linkTitle: "Shop tops",
+    image: header1,
+  },
+
+  {
+    title: "Excess Baggage",
+    description:
+      "Whether you opt for the latest trophy style, a supersized tote or minimal masterpiece, find every It-bag here",
+    linkTitle: "Shop bags",
+    image: headerPay,
+  },
 ];

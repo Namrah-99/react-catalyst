@@ -1,6 +1,4 @@
 import { TECarousel, TECarouselItem } from "tw-elements-react";
-import PropTypes from "prop-types";
-import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi2";
 
 import Button from "../ui/components/common/Button";
 
@@ -20,18 +18,27 @@ import promotion1 from "../assets/images/header/promotion-header1.png";
 import promotion2 from "../assets/images/header/promotion-header2.png";
 import video2 from "../assets/videos/2.mp4";
 
-import { newinItems } from "../data/header";
+import klein1 from "../assets/images/header/klein9.jpg";
+import klein2 from "../assets/images/header/klein8.jpg";
 
-import { useEffect, useState } from "react";
+// Data
+import { newinItems, threecard } from "../data/header";
+// import data from "../data/carousel.json";
 
+import MultiItemCarousel from "../ui/Carousel/MultiItemCarousel";
 // import promotion3 from "../assets/images/header/promotion-header3.png";
 
 export default function Others() {
   return (
-    <div className="container mx-auto space-y-10 border border-red-400">
+    <div className="my-12 space-y-10">
+      <div className="container mx-auto">
+        <NewArrivals />
+      </div>
       <VideoOverlayText />
-      <NewArrivals />
-
+      <div className="xl:container xl:mx-auto space-y-10">
+        <ThreeCards />
+        <TwoCards />
+      </div>
       <Slider />
     </div>
   );
@@ -231,7 +238,7 @@ function ImageGallery() {
 
 function VideoOverlayText() {
   return (
-    <div className="h-[16rem] md:h-[24rem] w-full relative">
+    <div className="h-[16rem] md:h-[28rem] w-full relative">
       {/* Video */}
       <video
         className="w-full h-full object-cover"
@@ -241,171 +248,120 @@ function VideoOverlayText() {
         src={video2}
       ></video>
       {/* Text overlay */}
-      <div className="absolute bottom-0 left-0 mb-12 ml-12 text-black space-y-2">
-        <p className="text-h-md">Practically perfect</p>
-        <p className="text-p-sm">
-          Elevate your everyday in new-season pieces designed for a great time
-        </p>
-        <Button classes="w-1/2">Shop winter&#39;24</Button>
+      <div className="absolute bottom-0 max-w-full container mx-auto py-16">
+        <div className="container mx-auto text-black space-y-2">
+          <p className="text-h-md">Practically perfect</p>
+          <p className="text-p-sm">
+            Elevate your everyday in new-season pieces designed for a great time
+          </p>
+          <Button classes="w-1/2 sm:w-fit lg:px-8">Shop winter&#39;24</Button>
+        </div>
       </div>
     </div>
   );
 }
 
 function NewArrivals() {
-  function chunkArray(array, size) {
-    return array.reduce((acc, _, index) => {
-      if (index % size === 0) {
-        acc.push(array.slice(index, index + size));
-      }
-      return acc;
-    }, []);
-  }
-
-  const chunkedItems = chunkArray(newinItems, 4);
-
   return (
-    <div>
-      <div className="py-24 sm:py-32">
-        <div className="mx-auto grid max-w-full gap-x-8 gap-y-20 xl:grid-cols-3">
-          <div className="max-w-2xl my-auto">
-            <p className="text-p-sm text-gray-500 uppercase md:tracking-[.2rem] tracking-wide">
-              1,065 new items
-            </p>
-            <p className="text-h-lg text-gray-900">New In</p>
-            <p className="text-p-sm text-gray-900 pt-2">
-              Stay ahead of the style curve with our latest arrivals
-            </p>
-
-            <p className="text-center"></p>
-            <div className="mx-auto w-20 flex justify-center items-center mt-16 md:hidden">
-              <div className="w-1/3 h-0.5 bg-black"></div>
-              <div className="w-2/3 h-0.5 bg-gray-300"></div>
-            </div>
-            <Button classes="block mx-auto w-1/3 md:w-1/2 md:mx-0 md:w-auto mt-5">
-              Shop New In
-            </Button>
-          </div>
-
-          <div className="xl:col-span-2 bg-orange-300">
-            <div className="border border-blue-600 mx-auto w-3/4 overflow-hidden">
-              <NewArrivalsCarousel>
-                {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 xl:gap-x-8"> */}
-                {newinItems.map((item, index) => (
-                  // <div key={index} className="group relative">
-                  //   <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-                  <div key={index} className="w-full h-full">
-                    <img
-                      src={item.image}
-                      alt="Front of men's Basic Tee in black."
-                      className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                    />
-                  </div>
-                  //   </div>
-                  //   <p className="mt-2 text-center text-sm font-medium text-gray-900 uppercase">
-                  //     {item.title}
-                  //   </p>
-                  // </div>
-                ))}
-                {/* </div> */}
-
-                {/* {chunkedItems.map((chunk, slideIndex) => (
-                  <div
-                    key={slideIndex}
-                    className="flex mx-auto w-4/5 border border-red-950"
-                  >
-                    {chunk.map((item, itemIndex) => (
-                      <div
-                        key={itemIndex}
-                        className="grid grid-cols-4 grid-rows-1 max-w-full"
-                        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 xl:gap-x-8 max-w-full"
-                      >
-                        <div className="group relative">
-                          <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-                            <img
-                              src={item.image}
-                              alt="Front of men's Basic Tee in black."
-                              className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                            />
-                          </div>
-                          <p className="mt-2 text-center text-sm font-medium text-gray-900 uppercase">
-                            {item.title}
-                          </p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                ))} */}
-              </NewArrivalsCarousel>
-            </div>
-          </div>
+    <div className="grid grid-cols-1 grid-rows-3 gap-2 md:grid-cols-3 md:grid-rows-2 items-start">
+      <div className="h-full flex flex-col justify-end">
+        <p className="text-p-sm text-gray-500 uppercase md:tracking-[.2rem] tracking-wide">
+          1,065 new items
+        </p>
+        <p className="text-h-lg text-gray-900">New In</p>
+        <p className="text-p-sm text-gray-900 pt-2">
+          Stay ahead of the style curve with our latest arrivals
+        </p>
+      </div>
+      <div className="row-span-2 md:col-span-2 md:row-span-2 h-fit">
+        <MultiItemCarousel data={newinItems} />
+      </div>
+      <div className="row-start-4 md:row-start-2 flex flex-col items-center md:items-start md:justify-start ">
+        <div className="mx-auto w-20 flex justify-center items-center my-5 md:hidden">
+          <div className="w-1/3 h-0.5 bg-black"></div>
+          <div className="w-2/3 h-0.5 bg-gray-300"></div>
         </div>
+        {/* <Button classes="block mx-auto w-1/3 md:w-1/3 md:mx-0 md:w-auto mt-5 md:mt-1"> */}
+        <Button classes="block w-1/2 sm:w-fit lg:px-8">Shop New In</Button>
       </div>
     </div>
   );
 }
 
-function NewArrivalsCarousel({
-  children: slides,
-  autoSlide = false,
-  autoSlideInterval = 3000,
-}) {
-  const [curr, setCurr] = useState(0);
-
-  const prev = () =>
-    setCurr((curr) => (curr === 0 ? slides.length - 1 : curr - 1));
-  const next = () =>
-    setCurr((curr) => (curr === slides.length - 1 ? 0 : curr + 1));
-
-  useEffect(() => {
-    if (!autoSlide) return;
-    const slideInterval = setInterval(next, autoSlideInterval);
-    return () => clearInterval(slideInterval);
-  }, []);
+function ThreeCards() {
   return (
-    <div className="overflow-hidden relative bg-red-700 w-full h-full">
-      <div
-        className="flex transition-transform ease-out duration-500 w-full h-full"
-        style={{ transform: `translateX(-${curr * 100}%)` }}
-      >
-        {slides}
-      </div>
-      <div className="absolute inset-0 flex items-center justify-between p-4">
-        <button
-          onClick={prev}
-          className="p-1 rounded-full shadow bg-white/80 text-gray-800 hover:bg-white"
-        >
-          <HiOutlineChevronLeft size={40} />
-        </button>
-        <button
-          onClick={next}
-          className="p-1 rounded-full shadow bg-white/80 text-gray-800 hover:bg-white"
-        >
-          <HiOutlineChevronRight size={40} />
-        </button>
-      </div>
-
-      {/* <div className="absolute bottom-0 right-0 left-0">
-        <div className="flex items-center justify-center gap-0">
-          {slides.map((_, i) => (
-            <div
-              key={i}
-              className={`
-              transition-all w-full h-1  
-              ${curr === i ? "p-0 bg-black" : "bg-white bg-opacity-90"}
-            `}
-            />
-          ))}
+    <div className="grid grid-cols-1 grid-rows-3 md:grid-cols-3 md:grid-rows-1 gap-6 text-gray-900 justify-between">
+      {/* {Array(3).fill().map((_, index) => ( */}
+      {/* {[...Array(3)].map((_, index) => ( */}
+      {threecard.map((item, index) => (
+        <div key={index} className="h-fit">
+          <div className="group relative space-y-4 h-full">
+            <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-none lg:aspect-none group-hover:opacity-75 xl:h-[32rem] lg:h-fit">
+              <img
+                src={item.image}
+                alt="Front of men&#039;s Basic Tee in black."
+                className="h-full w-full object-cover sm:object-contain md:object-cover object-center lg:h-full lg:w-full"
+              />
+            </div>
+            <div className="space-y-2">
+              <p className="text-p-md">
+                <a href="#">
+                  {/* <span aria-hidden="true" className="absolute inset-0"></span> */}
+                  {item.title}
+                </a>
+              </p>
+              <p className="text-p-sm">{item.description}</p>
+              <p>
+                <a
+                  href="#"
+                  className="text-p-xs cursor-pointer underline underline-offset-4 hover:text-[#0eb1ea] hover:font-semibold hover:tracking-wide"
+                >
+                  {item.linkTitle}
+                </a>
+              </p>
+            </div>
+          </div>
         </div>
-      </div> */}
+      ))}
     </div>
   );
 }
-NewArrivalsCarousel.propTypes = {
-  // curr: PropTypes.number.isRequired,
-  // setCurr: PropTypes.func.isRequired,
-  autoSlide: PropTypes.bool,
-  autoSlideInterval: PropTypes.number,
-  children: PropTypes.node.isRequired,
-  slides: PropTypes.any,
-};
+
+function TwoCards() {
+  return (
+    <div className="space-y-3 lg:space-y-6">
+      <div className="w-full h-72 md:h-80 lg:h-96 xl:h-[28rem] md:flex md:flex-row">
+        <div className="w-full md:w-1/2 h-full">
+          <img
+            src={klein1}
+            alt="Front of men&#039;s Basic Tee in black."
+            className="h-full w-full object-cover object-bottom lg:h-full lg:w-full"
+          />
+        </div>
+        <div className="w-full md:w-1/2 h-full md:visible invisible">
+          <img
+            src={klein2}
+            alt="Front of men&#039;s Basic Tee in black."
+            className="h-full w-full object-cover object-bottom lg:h-full lg:w-full"
+          />
+        </div>
+      </div>
+      <div className="text-center text-gray-900 md:space-y-2 lg:space-y-3">
+        <p className="text-h-lg leading-tight md:leading-none">
+          New In: Clavin Klein USA SS24
+        </p>
+        <p className="text-p-sm">
+          Discover just-landed arrivals from the unmissable new collection
+        </p>
+        <p>
+          <a
+            href="#"
+            className="text-p-xs cursor-pointer underline underline-offset-4 hover:text-[#0eb1ea] hover:font-semibold hover:tracking-wide"
+          >
+            Shop the runway
+          </a>
+        </p>
+      </div>
+    </div>
+  );
+}
