@@ -19,7 +19,11 @@ export default function MegaMenuContent({ tag }) {
       content = <NewIn />;
       break;
     case "sale":
-      content = <a href="#">Sale</a>;
+      content = (
+        <span>
+          <a href="#">Sale</a>
+        </span>
+      );
       break;
     case "shop by":
       content = <ShopBy />;

@@ -21,7 +21,6 @@ function MainHeader() {
   const [curr, setCurr] = useState(0);
 
   const currentItem = carouselItems.find((item) => item.id === curr);
-  console.log(currentItem.color);
   return (
     <>
       <div
@@ -62,9 +61,9 @@ function MainHeader() {
           </div>
           <div className="col-start-1 md:col-start-2 md:row-start-1 overflow-hidden">
             {currentItem.icon}
-            <p className="text-h-sm md:text-h-md font-semibold">
+            <h6 className="text-h-sm md:text-h-md font-semibold">
               {currentItem.title}
-            </p>
+            </h6>
             <p className="text-p-lg md:text-p-lg">{currentItem.subtitle}</p>
           </div>
         </div>
@@ -84,14 +83,12 @@ export function Carousel({
 
   const prev = () => {
     setCurr((curr) => (curr === 0 ? slides.length - 1 : curr - 1));
-    console.log(curr);
     document
       .getElementById("main-header-div")
       .classList.add(`bg-${slides[curr].color}`);
   };
   const next = () => {
     setCurr((curr) => (curr === slides.length - 1 ? 0 : curr + 1));
-    console.log(curr);
     document
       .getElementById("main-header-div")
       .classList.add(`bg-${slides[curr].color}`);

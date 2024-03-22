@@ -19,6 +19,17 @@ import newin10 from "../assets/images/newin/10.png";
 import newin11 from "../assets/images/newin/11.png";
 // import newin from "../assets/images/newin/";
 
+{
+  /* <img
+className="w-full hover:delay-800 delay-200 h-full object-cover transition-all duration-1000 hover:-translate-y-4 hover:ease-in-out group-hover:scale-125"
+src="https://cdn.pixabay.com/photo/2016/01/31/19/41/apple-1172060_960_720.jpg"
+alt=""
+/> */
+}
+// src="https://cdn.pixabay.com/photo/2020/04/17/14/07/athlete-5055367_960_720.jpg"
+// src="https://cdn.pixabay.com/photo/2021/09/17/15/17/fruit-6633086_960_720.jpg"
+// src="https://cdn.pixabay.com/photo/2022/08/17/15/46/family-7392843_960_720.jpg"
+
 export const carouselItems = [
   {
     id: 0,
@@ -273,6 +284,8 @@ export const newinItems = [
   { imageUrl: newin3, title: "erdem", link: "#" },
   { imageUrl: newin11, title: "erdem", link: "#" },
   { imageUrl: newin4, title: "erdem", link: "#" },
+  { imageUrl: newin3, title: "erdem", link: "#" },
+  { imageUrl: newin5, title: "erdem", link: "#" },
 ];
 
 export const threecard = [
@@ -298,5 +311,74 @@ export const threecard = [
       "Whether you opt for the latest trophy style, a supersized tote or minimal masterpiece, find every It-bag here",
     linkTitle: "Shop bags",
     image: headerPay,
+  },
+  {
+    title: "Dress devotee",
+    description:
+      "Your ultimate dress edit is here – find a style for every date in your diary",
+    linkTitle: "Shop dresses",
+    image: headerFashion,
+  },
+
+  {
+    title: "Trending Tops",
+    description:
+      "Explore our curation of this season’s most-wanted tops – think statement shoulders, sumptuous silks and more",
+    linkTitle: "Shop tops",
+    image: header1,
+  },
+
+  {
+    title: "Excess Baggage",
+    description:
+      "Whether you opt for the latest trophy style, a supersized tote or minimal masterpiece, find every It-bag here",
+    linkTitle: "Shop bags",
+    image: headerPay,
+  },
+];
+
+// ----------------------------------------------
+
+export const persons = [
+  {
+    img: "https://unsplash.com/photos/mzN7eMmv9IM/download?force=true&w=590&h=640",
+    title:
+      "chief financial officer and executive vice president for global finance, aon plc",
+    name: "Christa Davies",
+  },
+  {
+    img: "https://unsplash.com/photos/oifclaPX5oM/download?force=true&w=590&h=640",
+    title: "revenue and financial management, stripe",
+    name: "Vivek Sharma",
+  },
+  {
+    img: "https://unsplash.com/photos/fghYlu1ec2U/download?force=true&w=590&h=640",
+    title: "head of product marketing, stripe",
+    name: "Tanya Khakbaz",
+  },
+  {
+    img: "https://unsplash.com/photos/a5XdeIb9Zso/download?force=true&w=590&h=640",
+    title: "head of global sales, stripe",
+    name: "Eileen O'Mara",
+  },
+  {
+    img: "https://unsplash.com/photos/RDUyi9YXPxk/download?force=true&w=590&h=640",
+    title: "founder, pulley",
+    name: "Yin Wu",
+  },
+  {
+    img: "https://unsplash.com/photos/TMZuhaL2kHo/download?force=true&w=590&h=640",
+    title: "ceo and cofounder, crowdai",
+    name: "Devaki Raj",
+  },
+  {
+    img: "https://unsplash.com/photos/XO25cX2_0iE/download?force=true&w=590&h=640",
+    title: "co-head of payments, wix",
+    name: "Amit Sagiv",
+  },
+  {
+    img: "https://unsplash.com/photos/DLKR_x3T_7s/download?force=true&w=590&h=640",
+    title: "general partner, andreessen horowitz",
+    name: "Angela Strange",
   },
 ];
