@@ -1,3 +1,10 @@
+import PropTypes from "prop-types";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/free-mode";
+import { FreeMode, Pagination } from "swiper/modules";
+
 import { TECarousel, TECarouselItem } from "tw-elements-react";
 
 import Button from "../ui/components/common/Button";
@@ -28,25 +35,29 @@ import slider4 from "../assets/images/header/slider4.png";
 import slider5 from "../assets/images/header/slider5.png";
 
 // Data
-import { newinItems, threecard } from "../data/header";
+import { ServiceData, newinItems, threecard } from "../data/header";
 // import data from "../data/carousel.json";
 
 import MultiItemCarousel from "../ui/Carousel/MultiItemCarousel";
+import { useEffect, useState } from "react";
 // import promotion3 from "../assets/images/header/promotion-header3.png";
 
 export default function Others() {
   return (
-    <div className="my-12 space-y-12">
-      <div className="container mx-auto">
+    <div className="my-12">
+      {/* <div className="container mx-auto"> */}
+      <div className="container mx-auto md:container md:mx-auto space-y-16">
         <NewArrivals />
-      </div>
-      <VideoOverlayText />
-      <div className="container mx-auto md:container md:mx-auto space-y-12">
+        {/* </div> */}
+        <VideoOverlayText />
         <ThreeCards />
         <TwoCards />
         <SlidersSlide />
-        <TopStories />
+        <ImageGallery />
+        <ElaraOffers />
         <Slider />
+        <TopStories threecard={threecard} />
+        <Test />
       </div>
     </div>
   );
@@ -55,7 +66,6 @@ export default function Others() {
 function Slider() {
   return (
     <>
-      <ImageGallery />
       <TECarousel ride="carousel">
         <div className="relative w-full md:h-[32rem] overflow-hidden after:clear-both after:block after:content-['']">
           <TECarouselItem
@@ -138,28 +148,6 @@ function Slider() {
                 alt="..."
               />
             </div>
-            {/* <div className="flex w-full h-full">
-          <img
-            src={women3}
-            className="w-1/4 object-cover object-center"
-            alt="..."
-          />{" "}
-          <img
-            src={men3}
-            className="w-1/4 object-cover object-center"
-            alt="..."
-          />{" "}
-          <img
-            src={kids5}
-            className="w-1/4 object-cover object-center"
-            alt="..."
-          />{" "}
-          <img
-            src={kids6}
-            className="w-1/4 object-cover object-center"
-            alt="..."
-          />{" "}
-        </div> */}
           </TECarouselItem>
         </div>
       </TECarousel>
@@ -257,7 +245,7 @@ function VideoOverlayText() {
       ></video>
       {/* Text overlay */}
       <div className="absolute bottom-0 max-w-full container mx-auto py-16">
-        <div className="container mx-auto text-black space-y-2">
+        <div className="container mx-auto text-black space-y-2 pl-2">
           <p className="text-h-md">Practically perfect</p>
           <p className="text-p-sm">
             Elevate your everyday in new-season pieces designed for a great time
@@ -460,7 +448,7 @@ function SlidersSlide() {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 text-gray-900 m-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 text-gray-900 text-justify">
         <p className="text-h-lg font-extrabold leading-tight">
           Verve & Vogue
           <span>
@@ -482,47 +470,169 @@ function SlidersSlide() {
           </a>
         </p>
       </div>
-      <hr className="border-gray-300 m-8" />
+      <hr className="border-gray-300 m-6 sm:m-0" />
     </>
   );
 }
 
-function TopStories() {
+function TopStories({ threecard, width = "w-40" }) {
+  const [itemsPerRow, setItemsPerRow] = useState(6);
+
+  useEffect(() => {
+    const updateItemsPerRow = () => {
+      const containerWidth = document.querySelector(
+        ".flex-wrap-container-top-stories"
+      ).offsetWidth;
+      const newItemsPerRow = Math.floor(
+        containerWidth / convertWidthToPixels(width)
+      );
+      setItemsPerRow(newItemsPerRow);
+    };
+
+    updateItemsPerRow();
+    window.addEventListener("resize", updateItemsPerRow);
+    return () => window.removeEventListener("resize", updateItemsPerRow);
+  }, [width]);
+
+  const showMoreLink = () => {
+    // Navigate to the next page
+  };
+
+  const convertWidthToPixels = (width) => {
+    const tailwindClasses = width.split(" ");
+    let widthPixels = 0;
+
+    tailwindClasses.forEach((className) => {
+      if (className.startsWith("w-")) {
+        const value = className.substring(2);
+        if (value === "full") {
+          widthPixels = 10000; // Set a large value for "full" width
+        } else if (value.startsWith("1/")) {
+          const fraction = parseFloat(value.substring(2));
+          if (!isNaN(fraction)) {
+            widthPixels = 100 / fraction;
+          }
+        } else {
+          const pixels = parseInt(value) * 4; // Assuming 1rem = 4px in Tailwind CSS
+          if (!isNaN(pixels)) {
+            widthPixels = pixels;
+          }
+        }
+      }
+    });
+
+    return widthPixels;
+  };
+
   return (
-    <>
-      <div className="grid grid-cols-1 grid-rows-3 md:grid-cols-3 md:grid-rows-1 gap-6 text-gray-900 justify-between">
-        {/* {Array(3).fill().map((_, index) => ( */}
-        {/* {[...Array(3)].map((_, index) => ( */}
-        {threecard.map((item, index) => (
-          <div key={index} className="h-fit">
-            <div className="group relative space-y-4 h-full">
-              <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-none lg:aspect-none group-hover:opacity-75 xl:h-[32rem] lg:h-fit">
-                <img
-                  src={item.image}
-                  alt="Front of men&#039;s Basic Tee in black."
-                  className="h-full w-full object-cover sm:object-contain md:object-cover object-center lg:h-full lg:w-full"
-                />
-              </div>
-              <div className="space-y-2">
-                <p className="text-p-md">
-                  <a href="#">
-                    {/* <span aria-hidden="true" className="absolute inset-0"></span> */}
+    <div className="space-y-6">
+      <h3 className="text-p-sm uppercase text-gray-500">Top stories</h3>
+      {/* <p className="uppercase text-p-lg leading-tight md:leading-none">
+        Top stories
+      </p> */}
+      <div className="flex flex-wrap gap-8 text-gray-900 items-end sm:justify-between ">
+        <div className="flex-wrap-container-top-stories flex flex-column sm:flex-row gap-4 sm:justify-between w-3/5 sm:w-full md:w-4/5">
+          {threecard.slice(0, itemsPerRow).map((item, index) => (
+            <div key={index} className={`h-72 ${width}`}>
+              {/* <div key={index} className={`h-72 w-[${itemWidthRem}rem]`}> */}
+              <div className={`group relative h-full w-full`}>
+                <div className="w-full h-3/4 overflow-hidden rounded-none group-hover:opacity-75 border border-gray-200">
+                  <img
+                    src={item.image}
+                    alt="Front of men&#039;s Basic Tee in black."
+                    className="h-full w-full object-cover sm:object-contain md:object-cover object-center lg:h-full lg:w-full"
+                  />
+                </div>
+
+                <article className="flex flex-col justify-evenly h-1/4 text-wrap ...">
+                  <h3 className="text-p-sm uppercase text-gray-500">
                     {item.title}
-                  </a>
-                </p>
-                <p className="text-p-sm">{item.description}</p>
-                <p>
-                  <a
-                    href="#"
-                    className="text-p-xs cursor-pointer underline underline-offset-4 hover:text-[#0eb1ea] hover:font-semibold hover:tracking-wide"
-                  >
-                    {item.linkTitle}
-                  </a>
-                </p>
+                  </h3>
+                  <p className="text-p-sm line-clamp-2 leading-none">
+                    {item.description}
+                  </p>
+                </article>
+                {/* </div> */}
               </div>
             </div>
+          ))}
+        </div>
+        {threecard.length > itemsPerRow && (
+          <div className="md:text-center flex-auto">
+            <button
+              onClick={showMoreLink}
+              href="#"
+              className="pt-4 text-p-xs cursor-pointer underline underline-offset-4 tracking-wide hover:text-[#0eb1ea] hover:font-semibold hover:tracking-wider"
+            >
+              See more
+            </button>
           </div>
-        ))}
+        )}
+      </div>
+    </div>
+  );
+}
+TopStories.propTypes = {
+  threecard: PropTypes.any.isRequired,
+  width: PropTypes.string,
+};
+
+function ElaraOffers() {
+  return (
+    <>
+      <div className="flex items-center justify-center flex-col">
+        <Swiper
+          breakpoints={{
+            340: {
+              slidesPerView: 1,
+              spaceBetween: 15,
+            },
+            700: {
+              slidesPerView: 2,
+              spaceBetween: 15,
+            },
+          }}
+          freeMode={true}
+          pagination={{
+            clickable: true,
+          }}
+          modules={[FreeMode, Pagination]}
+          className="max-w-full md:hidden border-orange-400"
+        >
+          {ServiceData.map((item) => (
+            <SwiperSlide
+              key={item.title}
+              className="flex items-start justify-center h-56"
+            >
+              <div className="flex flex-col gap-10 mb-20 text-gray-500 w-5/6 h-48 lg:w-80 overflow-hidden cursor-pointer text-center py-3">
+                <div className="flex flex-col gap-3 items-center justify-center">
+                  <item.icon className="text-gray-500 group-hover:text-gray-900 size-6" />
+                  <h1 className="text-gray-900 font-semibold text-p-md lg:text-2xl">
+                    {item.title}
+                  </h1>
+                  <p className="text-p-sm">{item.content} </p>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+        <div className="hidden md:flex flex-col md:flex-row gap-8 lg:gap-10 justify-between group relative text-gray-500 w-full overflow-hidden cursor-pointer text-center">
+          {ServiceData.map((item) => (
+            <div
+              key={item.title}
+              className="flex flex-col gap-3 md:gap-2 items-center text-gray-500 w-52 lg:w-full overflow-hidden cursor-pointer text-center justify-start"
+            >
+              <item.icon className="text-gray-500 group-hover:text-gray-900 size-6" />
+              <article>
+                <h1 className="text-gray-900 font-semibold text-p-md lg:text-2xl">
+                  {item.title}
+                </h1>
+                <p className="text-p-sm">{item.content} </p>
+              </article>
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );
@@ -540,4 +650,23 @@ function TopStories() {
           </p>
         </div>
       </div> */
+}
+
+function Test() {
+  return (
+    <>
+      <div className="group relative">
+        <img
+          src={klein1}
+          alt="First Image"
+          className="w-full h-auto transition-opacity duration-300"
+        />
+        <img
+          src={klein2}
+          alt="Second Image"
+          className="hidden group-hover:block w-full h-auto absolute top-0 left-0 transition-opacity duration-300"
+        />
+      </div>
+    </>
+  );
 }

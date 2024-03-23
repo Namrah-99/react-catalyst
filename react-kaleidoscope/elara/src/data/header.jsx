@@ -30,6 +30,35 @@ alt=""
 // src="https://cdn.pixabay.com/photo/2021/09/17/15/17/fruit-6633086_960_720.jpg"
 // src="https://cdn.pixabay.com/photo/2022/08/17/15/46/family-7392843_960_720.jpg"
 
+import { RiKeyLine } from "react-icons/ri";
+import { RxReload, RxPlusCircled } from "react-icons/rx";
+import { PiGlobeSimpleThin } from "react-icons/pi";
+
+export const ServiceData = [
+  {
+    icon: RxReload,
+    title: "Resell with ELARA",
+    content:
+      "Take your pieces from pre-loved to re-loved with our effortless service",
+  },
+  {
+    icon: RiKeyLine,
+    title: "ELARA Rewards",
+    content: "Discover exclusive benefits and experiences",
+  },
+  {
+    icon: RxPlusCircled,
+    title: "Discover now",
+    content: "Stay ahead of the style curve with our latest arrivals",
+  },
+  {
+    icon: PiGlobeSimpleThin,
+    title: "Treat yourself to 10% off",
+    content:
+      "Download our app to enjoy this saving on your first order – simply enter code APP10 at checkout. T and Cs apply",
+  },
+];
+
 export const carouselItems = [
   {
     id: 0,
@@ -335,6 +364,21 @@ export const threecard = [
     linkTitle: "Shop bags",
     image: headerPay,
   },
+  {
+    title: "Dress devotee",
+    description:
+      "Your ultimate dress edit is here – find a style for every date in your diary",
+    linkTitle: "Shop dresses",
+    image: headerFashion,
+  },
+
+  {
+    title: "Trending Tops",
+    description:
+      "Explore our curation of this season’s most-wanted tops – think statement shoulders, sumptuous silks and more",
+    linkTitle: "Shop tops",
+    image: header1,
+  },
 ];
 
 // ----------------------------------------------
@@ -380,5 +424,24 @@ export const persons = [
     img: "https://unsplash.com/photos/DLKR_x3T_7s/download?force=true&w=590&h=640",
     title: "general partner, andreessen horowitz",
     name: "Angela Strange",
+  },
+];
+
+export const slides2 = [
+  {
+    url: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2620&q=80",
+  },
+  {
+    url: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80",
+  },
+  {
+    url: "https://images.unsplash.com/photo-1661961112951-f2bfd1f253ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2672&q=80",
+  },
+
+  {
+    url: "https://images.unsplash.com/photo-1512756290469-ec264b7fbf87?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2253&q=80",
+  },
+  {
+    url: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2671&q=80",
   },
 ];
