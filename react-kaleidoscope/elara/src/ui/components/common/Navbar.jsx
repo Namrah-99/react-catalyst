@@ -7,7 +7,7 @@ import {
 
 import Pagination1 from "../../Pagination/Pagination-1";
 import Logo from "../../Navbar/Logo";
-import MenuItem from "../../Navbar/MenuItem";
+import MyLink from "./MyLink";
 import SearchModal from "../../Navbar/SearchModal";
 import DropDownIconsMenu from "../../Navbar/DropDownIconsMenu";
 
@@ -18,9 +18,9 @@ const Navbar = () => {
         <div className="flex flex-wrap p-3 flex-col md:flex-row items-center">
           <Logo />
           <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center my-3 md:mt-0">
-            <MenuItem text="Women" href="#" />
-            <MenuItem text="Men" href="#" />
-            <MenuItem text="Kids" href="#" />
+            <MyLink text="Women" to="/women" />
+            <MyLink text="Men" to="/men" />
+            <MyLink text="Kids" to="/kids" />
           </nav>
 
           <div className="flex flex-wrap sm:ml-4 space-x-4 items-center justify-center">

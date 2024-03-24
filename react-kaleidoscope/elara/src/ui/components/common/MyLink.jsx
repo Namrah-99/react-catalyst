@@ -1,17 +1,18 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
-export default function MenuItem({ text, href, children }) {
+export default function MenuItem({ text, to, children }) {
   return (
     <>
-      <a className="mr-5 hover:text-gray-900 font-semibold" href={href}>
+      <Link to={to} className="mr-5 hover:text-gray-900 font-semibold">
         {children || text}
-      </a>
+      </Link>
     </>
   );
 }
 
 MenuItem.propTypes = {
   text: PropTypes.string.isRequired,
-  href: PropTypes.string.isRequired,
+  to: PropTypes.string.isRequired,
   children: PropTypes.node, // Add this line to validate children prop
 };

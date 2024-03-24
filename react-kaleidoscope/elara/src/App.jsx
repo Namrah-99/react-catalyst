@@ -16,6 +16,9 @@ import About from "./pages/AboutUs";
 import Contact from "./pages/ContactUs";
 
 import Others from "./Others/Others";
+import Women from "./pages/customers/Women";
+import Men from "./pages/customers/Men";
+import Kids from "./pages/customers/Kids";
 
 function App() {
   return (
@@ -38,6 +41,10 @@ function App() {
           <Route path="checkout" element={<Checkout />}></Route>
           <Route path="about-us" element={<About />}></Route>
           <Route path="contact-us" element={<Contact />}></Route>
+
+          <Route path="women" element={<Women />}></Route>
+          <Route path="men" element={<Men />}></Route>
+          <Route path="kids" element={<Kids />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>
