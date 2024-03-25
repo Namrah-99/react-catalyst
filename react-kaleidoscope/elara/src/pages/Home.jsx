@@ -15,7 +15,8 @@ import Header from "../ui/components/common/Header";
 export default function Home() {
   return (
     <>
-      <div className="container mx-auto md:container md:mx-auto space-y-16">
+      {/* <div className="container mx-auto md:container md:mx-auto space-y-16"> */}
+      <div className="container mx-auto space-y-16">
         <Header />
         <NewArrivals />
         <VideoOverlayText />

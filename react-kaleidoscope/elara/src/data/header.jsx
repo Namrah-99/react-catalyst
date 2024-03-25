@@ -304,17 +304,156 @@ export const carouselItems = [
 ];
 
 export const newinItems = [
-  { imageUrl: newin2, title: "erdem", link: "#" },
-  { imageUrl: newin5, title: "erdem", link: "#" },
-  { imageUrl: newin10, title: "erdem", link: "#" },
-  { imageUrl: newin6, title: "erdem", link: "#" },
-  { imageUrl: newin8, title: "erdem", link: "#" },
-  { imageUrl: newin7, title: "erdem", link: "#" },
-  { imageUrl: newin3, title: "erdem", link: "#" },
-  { imageUrl: newin11, title: "erdem", link: "#" },
-  { imageUrl: newin4, title: "erdem", link: "#" },
-  { imageUrl: newin3, title: "erdem", link: "#" },
-  { imageUrl: newin5, title: "erdem", link: "#" },
+  {
+    imageUrl1: newin2,
+    imageUrl2: newin3,
+    title: "erdem",
+    link: "#",
+    newCTALine: "New Season",
+    shortDescription: "floral embroidered crop top",
+    brand: "Brunello Cucinelli",
+    price: 1213,
+  },
+  {
+    imageUrl1: newin5,
+    imageUrl2: newin2,
+    title: "erdem2",
+    link: "#",
+    newCTALine: "New items from the show",
+    shortDescription: "patterned jacquard skirt",
+    brand: "ETRO",
+    price: 2293,
+  },
+  {
+    imageUrl1: newin10,
+    imageUrl2: newin5,
+    title: "title3",
+    link: "#",
+    newCTALine: "New items",
+    shortDescription: "description3",
+    brand: "brand3",
+    price: 333,
+  },
+  {
+    imageUrl1: newin6,
+    imageUrl2: newin10,
+    title: "title4",
+    link: "#",
+    newCTALine: "New items",
+    shortDescription: "description4",
+    brand: "brand4",
+    price: 444,
+  },
+  {
+    imageUrl1: newin8,
+    imageUrl2: newin6,
+    title: "title5",
+    link: "#",
+    newCTALine: "New items",
+    shortDescription: "description5",
+    brand: "brand5",
+    price: 555,
+  },
+  {
+    imageUrl1: newin7,
+    imageUrl2: newin8,
+    title: "title6",
+    link: "#",
+    newCTALine: "New items",
+    shortDescription: "description6",
+    brand: "brand6",
+    price: 666,
+  },
+  {
+    imageUrl1: newin3,
+    imageUrl2: newin7,
+    title: "title7",
+    link: "#",
+    newCTALine: "New items",
+    shortDescription: "description7",
+    brand: "brand7",
+    price: 777,
+  },
+  {
+    imageUrl1: newin11,
+    imageUrl2: newin3,
+    title: "title8",
+    link: "#",
+    newCTALine: "New items",
+    shortDescription: "New prints",
+    brand: "DRIES VAN NOTEN",
+    price: 888,
+  },
+  {
+    imageUrl1: newin4,
+    imageUrl2: newin11,
+    title: "title9",
+    link: "#",
+    newCTALine: "New items",
+    shortDescription: "Exclusive models",
+    brand: "ERDEM: NEW COLLECTION",
+    price: 999,
+  },
+  {
+    imageUrl1: newin3,
+    imageUrl2: newin4,
+    title: "title10",
+    link: "#",
+    newCTALine: "New items",
+    shortDescription: "New tote bag",
+    brand: "PRADA",
+    price: 1010,
+  },
+  {
+    imageUrl1: newin5,
+    imageUrl2: newin4,
+    title: "title11",
+    link: "#",
+    newCTALine: "New items",
+    shortDescription: "Models not found anywhere else",
+    brand: "ONLY AT FARFETCH",
+    price: 1111,
+  },
+  {
+    imageUrl1: newin9,
+    imageUrl2: newin5,
+    title: "title12",
+    link: "#",
+    newCTALine: "New items",
+    shortDescription: "Exclusive models",
+    brand: "ERDEM: NEW COLLECTION",
+    price: 1212,
+  },
+  {
+    imageUrl1: newin1,
+    imageUrl2: newin4,
+    title: "title13",
+    link: "#",
+    newCTALine: "New items",
+    shortDescription: "description13",
+    brand: "brand13",
+    price: 1313,
+  },
+  {
+    imageUrl1: newin11,
+    imageUrl2: newin1,
+    title: "title14",
+    link: "#",
+    newCTALine: "New items",
+    shortDescription: "description14",
+    brand: "brand14",
+    price: 1414,
+  },
+  {
+    imageUrl1: newin9,
+    imageUrl2: newin5,
+    title: "title15",
+    link: "#",
+    newCTALine: "New items",
+    shortDescription: "description15",
+    brand: "brand15",
+    price: 1515,
+  },
 ];
 
 export const threecard = [
@@ -380,6 +519,48 @@ export const threecard = [
     image: header1,
   },
 ];
+
+export const dummyData2 = [
+  {
+    id: 1,
+    name: "Product 1",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    price: 29.99,
+    category: "Category 1",
+    imageUrl: "https://via.placeholder.com/150",
+    stock: 10,
+    rating: 4.5,
+    isNew: false,
+  },
+  {
+    id: 2,
+    name: "Product 2",
+    description:
+      "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    price: 49.99,
+    category: "Category 2",
+    imageUrl: "https://via.placeholder.com/150",
+    stock: 5,
+    rating: 3.8,
+    isNew: true,
+  },
+  // Add more objects here...
+];
+
+// Add more objects to reach 15 items
+for (let i = 3; i <= 15; i++) {
+  dummyData2.push({
+    id: i,
+    name: `Product ${i}`,
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    price: Math.random() * (100 - 10) + 10, // Random price between 10 and 100
+    category: `Category ${Math.floor(Math.random() * 5) + 1}`, // Random category between 1 and 5
+    imageUrl: "https://via.placeholder.com/150",
+    stock: Math.floor(Math.random() * (50 - 1)) + 1, // Random stock between 1 and 50
+    rating: Math.random() * (5 - 1) + 1, // Random rating between 1 and 5
+    isNew: Math.random() < 0.5, // Random boolean for isNew
+  });
+}
 
 // ----------------------------------------------
 

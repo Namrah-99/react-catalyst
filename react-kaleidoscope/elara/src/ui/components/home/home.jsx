@@ -262,7 +262,7 @@ export function NewArrivals() {
                   // style={{ backgroundImage: `url(${resource.imageUrl || ""})` }}
                 >
                   <img
-                    src={resource.imageUrl || ""}
+                    src={resource.imageUrl1 || ""}
                     alt={resource.title}
                     className="h-full w-full object-cover object-center"
                   />
