@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import AppLayout from "./ui/AppLayout";
-import Login from "./pages/Login";
 import PageNotFound from "./pages/PageNotFound";
 import Home from "./pages/Home";
 import Account from "./pages/Account";
@@ -19,13 +18,12 @@ import Others from "./Others/Others";
 import Women from "./pages/customers/Women";
 import Men from "./pages/customers/Men";
 import Kids from "./pages/customers/Kids";
+import AuthForm from "./pages/AuthForm";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="login" element={<Login />}></Route>
-        <Route path="*" element={<PageNotFound />}></Route>
         <Route element={<AppLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="others" element={<Others />}></Route>
@@ -45,7 +43,11 @@ function App() {
           <Route path="women" element={<Women />}></Route>
           <Route path="men" element={<Men />}></Route>
           <Route path="kids" element={<Kids />}></Route>
+
+          <Route path="signin" element={<AuthForm />}></Route>
+          <Route path="signup" element={<AuthForm />}></Route>
         </Route>
+        <Route path="*" element={<PageNotFound />}></Route>
       </Routes>
     </BrowserRouter>
   );

@@ -316,7 +316,7 @@ export const newinItems = [
   },
   {
     imageUrl1: newin5,
-    imageUrl2: newin2,
+    imageUrl2: newin7,
     title: "erdem2",
     link: "#",
     newCTALine: "New items from the show",
@@ -326,7 +326,7 @@ export const newinItems = [
   },
   {
     imageUrl1: newin10,
-    imageUrl2: newin5,
+    imageUrl2: newin9,
     title: "title3",
     link: "#",
     newCTALine: "New items",
@@ -336,7 +336,7 @@ export const newinItems = [
   },
   {
     imageUrl1: newin6,
-    imageUrl2: newin10,
+    imageUrl2: newin4,
     title: "title4",
     link: "#",
     newCTALine: "New items",
@@ -346,7 +346,7 @@ export const newinItems = [
   },
   {
     imageUrl1: newin8,
-    imageUrl2: newin6,
+    imageUrl2: newin11,
     title: "title5",
     link: "#",
     newCTALine: "New items",
@@ -356,7 +356,7 @@ export const newinItems = [
   },
   {
     imageUrl1: newin7,
-    imageUrl2: newin8,
+    imageUrl2: newin1,
     title: "title6",
     link: "#",
     newCTALine: "New items",
@@ -366,7 +366,7 @@ export const newinItems = [
   },
   {
     imageUrl1: newin3,
-    imageUrl2: newin7,
+    imageUrl2: newin9,
     title: "title7",
     link: "#",
     newCTALine: "New items",
@@ -376,7 +376,7 @@ export const newinItems = [
   },
   {
     imageUrl1: newin11,
-    imageUrl2: newin3,
+    imageUrl2: newin2,
     title: "title8",
     link: "#",
     newCTALine: "New items",
@@ -386,7 +386,7 @@ export const newinItems = [
   },
   {
     imageUrl1: newin4,
-    imageUrl2: newin11,
+    imageUrl2: newin10,
     title: "title9",
     link: "#",
     newCTALine: "New items",
@@ -396,7 +396,7 @@ export const newinItems = [
   },
   {
     imageUrl1: newin3,
-    imageUrl2: newin4,
+    imageUrl2: newin7,
     title: "title10",
     link: "#",
     newCTALine: "New items",
@@ -411,12 +411,12 @@ export const newinItems = [
     link: "#",
     newCTALine: "New items",
     shortDescription: "Models not found anywhere else",
-    brand: "ONLY AT FARFETCH",
+    brand: "ONLY AT ELARA",
     price: 1111,
   },
   {
     imageUrl1: newin9,
-    imageUrl2: newin5,
+    imageUrl2: newin2,
     title: "title12",
     link: "#",
     newCTALine: "New items",
@@ -436,7 +436,7 @@ export const newinItems = [
   },
   {
     imageUrl1: newin11,
-    imageUrl2: newin1,
+    imageUrl2: newin3,
     title: "title14",
     link: "#",
     newCTALine: "New items",

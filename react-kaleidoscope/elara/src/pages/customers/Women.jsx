@@ -2,7 +2,7 @@ import Categories from "../../ui/components/categories/Categories";
 
 export default function Women() {
   return (
-    <div>
+    <div className="container mx-auto">
       <Categories />
     </div>
   );

@@ -36,16 +36,6 @@ const Navbar = () => {
               &nbsp; Search
             </button>
             <DropDownIconsMenu
-              ariaLabel="User signup/login"
-              href="#"
-              title="To come in"
-              icon={
-                <LiaUser className="size-7" data-popover-target="user-menu" />
-              }
-            >
-              <UserForm />
-            </DropDownIconsMenu>
-            <DropDownIconsMenu
               ariaLabel="Items in wishlist: 0."
               href="#"
               title="Wishlist"
@@ -68,7 +58,7 @@ const Navbar = () => {
             >
               <div
                 tabIndex={0}
-                className="dropdown-content z-[1] menu p-8 shadow bg-[#ffffff] w-80 space-y-8 text-center"
+                className="dropdown-content z-10 menu p-8 shadow bg-[#ffffff] w-80 space-y-8 text-center"
                 role="menu"
                 data-popover="cart-menu"
                 data-popover-placement="bottom"
@@ -77,10 +67,23 @@ const Navbar = () => {
                 <p className="font-semibold text-p-md">
                   Your Shopping Bag is empty
                 </p>
-                <a className="inline-block underline underline-offset-4 font-normal">
-                  Shop What&#39;s New
-                </a>
+
+                <MyLink
+                  text={`Shop What\u0027s New`}
+                  to="/products"
+                  classes="inline-block underline underline-offset-4 font-light"
+                ></MyLink>
               </div>
+            </DropDownIconsMenu>
+            <DropDownIconsMenu
+              ariaLabel="User signup/login"
+              href="#"
+              title="To come in"
+              icon={
+                <LiaUser className="size-7" data-popover-target="user-menu" />
+              }
+            >
+              <UserForm />
             </DropDownIconsMenu>
             <DropDownIconsMenu
               ariaLabel="User icon"
@@ -97,7 +100,7 @@ const Navbar = () => {
             >
               <ul
                 tabIndex={0}
-                className="dropdown-content z-[1] menu p-2 shadow bg-[#ffffff] w-52 mt-0"
+                className="dropdown-content z-10 menu p-2 shadow bg-[#ffffff] w-52 mt-0"
                 role="menu"
                 data-popover="profile-menu"
                 data-popover-placement="bottom"
@@ -249,7 +252,7 @@ export default Navbar;
 const UserForm = () => (
   <form
     tabIndex={0}
-    className="dropdown-content z-[1] menu p-4 shadow bg-[#ffffff] w-80 space-y-4 text-center"
+    className="dropdown-content z-10 menu p-4 shadow bg-[#ffffff] w-80 space-y-4 text-center"
     role="menu"
     data-popover="user-menu"
     data-popover-placement="bottom"
@@ -258,12 +261,12 @@ const UserForm = () => (
     <hr className="border-blue-gray-50" tabIndex="-1" role="menuitem" />
     <input
       type="text"
-      className="flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+      className="flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-[#0eb1ea] focus:border-transparent"
       placeholder="Email"
     />
     <input
       type="password"
-      className="flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+      className="flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-[#0eb1ea] focus:border-transparent"
       placeholder="Password"
     />
     <button className="bg-stone-950 text-stone-50 p-2">Sign in</button>
@@ -273,9 +276,11 @@ const UserForm = () => (
     <hr className="border-blue-gray-50" tabIndex="-1" role="menuitem" />
     <p className="font-semibold">
       Don&#39;t have an account? &nbsp;
-      <a className="inline-block underline underline-offset-4 font-normal">
-        Register now
-      </a>
+      <MyLink
+        text="Register now"
+        to="/signup"
+        classes="inline-block underline underline-offset-4 font-light"
+      ></MyLink>
     </p>
   </form>
 );

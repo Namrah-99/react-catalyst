@@ -1,3 +1,4 @@
+import Button from "../components/common/Button";
 import Logo from "./Logo";
 
 function SearchModal() {
@@ -9,11 +10,11 @@ function SearchModal() {
             ✕
           </button>
         </form>
-        <div className="text-center mx-auto flex flex-col items-center justify-center ">
+        <div className="container text-center mx-auto flex flex-col items-center justify-center">
           <Logo />
 
-          <label className="input input-bordered flex items-center gap-2 w-[50%] bg-[#ffffff] mt-8">
-            <input type="text" className="grow" placeholder="Search" />
+          <label className="input input-bordered flex items-center gap-2 w-full bg-[#ffffff] m-8">
+            <input type="text" className="grow" placeholder="Search Elara" />
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
@@ -27,6 +28,22 @@ function SearchModal() {
               />
             </svg>
           </label>
+          <div className="w-full text-start space-y-3">
+            <div className="flex justify-between text-gray-900">
+              <p className="text-p-xs uppercase tracking-widest">
+                recent searches
+              </p>
+              {/* <Button className="text-p-xs tracking-wider">Clear All</Button> */}
+              <Button classes="bg-transparent text--900 hover:text-stone-50 hover:bg-black hover:bg-opacity-65 hover:border-1 hover:border-black">
+                Clear All
+              </Button>
+            </div>
+            <ul className="text-p-xs space-y-3">
+              <li>sneakers</li>
+              <li>gucci</li>
+              <li>earings</li>
+            </ul>
+          </div>
         </div>
       </div>
       <form method="dialog" className="modal-backdrop">

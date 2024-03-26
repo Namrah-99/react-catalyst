@@ -11,9 +11,6 @@ import instagram from "../../../assets/images/paymentMethods/instagram_social_me
 import facebook from "../../../assets/images/paymentMethods/facebook_social_icon.svg";
 import youtube from "../../../assets/images/paymentMethods/youtube_icon.png";
 import twitter from "../../../assets/images/paymentMethods/twitter_social_icon.svg";
-import { PiCoatHangerBold } from "react-icons/pi";
-import { GrCircleQuestion } from "react-icons/gr";
-import { VscComment } from "react-icons/vsc";
 
 import { useState } from "react";
 import { useMediaQuery } from "react-responsive";
@@ -25,24 +22,6 @@ export default function Footer() {
 
   return (
     <>
-      <div className="w-4/5 mx-auto grid grid-cols-1 md:grid-cols-3 grid-rows-1 gap-4 text-gray-600 py-8">
-        <div className="hover:bg-[#f0f0f0] px-4 py-8 border border-gray-200 space-y-2">
-          <PiCoatHangerBold className="font-semibold size-6" />
-          <p>how to make an order</p>
-          <p>Detailed instructions for new clients</p>
-        </div>
-        <div className="hover:bg-[#f0f0f0] px-4 py-8 border border-gray-200 space-y-2">
-          <GrCircleQuestion className="font-semibold size-6" />
-          <p>Questions and answers</p>
-          <p>All about shipping, returns and duties</p>
-        </div>
-        <div className="hover:bg-[#f0f0f0] px-4 py-8 border border-gray-200 space-y-2">
-          <VscComment className="font-semibold size-6" />
-          <p>help is needed?</p>
-          <p>Contact our customer service</p>
-        </div>
-      </div>
-
       <div className="bg-[#f0f0f0] py-8">
         <div className="w-4/5 mx-auto grid grid-cols-1 md:grid-cols-2 grid-rows-1 gap-4">
           <div className="md:w-3/4 flex flex-col gap-y-4">
@@ -224,7 +203,7 @@ export default function Footer() {
         <div className="md:col-span-2 flex flex-col justify-around gap-4">
           <div>
             <div>
-              <p className="text-gray-600 uppercase font-semibold">mr porter</p>
+              <p className="text-gray-600 uppercase font-semibold">Elara</p>
               <p>
                 Shop from over 500 of the world&#39;s finest luxury designer
                 brands & be dressed for any occasion - &nbsp;
@@ -232,7 +211,7 @@ export default function Footer() {
                   href="#"
                   className="cursor-pointer underline underline-offset-4 hover:text-[#0eb1ea] hover:font-semibold hover:tracking-wide"
                 >
-                  visit MRPORTER.COM
+                  visit ELARA.COM
                 </a>
               </p>
             </div>
