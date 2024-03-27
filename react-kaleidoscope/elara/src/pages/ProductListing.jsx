@@ -1,5 +1,9 @@
-import React from "react";
+import Listings from "../ui/components/products/Listings/Listings";
 
 export default function ProductListing() {
-  return <div>ProductListing</div>;
+  return (
+    <div>
+      <Listings />
+    </div>
+  );
 }

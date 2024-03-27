@@ -141,6 +141,7 @@ export default function Footer() {
             </ul>
           )}
         </div>
+
         <div className="space-y-3">
           <p
             className={`text-gray-600 uppercase font-semibold cursor-pointer ${
@@ -200,6 +201,7 @@ export default function Footer() {
             </ul>
           )}
         </div>
+
         <div className="md:col-span-2 flex flex-col justify-around gap-4">
           <div>
             <div>

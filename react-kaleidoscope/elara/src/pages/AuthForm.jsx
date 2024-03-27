@@ -7,6 +7,12 @@ export default function SignUp() {
   const navigate = useNavigate();
   const { pathname: path } = useLocation();
 
+  // const [showPassword, setShowPassword] = useState(false);
+
+  // const togglePasswordVisibility = () => {
+  //   setShowPassword((prevShowPassword) => !prevShowPassword);
+  // };
+
   const handleFormSubmit = (event) => {
     event.preventDefault();
     const targetPath = path === "/signup" ? "/signin" : "/account";
@@ -32,6 +38,23 @@ export default function SignUp() {
           placeholder=""
         />
       </div>
+
+      {/* <div className="flex items-center space-x-2 rounded-md bg-gray-50 p-2">
+        <input
+          type={showPassword ? "text" : "password"}
+          placeholder="password"
+          className="border-none bg-transparent text-lg text-gray-900 focus:outline-none"
+        />
+        <button className="block" onClick={togglePasswordVisibility}>
+          <div style={{ display: showPassword ? "block" : "none" }}>
+            <i className="fas fa-eye text-lg"></i>
+          </div>
+          <div style={{ display: !showPassword ? "block" : "none" }}>
+            <i className="fas fa-eye-slash text-lg"></i>
+          </div>
+        </button>
+      </div> */}
+
       <div>
         <label htmlFor="password" className="font-normal">
           Password
