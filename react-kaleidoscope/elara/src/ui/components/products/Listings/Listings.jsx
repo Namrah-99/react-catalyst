@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { useMediaQuery } from "react-responsive";
 import TextExpander from "../../common/TextExpander";
-import { HiChevronUp, HiChevronDown } from "react-icons/hi2";
+import { HiChevronDown } from "react-icons/hi2";
 import { IoFilterCircleOutline, IoClose } from "react-icons/io5";
 import {
   TbChevronLeft,
@@ -13,23 +13,111 @@ import {
 } from "react-icons/tb";
 
 import { newinItems } from "../../../../data/header";
-import Button from "../../common/Button";
+
+import { CategoryFilter } from "./Filters";
 
 export default function Listings() {
+  // const [selectedFilters, setSelectedFilters] = useState({
+  //   category: [],
+  //   color: [],
+  //   size: "",
+  //   brand: [],
+  //   price: { maxPrice: "", minPrice: "" },
+  // });
+  const [selectedFilters, setSelectedFilters] = useState({
+    category: [],
+    color: [],
+    size: "",
+    brand: [],
+    price: null,
+  });
+  function priceRangeMatch(value, priceObj) {
+    try {
+      const regex = /\$(\d+) - \$(\d+)/;
+      const match = value.match(regex);
+
+      if (match) {
+        const min = parseInt(match[1]);
+        const max = parseInt(match[2]);
+
+        if (
+          priceObj &&
+          priceObj.minPrice === min &&
+          priceObj.maxPrice === max
+        ) {
+          return priceObj;
+        } else {
+          console.log("update price", max, " - ", min);
+          return { maxPrice: max, minPrice: min };
+        }
+      } else {
+        throw Error("value has not matched format '$max - $min'");
+      }
+    } catch (error) {
+      console.error("Error matching value with regex: ", error);
+    }
+  }
+
+  const handleFilterChange = (filterType, value, checked) => {
+    setSelectedFilters((prevFilters) => {
+      const updatedFilters = { ...prevFilters };
+      if (checked && filterType === "price") {
+        updatedFilters[filterType] = priceRangeMatch(
+          value,
+          updatedFilters[filterType]
+        );
+      } else if (checked && !updatedFilters[filterType].includes(value)) {
+        if (filterType === "size") {
+          updatedFilters[filterType] = value;
+        } else {
+          updatedFilters[filterType] = [...updatedFilters[filterType], value];
+        }
+      }
+      // if (checked && !updatedFilters[filterType].includes(value)) {
+      //   if (filterType === "price" || filterType === "size") {
+      //     updatedFilters[filterType] = value;
+      //   } else {
+      //     updatedFilters[filterType] = [...updatedFilters[filterType], value];
+      //   }
+      // }
+      else if (!checked) {
+        if (filterType === "price" || filterType === "size") {
+          updatedFilters[filterType] = "";
+        } else {
+          updatedFilters[filterType] = updatedFilters[filterType].filter(
+            (filter) => filter !== value
+          );
+        }
+      }
+      return updatedFilters;
+    });
+  };
+
+  // useEffect(() => {
+  //   console.log("selectedFilters :", selectedFilters);
+  // }, [selectedFilters]);
+
   return (
     <div className="xl:container px-2 md:px-10 mx-auto space-y-8 my-8">
       <ListingsHeader />
       <hr className="border border-gray-100" role="productsListings" />
-      <div className="">
+      <div className="h-fit">
         <ResultsFiltering />
-        <div className="w-full">
-          <div className="drawer lg:drawer-open space-4">
+        <div className="w-full h-full">
+          <div className="relative h-full drawer lg:drawer-open space-4">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content flex flex-col gap-8 p-4 pt-0">
-              <DrawerContent />
+              <DrawerContent
+                selectedFilters={selectedFilters}
+                setSelectedFilters={setSelectedFilters}
+              />
             </div>
 
-            <CategoryFilter />
+            <CategoryFilter
+              selectedFilters={selectedFilters}
+              setSelectedFilters={setSelectedFilters}
+              handleFilterChange={handleFilterChange}
+            />
           </div>
         </div>
         <div className="w-full flex flex-col gap-4 md:gap-8 items-center justify-center my-12">
@@ -106,10 +194,13 @@ function ResultsFiltering() {
   );
 }
 
-function DrawerContent() {
+function DrawerContent({ selectedFilters, setSelectedFilters }) {
   return (
     <>
-      <FilterButtons filters={filters} />
+      <FilterButtons
+        filters={selectedFilters}
+        setSelectedFilters={setSelectedFilters}
+      />
       <div className="flex flex-row flex-wrap gap-x-4 gap-y-10 sm:justify-around md:justify-evenly lg:justify-between justify-center items-center">
         {newinItems.map((resource, index) => {
           return (
@@ -151,154 +242,6 @@ function DrawerContent() {
     </>
   );
 }
-
-const CategoryFilter = () => {
-  const [currentOpen, setCurrentOpen] = useState(0);
-  return (
-    <div className="z-10 drawer-side w-full h-full text-p-sm ">
-      <label
-        htmlFor="my-drawer-2"
-        aria-label="close sidebar"
-        className="drawer-overlay h-full"
-      ></label>
-      <div className="pr-4 sm:pr-0 w-full sm:w-80 min-h-full flex flex-col justify-between text-gray-900 bg-white">
-        <ul>
-          <li className="lg:hidden flex justify-between p-4 border-b-2 border-gray-300">
-            <p className="tracking-wide uppercase font-semibold">Filter</p>
-            <button
-              className="text-[#000] size-5 font-bold"
-              onClick={() => {
-                // Close the drawer programmatically
-                const drawerElement = document.getElementById("my-drawer-2");
-                drawerElement.checked = false; // Uncheck the checkbox to close
-              }}
-            >
-              ✕
-            </button>
-          </li>
-          {allfilters.map((filter, index) => (
-            <li
-              key={filter.name + index}
-              className="p-4 border-b border-gray-200"
-            >
-              <Accordion
-                currentOpen={currentOpen}
-                onCurrenOpen={setCurrentOpen}
-                title={filter.name}
-                num={index}
-              >
-                {/* {filter.text} */}
-                <div className="space-y-6">
-                  {filter.options.map((option, optionIdx) => (
-                    <div key={option.value} className="flex items-center">
-                      <input
-                        id={`filter-mobile-${filter.id}-${optionIdx}`}
-                        name={`${filter.id}[]`}
-                        defaultValue={option.value}
-                        type="checkbox"
-                        defaultChecked={option.checked}
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                      />
-                      <label
-                        htmlFor={`filter-mobile-${filter.id}-${optionIdx}`}
-                        className="ml-3 min-w-0 flex-1 text-gray-500"
-                      >
-                        {option.label}
-                      </label>
-                    </div>
-                  ))}
-                </div>
-              </Accordion>
-            </li>
-          ))}
-        </ul>
-
-        <div className="lg:hidden w-full p-4 space-y-4">
-          <hr className="border-t border-gray-300" role="categoryFiltering" />
-          <div className="w-full flex justify-between gap-10 sm:gap-4">
-            <Button classes="text-stone-500 tracking-wider font-light flex-1 border border-gray-400 bg-transparent hover:bg-black hover:bg-opacity-65 hover:border-1 hover:border-black">
-              Clear All
-            </Button>
-            <Button classes="flex-1 font-light text-white-0 tracking-wider">
-              Apply
-            </Button>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-function Accordion({ currentOpen, onCurrenOpen, children, title, num }) {
-  const isOpen = currentOpen === num;
-
-  function handleToggle(num) {
-    onCurrenOpen(isOpen ? null : num);
-  }
-  return (
-    <div className="flex flex-col" onClick={() => handleToggle(num)}>
-      <div className="w-full mx-auto cursor-pointer transition-all duration-200 flex justify-between items-center">
-        {/* <p className="accordion-number">{num < 9 ? `0${num + 1}` : num + 1}</p> */}
-        <div>
-          <p className="uppercase font-medium">{title}</p>
-          <p className="text-p-xs text-gray-500">All</p>
-        </div>
-        <p>
-          {isOpen ? (
-            <HiChevronUp className="size-5" />
-          ) : (
-            <HiChevronDown className="size-5" />
-          )}
-        </p>
-      </div>
-
-      {isOpen ? (
-        <div className="w-full mx-auto transition-all duration-200">
-          {children}
-        </div>
-      ) : null}
-    </div>
-  );
-}
-
-Accordion.propTypes = {
-  currentOpen: PropTypes.number,
-  onCurrenOpen: PropTypes.func,
-  title: PropTypes.string,
-  num: PropTypes.number,
-  children: PropTypes.node.isRequired,
-};
-
-const FilterButtons = ({ filters }) => {
-  const [selectedFilters, setSelectedFilters] = useState([]);
-
-  const handleRemoveFilter = (filter) => {
-    setSelectedFilters(selectedFilters.filter((f) => f !== filter));
-  };
-
-  return (
-    <div className="my-6 lg:my-0 flex flex-wrap gap-2 justify-center items-center md:justify-start">
-      {filters.map((filter, index) => (
-        <div key={index}>
-          {filter.filterApplied.map((appliedFilter, idx) => (
-            <button
-              key={idx}
-              className="inline-flex items-center py-2 px-3 rounded-none text-p-sm tracking-wide text-gray-600 bg-white border border-gray-300 focus:outline-none appearance-none"
-              onClick={() => handleRemoveFilter(appliedFilter)}
-            >
-              {appliedFilter}
-              <IoClose className="ml-1 size-5 font-extralight" />
-            </button>
-          ))}
-        </div>
-      ))}
-    </div>
-  );
-};
-
-FilterButtons.propTypes = {
-  filters: PropTypes.array.isRequired,
-};
 
 const ScrollToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -463,125 +406,82 @@ const Pagination = () => {
   );
 };
 
-// Category Filter
+const FilterButtons = ({ filters, setSelectedFilters }) => {
+  const handleRemoveFilter = (filterType, filter) => {
+    setSelectedFilters((prevFilters) => {
+      if (filterType === "price" || filterType === "size") {
+        return {
+          ...prevFilters,
+          [filterType]: "",
+        };
+      }
 
-// const [openFilter, setOpenFilter] = useState(true);
-// const [sortOptions, setSortOptions] = useState([
-//   { name: "Most Popular", href: "#", current: true },
-//   { name: "Newest", href: "#", current: false },
-//   { name: "Best Rating", href: "#", current: false },
-//   { name: "Price: Low to High", href: "#", current: false },
-//   { name: "Price: High to Low", href: "#", current: false },
-// ]);
-// const subCategories = [
-//   { name: "Sneaker", href: "#" },
-//   { name: "Mocassins", href: "#" },
-//   { name: "Flip flop", href: "#" },
-//   { name: "Running", href: "#" },
-//   { name: "Black Friday", href: "#" },
-// ];
-const allfilters = [
-  {
-    id: "color",
-    name: "Color",
-    options: [
-      {
-        value: "black",
-        label: "Black",
-        className: "bg-black text-black",
-        checked: false,
-      },
-      {
-        value: "white",
-        label: "Yellow",
-        className: "bg-yellow-400 text-yellow-400",
-        checked: false,
-      },
-      {
-        value: "blue",
-        label: "Blue",
-        className: "bg-blue-400 text-blue-400",
-        checked: true,
-      },
-      {
-        value: "brown",
-        label: "Purple",
-        className: "bg-purple-400 text-purple-400",
-        checked: false,
-      },
-      {
-        value: "green",
-        label: "Green",
-        className: "bg-green-400 text-green-400",
-        checked: false,
-      },
-      {
-        value: "purple",
-        label: "Red",
-        className: "bg-red-400 text-red-400",
-        checked: false,
-      },
-    ],
-  },
-  {
-    id: "size",
-    name: "Size",
-    options: [
-      { value: "XS", label: "XS", checked: false },
-      { value: "SM", label: "SM", checked: false },
-      { value: "M", label: "M", checked: false },
-      { value: "L", label: "L", checked: false },
-      { value: "XL", label: "XL", checked: false },
-      { value: "XXL", label: "XXL", checked: true },
-    ],
-  },
-  {
-    id: "brand",
-    name: "Brand",
-    options: [
-      { value: "Buliclo", label: "Buliclo", checked: false },
-      { value: "Carlotin", label: "Carlotin", checked: false },
-      { value: "Merguinez", label: "Merguinez", checked: false },
-      { value: "Swifty", label: "Swifty", checked: true },
-      { value: "TamTam", label: "TamTam", checked: false },
-      { value: "wakaFlaca", label: "WakaFlaca", checked: false },
-      { value: "Zaram", label: "Zaram", checked: false },
-      { value: "Zebulus", label: "Zebulus", checked: false },
-    ],
-  },
-];
-const filters = [
-  {
-    title: "Category",
-    text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusantium, quaerat temporibus quas dolore provident nisi ut aliquid ratione beatae sequi aspernatur veniam repellendus.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusantium, quaerat temporibus quas dolore provident nisi ut aliquid ratione beatae sequi aspernatur veniam repellendus.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusantium, quaerat temporibus quas dolore provident nisi ut aliquid ratione beatae sequi aspernatur veniam repellendus.",
-    filterApplied: ["Shoulder Bags"],
-  },
-  {
-    title: "Designer",
-    text: "Pariatur recusandae dignissimos fuga voluptas unde optio nesciunt commodi beatae, explicabo natus.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusantium, quaerat temporibus quas dolore provident nisi ut aliquid ratione beatae sequi aspernatur veniam repellendus.",
-    filterApplied: ["ALAÏA"],
-  },
-  {
-    title: "Color",
-    text: "Excepturi velit laborum, perspiciatis nemo perferendis reiciendis aliquam possimus dolor sed! Dolore laborum ducimus veritatis facere molestias!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusantium, quaerat temporibus quas dolore provident nisi ut aliquid ratione beatae sequi aspernatur veniam repellendus.",
-    filterApplied: ["Black"],
-  },
-  {
-    title: "Price",
-    text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusantium, quaerat temporibus quas dolore provident nisi ut aliquid ratione beatae sequi aspernatur veniam repellendus.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusantium, quaerat temporibus quas dolore provident nisi ut aliquid ratione beatae sequi aspernatur veniam repellendus.",
-    filterApplied: ["£500 - £1,000"],
-  },
-];
-// const sortBy = (value) => {
-//   let newState = [...sortOptions];
-//   newState.map((option) => (option.current = false));
-//   newState.find((option) => option.name === value).current = true;
-//   setSortOptions(newState);
-// };
+      return {
+        ...prevFilters,
+        [filterType]: prevFilters[filterType].filter((f) => f !== filter),
+      };
+    });
+  };
 
-// useEffect(() => {
-//   window.addEventListener("resize", () => {
-//     const viewport = window.innerWidth;
-//     if (viewport >= 1024) return setOpenFilter(true);
-//   });
-// });
+  return (
+    <div className="my-6 lg:my-0 flex flex-wrap gap-2 justify-center items-center md:justify-start">
+      {/* {Object.entries(filters).map(([filterType, filters]) =>
+        filters.map((filter, index) => (
+          <button
+            key={`${filterType}-${filter}-${index}`}
+            className="inline-flex items-center py-2 px-3 rounded-none text-p-sm tracking-wide text-gray-600 bg-white border border-gray-300 focus:outline-none appearance-none"
+            onClick={() => handleRemoveFilter(filterType, filter)}
+          >
+            {filter}
+            <IoClose className="ml-1 size-5 font-extralight" />
+          </button>
+        ))
+      )} */}
+      {Object.entries(filters).map(([filterType, filtersItem]) => (
+        <div key={filterType} className="flex flex-wrap gap-2">
+          {filterType === "size" && filtersItem ? (
+            <button
+              key={`${filterType}-${filtersItem}`}
+              className="inline-flex items-center py-2 px-3 rounded-none text-p-sm tracking-wide text-gray-600 bg-white border border-gray-300 focus:outline-none appearance-none"
+              onClick={() => handleRemoveFilter("size")}
+            >
+              {filtersItem}
+              <IoClose className="ml-1 size-5 font-extralight" />
+            </button>
+          ) : null}
+          {filterType === "price" && filtersItem ? (
+            <button
+              key={`${filterType}-${filtersItem}`}
+              className="inline-flex items-center py-2 px-3 rounded-none text-p-sm tracking-wide text-gray-600 bg-white border border-gray-300 focus:outline-none appearance-none"
+              onClick={() => handleRemoveFilter("price")}
+            >
+              ${filtersItem.minPrice} - ${filtersItem.maxPrice}
+              <IoClose className="ml-1 size-5 font-extralight" />
+            </button>
+          ) : null}
+          {filterType !== "size" &&
+            filterType !== "price" &&
+            filtersItem.map((filter, index) => (
+              <button
+                key={`${filterType}-${filter}-${index}`}
+                className="inline-flex items-center py-2 px-3 rounded-none text-p-sm tracking-wide text-gray-600 bg-white border border-gray-300 focus:outline-none appearance-none"
+                onClick={() => handleRemoveFilter(filterType, filter)}
+              >
+                {filter}
+                <IoClose className="ml-1 size-5 font-extralight" />
+              </button>
+            ))}
+        </div>
+      ))}
+    </div>
+  );
+};
+
+FilterButtons.propTypes = {
+  filters: PropTypes.any.isRequired,
+  setSelectedFilters: PropTypes.func.isRequired,
+};
+DrawerContent.propTypes = {
+  selectedFilters: PropTypes.any,
+  setSelectedFilters: PropTypes.func.isRequired,
+};

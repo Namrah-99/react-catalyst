@@ -84,7 +84,24 @@ export default {
       },
     },
   },
-  plugins: [daisyui, twElementsReactPlugin],
+  plugins: [
+    daisyui,
+    twElementsReactPlugin,
+    function ({ addUtilities }) {
+      const newUtilities = {
+        ".checkbox": {
+          "--chkbg": "#6b7280",
+          "--chkfg": "#fff",
+        },
+        ".radio": {
+          "--radbg": "#6b7280",
+          "--radfg": "#fff",
+        },
+      };
+
+      addUtilities(newUtilities, ["responsive", "hover"]);
+    },
+  ],
   daisyui: {
     themes: false,
   },
