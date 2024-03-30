@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { HiChevronUp, HiChevronDown } from "react-icons/hi2";
 import { allfilters } from "../../../../data/filters";
@@ -10,52 +10,78 @@ export const CategoryFilter = ({
   handleFilterChange,
 }) => {
   const [currentOpen, setCurrentOpen] = useState(0);
+
+  useEffect(() => {
+    const handleResize = () => {
+      // Set currentOpen based on screen size
+      if (window.innerWidth <= 640) {
+        setCurrentOpen(-1); // Set to -1 to close all accordions
+      } else {
+        setCurrentOpen(0); // Set to 0 to open the first accordion
+      }
+    };
+
+    // Set initial currentOpen state based on screen size
+    handleResize();
+
+    // Add event listener for window resize
+    window.addEventListener("resize", handleResize);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []); // Only run this effect once on component mount
+
   return (
-    <div className="sticky top-0 z-10 drawer-side w-full h-full text-p-sm ">
-      <label
-        htmlFor="my-drawer-2"
-        aria-label="close sidebar"
-        className="drawer-overlay h-full"
-      ></label>
-      <div className="pr-4 sm:pr-0 w-full sm:w-80 min-h-full flex flex-col justify-between text-gray-900 bg-white">
-        <ul>
-          {/* ----------- Close button  */}
-          <li className="lg:hidden flex justify-between p-4 border-b-2 border-gray-300">
-            <p className="tracking-wide uppercase font-semibold">Filter</p>
-            <button
-              className="text-[#000] size-5 font-bold"
-              onClick={() => {
-                // Close the drawer programmatically
-                const drawerElement = document.getElementById("my-drawer-2");
-                drawerElement.checked = false; // Uncheck the checkbox to close
-              }}
-            >
-              ✕
-            </button>
-          </li>
-          {/* ----------- Filters lists */}
-          <FiltersList
-            currentOpen={currentOpen}
-            onCurrenOpen={setCurrentOpen}
-            selectedFilters={selectedFilters}
-            setSelectedFilters={setSelectedFilters}
-            handleFilterChange={handleFilterChange}
-          />
-        </ul>
-        {/* ----------- Clear All and Apply Buttons for Mobile screen  */}
-        <div className="lg:hidden w-full p-4 space-y-4">
-          <hr className="border-t border-gray-300" role="categoryFiltering" />
-          <div className="w-full flex justify-between gap-10 sm:gap-4">
-            <Button classes="text-stone-500 tracking-wider font-light flex-1 border border-gray-400 bg-transparent hover:bg-black hover:bg-opacity-65 hover:border-1 hover:border-black">
-              Clear All
-            </Button>
-            <Button classes="flex-1 font-light text-white-0 tracking-wider">
-              Apply
-            </Button>
-          </div>
+    // <div className="lg:sticky lg:top-0 lg:z-20 z-10 drawer-side w-full h-full text-p-sm ">
+    // <div className="lg:sticky lg:top-0 lg:z-20 z-10 w-full h-full text-p-sm">
+    // <div>
+    //   <label
+    //     htmlFor="my-drawer-2"
+    //     aria-label="close sidebar"
+    //     className="drawer-overlay h-full"
+    //   ></label>
+    //   <div className=" flex flex-col justify-between text-gray-900 bg-white">
+    <div className="min-h-screen lg:min-h-auto flex flex-col justify-between border-t border-gray-200">
+      <ul>
+        {/* ----------- Close button  */}
+        <li className="lg:hidden flex justify-between p-4 border-b-2 border-gray-300">
+          <p className="tracking-wide uppercase font-semibold">Filter</p>
+          <button
+            className="text-[#000] size-5 font-bold"
+            onClick={() => {
+              // Close the drawer programmatically
+              const drawerElement = document.getElementById("my-drawer-2");
+              drawerElement.checked = false; // Uncheck the checkbox to close
+            }}
+          >
+            ✕
+          </button>
+        </li>
+        {/* ----------- Filters lists */}
+        <FiltersList
+          currentOpen={currentOpen}
+          onCurrenOpen={setCurrentOpen}
+          selectedFilters={selectedFilters}
+          setSelectedFilters={setSelectedFilters}
+          handleFilterChange={handleFilterChange}
+        />
+      </ul>
+      {/* ----------- Clear All and Apply Buttons for Mobile screen  */}
+      <div className="lg:hidden w-full p-4 space-y-4">
+        <hr className="border-t border-gray-300" role="categoryFiltering" />
+        <div className="w-full flex justify-between gap-10 sm:gap-4">
+          <Button classes="text-stone-500 tracking-wider font-light flex-1 border border-gray-400 bg-transparent hover:bg-black hover:bg-opacity-65 hover:border-1 hover:border-black">
+            Clear All
+          </Button>
+          <Button classes="flex-1 font-light text-white-0 tracking-wider">
+            Apply
+          </Button>
         </div>
       </div>
     </div>
+    // </div>
   );
 };
 CategoryFilter.propTypes = {

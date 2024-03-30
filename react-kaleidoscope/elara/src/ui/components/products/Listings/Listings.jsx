@@ -17,6 +17,9 @@ import { newinItems } from "../../../../data/header";
 import { CategoryFilter } from "./Filters";
 
 export default function Listings() {
+  const [stickyDiv1Height, setStickyDiv1Height] = useState(0);
+  const [stickyDiv2Top, setStickyDiv2Top] = useState(0);
+  const isLargeScreen = useMediaQuery({ maxWidth: 1024 });
   // const [selectedFilters, setSelectedFilters] = useState({
   //   category: [],
   //   color: [],
@@ -92,32 +95,94 @@ export default function Listings() {
       return updatedFilters;
     });
   };
+  useEffect(() => {
+    const div1Height = document.getElementById("sticky-div1").clientHeight;
+    setStickyDiv1Height(div1Height);
+  }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      setStickyDiv2Top(stickyDiv1Height + Math.max(0, 50 - scrollTop));
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [stickyDiv1Height]);
   // useEffect(() => {
   //   console.log("selectedFilters :", selectedFilters);
   // }, [selectedFilters]);
 
   return (
-    <div className="xl:container px-2 md:px-10 mx-auto space-y-8 my-8">
-      <ListingsHeader />
-      <hr className="border border-gray-100" role="productsListings" />
-      <div className="h-fit">
-        <ResultsFiltering />
-        <div className="w-full h-full">
-          <div className="relative h-full drawer lg:drawer-open space-4">
-            <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content flex flex-col gap-8 p-4 pt-0">
-              <DrawerContent
-                selectedFilters={selectedFilters}
-                setSelectedFilters={setSelectedFilters}
-              />
-            </div>
+    // <div className="xl:container px-2 md:px-10 mx-auto space-y-8 my-8">
+    //   <ListingsHeader />
+    //   <hr className="border border-gray-100" role="productsListings" />
+    //   <div className="h-fit">
+    //     <ResultsFiltering />
+    //     <div className="w-full h-full">
+    //       <div className="lg:relative h-full drawer lg:drawer-open space-4">
+    //         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+    //         <div className="drawer-content flex flex-col gap-8 p-4 pt-0">
+    //           <DrawerContent
+    //             selectedFilters={selectedFilters}
+    //             setSelectedFilters={setSelectedFilters}
+    //           />
+    //         </div>
 
-            <CategoryFilter
+    //         <CategoryFilter
+    //           selectedFilters={selectedFilters}
+    //           setSelectedFilters={setSelectedFilters}
+    //           handleFilterChange={handleFilterChange}
+    //         />
+    //       </div>
+    //     </div>
+    //     <div className="w-full flex flex-col gap-4 md:gap-8 items-center justify-center my-12">
+    //       <ScrollToTopButton />
+    //       <Pagination />
+    //     </div>
+    //   </div>
+    // </div>
+    <div className="md:container mx-auto space-y-8 my-8">
+      <ListingsHeader />
+      <hr className="pb-1" role="productsListings" />
+      <div>
+        <ResultsFiltering />
+        <div className="drawer lg:drawer-open">
+          <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+          <div className={`drawer-content  ${isLargeScreen && "z-0"} lg:pl-16`}>
+            <DrawerContent
               selectedFilters={selectedFilters}
               setSelectedFilters={setSelectedFilters}
-              handleFilterChange={handleFilterChange}
             />
+            {/* <label
+            htmlFor="my-drawer-2"
+            className="btn btn-primary drawer-button lg:hidden"
+          >
+            Open drawer
+          </label> */}
+          </div>
+          <div
+            id="sticky-div2"
+            // style={{ top: stickyDiv2Top }}
+            style={{ top: `${isLargeScreen ? 0 : stickyDiv2Top}px` }}
+            className={`lg:z-5 lg:sticky lg:top-${stickyDiv2Top} drawer-side ${
+              isLargeScreen && "z-20"
+            }`}
+          >
+            <label
+              htmlFor="my-drawer-2"
+              aria-label="close sidebar"
+              className="drawer-overlay"
+            ></label>
+            <div className="w-80 bg-white text-gray-600 text-p-sm">
+              <CategoryFilter
+                selectedFilters={selectedFilters}
+                setSelectedFilters={setSelectedFilters}
+                handleFilterChange={handleFilterChange}
+              />
+            </div>
           </div>
         </div>
         <div className="w-full flex flex-col gap-4 md:gap-8 items-center justify-center my-12">
@@ -131,7 +196,7 @@ export default function Listings() {
 
 function ListingsHeader() {
   const isSmallScreen = useMediaQuery({ maxWidth: 768 });
-  const isMediumScreen = useMediaQuery({ maxWidth: 1280 });
+  const isExtraLargeScreen = useMediaQuery({ maxWidth: 1280 });
 
   return (
     <div className="w-full md:w-1/2 xl:w-1/3 mx-auto">
@@ -146,7 +211,7 @@ function ListingsHeader() {
           className={`text-gray-600 text-p-sm ${
             isSmallScreen
               ? "text-pretty"
-              : isMediumScreen
+              : isExtraLargeScreen
               ? "text-balance text-justify"
               : "text-pretty"
           } tracking-tight`}
@@ -165,14 +230,20 @@ function ListingsHeader() {
 
 function ResultsFiltering() {
   return (
-    <div className="lg:z-20 z-10 sticky top-0 p-4 bg-white text-p-sm text-gray-900 flex flex-row gap-2 justify-between items-center tracking-wide">
-      <div className="flex flex-col sm:flex-row justify-between items-start gap-x-2 lg:gap-x-0 place-content-center">
-        <p className="lg:hidden">
-          <label htmlFor="my-drawer-2" className="drawer-button lg:hidden">
-            <IoFilterCircleOutline className="inline-flex size-5" /> Filter
-          </label>
-        </p>
-        <p className="text-gray-500">2,489 Results</p>
+    // <div className="lg:z-20 sticky top-0 p-4 bg-white text-p-sm text-gray-900 flex flex-row gap-2 justify-between items-center tracking-wide">
+    <div
+      id="sticky-div1"
+      className={`py-3 px-2 lg:px-0 bg-white lg:bg-transparent z-10 sticky top-0 bg-transparent text-p-sm text-gray-900 flex flex-row gap-2 lg:gap-0 justify-between items-center tracking-wide`}
+    >
+      <div className="lg:bg-white h-full lg:w-80">
+        <div className="m-2 lg:m-3 lg:w-80 flex flex-col sm:flex-row justify-between items-start gap-x-2 lg:gap-x-0 place-content-center">
+          <p className="lg:hidden">
+            <label htmlFor="my-drawer-2" className="drawer-button lg:hidden">
+              <IoFilterCircleOutline className="inline-flex size-5" /> Filter
+            </label>
+          </p>
+          <p className="text-gray-500">2,489 Results</p>
+        </div>
       </div>
 
       <div className="relative inline-flex items-center">
@@ -195,8 +266,9 @@ function ResultsFiltering() {
 }
 
 function DrawerContent({ selectedFilters, setSelectedFilters }) {
+  const isLargeScreen = useMediaQuery({ maxWidth: 1024 });
   return (
-    <>
+    <div className={`flex flex-col gap-y-10 ${isLargeScreen && "z-0"} `}>
       <FilterButtons
         filters={selectedFilters}
         setSelectedFilters={setSelectedFilters}
@@ -239,7 +311,7 @@ function DrawerContent({ selectedFilters, setSelectedFilters }) {
           );
         })}
       </div>
-    </>
+    </div>
   );
 }
 
@@ -311,7 +383,7 @@ const Pagination = () => {
   const totalNumOfPages = Math.ceil(anchorTags.length / itemsPerPage);
 
   return (
-    <div className="w-full border-t border-gray-100 text-gray-600 text-p-sm p-4">
+    <div className="w-full border-t border-gray-200 text-gray-600 text-p-sm p-4">
       <nav
         aria-label="Pagination"
         className="flex flex-row items-start w-full justify-between gap-2"
@@ -424,7 +496,8 @@ const FilterButtons = ({ filters, setSelectedFilters }) => {
   };
 
   return (
-    <div className="my-6 lg:my-0 flex flex-wrap gap-2 justify-center items-center md:justify-start">
+    // <div className="w-full bg-stone-400 my-6 lg:my-0 flex flex-wrap gap-3 lg:gap-6 justify-center items-center md:justify-start">
+    <div className="w-full my-6 lg:my-0 space-x-1">
       {/* {Object.entries(filters).map(([filterType, filters]) =>
         filters.map((filter, index) => (
           <button
@@ -438,7 +511,7 @@ const FilterButtons = ({ filters, setSelectedFilters }) => {
         ))
       )} */}
       {Object.entries(filters).map(([filterType, filtersItem]) => (
-        <div key={filterType} className="flex flex-wrap gap-2">
+        <div key={filterType} className="inline space-x-1 space-y-4">
           {filterType === "size" && filtersItem ? (
             <button
               key={`${filterType}-${filtersItem}`}
