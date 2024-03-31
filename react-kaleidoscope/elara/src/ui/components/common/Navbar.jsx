@@ -22,7 +22,6 @@ const Navbar = () => {
             <MyLink text="Men" to="/men" />
             <MyLink text="Kids" to="/kids" />
           </nav>
-
           <div className="flex flex-wrap sm:ml-4 space-x-4 items-center justify-center">
             <button
               className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base"
@@ -42,6 +41,7 @@ const Navbar = () => {
               icon={
                 <LiaHeart className="size-7" data-popover-target="user-menu" />
               }
+              modalId="wishlist-modal"
             >
               <UserForm />
             </DropDownIconsMenu>
@@ -55,10 +55,11 @@ const Navbar = () => {
                   data-popover-target="cart-menu"
                 />
               }
+              modalId="cart-modal"
             >
               <div
                 tabIndex={0}
-                className="dropdown-content z-10 menu p-8 shadow bg-[#ffffff] w-80 space-y-8 text-center"
+                className="dropdown-content z-10 menu p-8 shadow bg-[#ffffff] md:w-80 w-auto space-y-8 text-center"
                 role="menu"
                 data-popover="cart-menu"
                 data-popover-placement="bottom"
@@ -82,6 +83,7 @@ const Navbar = () => {
               icon={
                 <LiaUser className="size-7" data-popover-target="user-menu" />
               }
+              modalId="user-modal"
             >
               <UserForm />
             </DropDownIconsMenu>
@@ -93,14 +95,15 @@ const Navbar = () => {
                 <img
                   alt="tania andrew"
                   src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1480&amp;q=80"
-                  className="relative inline-block h-12 w-12 cursor-pointer rounded-full object-cover object-center"
+                  className="md:relative inline-block h-12 w-12 cursor-pointer rounded-full object-cover object-center"
                   data-popover-target="profile-menu"
                 />
               }
+              modalId="loggedin-user-modal"
             >
               <ul
                 tabIndex={0}
-                className="dropdown-content z-10 menu p-2 shadow bg-[#ffffff] w-52 mt-0"
+                className="dropdown-content z-10 menu p-2 shadow bg-[#ffffff] md:w-52 w-auto mt-0"
                 role="menu"
                 data-popover="profile-menu"
                 data-popover-placement="bottom"
@@ -239,6 +242,7 @@ const Navbar = () => {
               </ul>
             </DropDownIconsMenu>
           </div>
+
           <SearchModal />
         </div>
         <Pagination1 />
@@ -252,7 +256,7 @@ export default Navbar;
 const UserForm = () => (
   <form
     tabIndex={0}
-    className="dropdown-content z-10 menu p-4 shadow bg-[#ffffff] w-80 space-y-4 text-center"
+    className="dropdown-content z-10 menu p-4 shadow bg-[#ffffff] md:w-80 w-auto space-y-4 text-center"
     role="menu"
     data-popover="user-menu"
     data-popover-placement="bottom"

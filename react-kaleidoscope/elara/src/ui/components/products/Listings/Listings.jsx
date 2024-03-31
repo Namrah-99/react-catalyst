@@ -15,24 +15,19 @@ import {
 import { newinItems } from "../../../../data/header";
 
 import { CategoryFilter } from "./Filters";
+import bannerImg from "../../../../assets/images/header/promotion-header3.png";
 
 export default function Listings() {
   const [stickyDiv1Height, setStickyDiv1Height] = useState(0);
   const [stickyDiv2Top, setStickyDiv2Top] = useState(0);
   const isLargeScreen = useMediaQuery({ maxWidth: 1024 });
-  // const [selectedFilters, setSelectedFilters] = useState({
-  //   category: [],
-  //   color: [],
-  //   size: "",
-  //   brand: [],
-  //   price: { maxPrice: "", minPrice: "" },
-  // });
+
   const [selectedFilters, setSelectedFilters] = useState({
     category: [],
     color: [],
     size: "",
     brand: [],
-    price: null,
+    price: null, // { maxPrice: "", minPrice: "" },
   });
   function priceRangeMatch(value, priceObj) {
     try {
@@ -75,15 +70,7 @@ export default function Listings() {
         } else {
           updatedFilters[filterType] = [...updatedFilters[filterType], value];
         }
-      }
-      // if (checked && !updatedFilters[filterType].includes(value)) {
-      //   if (filterType === "price" || filterType === "size") {
-      //     updatedFilters[filterType] = value;
-      //   } else {
-      //     updatedFilters[filterType] = [...updatedFilters[filterType], value];
-      //   }
-      // }
-      else if (!checked) {
+      } else if (!checked) {
         if (filterType === "price" || filterType === "size") {
           updatedFilters[filterType] = "";
         } else {
@@ -95,6 +82,7 @@ export default function Listings() {
       return updatedFilters;
     });
   };
+
   useEffect(() => {
     const div1Height = document.getElementById("sticky-div1").clientHeight;
     setStickyDiv1Height(div1Height);
@@ -111,40 +99,14 @@ export default function Listings() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [stickyDiv1Height]);
+
   // useEffect(() => {
   //   console.log("selectedFilters :", selectedFilters);
   // }, [selectedFilters]);
 
   return (
-    // <div className="xl:container px-2 md:px-10 mx-auto space-y-8 my-8">
-    //   <ListingsHeader />
-    //   <hr className="border border-gray-100" role="productsListings" />
-    //   <div className="h-fit">
-    //     <ResultsFiltering />
-    //     <div className="w-full h-full">
-    //       <div className="lg:relative h-full drawer lg:drawer-open space-4">
-    //         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-    //         <div className="drawer-content flex flex-col gap-8 p-4 pt-0">
-    //           <DrawerContent
-    //             selectedFilters={selectedFilters}
-    //             setSelectedFilters={setSelectedFilters}
-    //           />
-    //         </div>
-
-    //         <CategoryFilter
-    //           selectedFilters={selectedFilters}
-    //           setSelectedFilters={setSelectedFilters}
-    //           handleFilterChange={handleFilterChange}
-    //         />
-    //       </div>
-    //     </div>
-    //     <div className="w-full flex flex-col gap-4 md:gap-8 items-center justify-center my-12">
-    //       <ScrollToTopButton />
-    //       <Pagination />
-    //     </div>
-    //   </div>
-    // </div>
-    <div className="md:container mx-auto space-y-8 my-8">
+    <div className="md:container md:mx-auto space-y-8 my-8">
+      <Banner />
       <ListingsHeader />
       <hr className="pb-1" role="productsListings" />
       <div>
@@ -156,18 +118,11 @@ export default function Listings() {
               selectedFilters={selectedFilters}
               setSelectedFilters={setSelectedFilters}
             />
-            {/* <label
-            htmlFor="my-drawer-2"
-            className="btn btn-primary drawer-button lg:hidden"
-          >
-            Open drawer
-          </label> */}
           </div>
           <div
             id="sticky-div2"
-            // style={{ top: stickyDiv2Top }}
             style={{ top: `${isLargeScreen ? 0 : stickyDiv2Top}px` }}
-            className={`lg:z-5 lg:sticky lg:top-${stickyDiv2Top} drawer-side ${
+            className={`lg:sticky lg:top-${stickyDiv2Top} drawer-side ${
               isLargeScreen && "z-20"
             }`}
           >
@@ -190,6 +145,16 @@ export default function Listings() {
           <Pagination />
         </div>
       </div>
+    </div>
+  );
+}
+function Banner() {
+  return (
+    <div
+      className="min-h-96 flex justify-center items-center bg-fixed bg-parallax bg-cover bg-center"
+      style={{ backgroundImage: `url(${bannerImg})` }}
+    >
+      {/* <p>Parallax</p> */}
     </div>
   );
 }
@@ -230,7 +195,6 @@ function ListingsHeader() {
 
 function ResultsFiltering() {
   return (
-    // <div className="lg:z-20 sticky top-0 p-4 bg-white text-p-sm text-gray-900 flex flex-row gap-2 justify-between items-center tracking-wide">
     <div
       id="sticky-div1"
       className={`py-3 px-2 lg:px-0 bg-white lg:bg-transparent z-10 sticky top-0 bg-transparent text-p-sm text-gray-900 flex flex-row gap-2 lg:gap-0 justify-between items-center tracking-wide`}
@@ -344,7 +308,6 @@ const ScrollToTopButton = () => {
 
   return (
     <button
-      // className={`fixed bottom-4 right-4 bg-gray-900 text-black p-2 rounded-full transition-opacity ${
       className={`text-gray-900 border border-gray-300 p-2 text-center rounded-full rounded-gray-300 transition-opacity ${
         isVisible ? "opacity-100" : "opacity-0"
       }`}
@@ -416,7 +379,6 @@ const Pagination = () => {
             }}
             aria-disabled={currentPage > 1 ? false : true}
           >
-            {/* <TbChevronLeft className="size-5" /> */}
             <span
               aria-hidden="true"
               className="inline-block translate-x-0 group-hover:-translate-x-1 transition-transform ease-in-out duration-200"
@@ -496,7 +458,6 @@ const FilterButtons = ({ filters, setSelectedFilters }) => {
   };
 
   return (
-    // <div className="w-full bg-stone-400 my-6 lg:my-0 flex flex-wrap gap-3 lg:gap-6 justify-center items-center md:justify-start">
     <div className="w-full my-6 lg:my-0 space-x-1">
       {/* {Object.entries(filters).map(([filterType, filters]) =>
         filters.map((filter, index) => (

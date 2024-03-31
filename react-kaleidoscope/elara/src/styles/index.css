@@ -13,3 +13,23 @@ body {
   padding-left: 1rem; /* Add padding for custom icon */
   cursor: pointer;
 }
+
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+  width: 12px; /* Set the width of the scrollbar */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color of the track */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; /* Color of the scroll handle */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Color of the scroll handle on hover */
+}

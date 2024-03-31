@@ -1,5 +1,23 @@
 export const allfilters = [
   {
+    id: "category",
+    name: "Category",
+    options: [
+      { value: "All", label: "All", checked: true },
+      { value: "Shoulder Bags", label: "Shoulder Bags", checked: false },
+      { value: "Bucket Bags", label: "Bucket Bags", checked: false },
+      { value: "Clutch Bags", label: "Clutch Bags", checked: false },
+      { value: "Cross Body Bags", label: "Cross Body Bags", checked: false },
+      {
+        value: "Luggage and Travel",
+        label: "Luggage and Travel",
+        checked: false,
+      },
+      { value: "Mini Bags", label: "Mini Bags", checked: false },
+      { value: "Rafffia Bags", label: "Rafffia Bags", checked: false },
+    ],
+  },
+  {
     id: "color",
     name: "Color",
     options: [
@@ -56,7 +74,7 @@ export const allfilters = [
       { value: "M", label: "M", checked: false },
       { value: "L", label: "L", checked: false },
       { value: "XL", label: "XL", checked: false },
-      { value: "XXL", label: "XXL", checked: true },
+      { value: "XXL", label: "XXL", checked: false },
     ],
   },
   {
@@ -73,24 +91,7 @@ export const allfilters = [
       { value: "Zebulus", label: "Zebulus", checked: false },
     ],
   },
-  {
-    id: "category",
-    name: "Category",
-    options: [
-      { value: "All", label: "All", checked: true },
-      { value: "Shoulder Bags", label: "Shoulder Bags", checked: false },
-      { value: "Bucket Bags", label: "Bucket Bags", checked: false },
-      { value: "Clutch Bags", label: "Clutch Bags", checked: false },
-      { value: "Cross Body Bags", label: "Cross Body Bags", checked: false },
-      {
-        value: "Luggage and Travel",
-        label: "Luggage and Travel",
-        checked: false,
-      },
-      { value: "Mini Bags", label: "Mini Bags", checked: false },
-      { value: "Rafffia Bags", label: "Rafffia Bags", checked: false },
-    ],
-  },
+
   {
     id: "price",
     name: "Price",

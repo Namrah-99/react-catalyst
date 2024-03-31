@@ -140,7 +140,7 @@ function SwiperSlider({ initialSlideIndex }) {
             <SwiperSlide key={`${resource.title}${index}`} className="min-w-60">
               <MyLink
                 to={resource.link}
-                className="w-full h-full absolute inset-0 z-10 border-3 border-lime-400"
+                className="w-full h-full absolute inset-0 border-3 border-lime-400"
               >
                 <div className="w-full h-[28rem] group relative space-y-2 flex flex-col">
                   {/* <div className="flex-none w-full h-80 overflow-hidden rounded-none group-hover:opacity-75"> */}
