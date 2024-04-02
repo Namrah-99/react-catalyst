@@ -1,5 +1,8 @@
-import React from "react";
-
+import Details from "../ui/components/products/Details/Details";
 export default function ProductDetails() {
-  return <div>ProductDetails</div>;
+  return (
+    <div>
+      <Details />
+    </div>
+  );
 }

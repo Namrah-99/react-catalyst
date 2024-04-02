@@ -69,12 +69,12 @@ export const allfilters = [
     id: "size",
     name: "Size",
     options: [
-      { value: "XS", label: "XS", checked: false },
-      { value: "SM", label: "SM", checked: false },
-      { value: "M", label: "M", checked: false },
-      { value: "L", label: "L", checked: false },
-      { value: "XL", label: "XL", checked: false },
-      { value: "XXL", label: "XXL", checked: false },
+      { value: "XS", label: "XS", checked: false, inStock: true },
+      { value: "SM", label: "SM", checked: false, inStock: false },
+      { value: "M", label: "M", checked: false, inStock: false },
+      { value: "L", label: "L", checked: false, inStock: true },
+      { value: "XL", label: "XL", checked: false, inStock: false },
+      { value: "XXL", label: "XXL", checked: false, inStock: true },
     ],
   },
   {
