@@ -3,14 +3,26 @@ import { useState } from "react";
 import { FaRegStar } from "react-icons/fa";
 import { LiaHeart } from "react-icons/lia";
 import { HiChevronUp, HiChevronDown } from "react-icons/hi2";
-import { allfilters } from "../../../../data/filters";
+import { TbChevronLeft, TbChevronRight } from "react-icons/tb";
+import { allfilters, completeLook } from "../../../../data/filters";
 import Button from "../../common/Button";
+
+// import { Navigation, Pagination } from "swiper";
+import { FreeMode, Navigation, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+import { newinItems } from "../../../../data/header";
+import MyLink from "../../common/MyLink";
 
 export default function Details() {
   return (
     <div className="md:container md:mx-auto my-16 space-y-16">
       <ProductCard />
       <CompleteLook />
+      <Recommendations />
       {/* <BreadCrumb />
       <Accordions />
       <CompleteLook />
@@ -113,7 +125,7 @@ const ProductCard = () => {
           <div className="flex flex-wrap flex-row md:flex-col gap-4 justify-center">
             {hoverImages.map((image, index) => (
               <div
-                key={index}
+                key={index + image}
                 className={`h-10 w-10 md:h-14 md:w-12 cursor-pointer border border-gray-200 rounded-none p-1 ${
                   image === mainImage ? "border-1 border-gray-900" : ""
                 }`}
@@ -221,9 +233,9 @@ const ProductCard = () => {
                 <div className="mt-4">
                   <label className="sr-only">Choose a size</label>
                   <div className="flex flex-wrap gap-4">
-                    {allfilters.at(2).options.map((size) => (
+                    {allfilters.at(2).options.map((size, idx) => (
                       <label
-                        key={size.name}
+                        key={size.value + idx}
                         className={`max-w-20 ${
                           size.inStock
                             ? "cursor-pointer bg-white text-gray-900 shadow-sm"
@@ -448,5 +460,144 @@ Accordion.propTypes = {
 };
 
 function CompleteLook() {
-  return <div>Cards</div>;
+  return (
+    <div className="flex flex-col-reverse md:flex-row gap-4 text-gray-900">
+      <div className="w-full">
+        <div className="w-full lg:w-2/3 mx-auto space-y-6">
+          <h1 className="uppercase">How to wear it</h1>
+          <div className="flex flex-col gap-4">
+            {completeLook.map((item, index) => (
+              <div key={index} className="flex gap-4">
+                <div className="w-32 h-44 rounded-none bg-stone-100 flex items-center justify-center">
+                  <img
+                    src={item.image}
+                    alt=""
+                    className="w-full h-full object-contain md:object-cover object-center"
+                  />
+                </div>
+                <div className="text-gray-900 flex flex-col justify-between pb-8">
+                  <div>
+                    <p className="font-semibold text-p-sm uppercase">
+                      {item.brandName}
+                    </p>
+                    <p className="text-p-xs">{item.description}</p>
+                  </div>
+                  <div>
+                    <p className="font-medium">${item.price}</p>
+                    <p className="text-p-xs tracking-widest text-gray-500 uppercase">
+                      {item.collection}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      <div className="w-full">
+        <div className="w-full lg:w-2/3 mx-auto">
+          <div className="w-full h-fit md:h-[40rem] rounded-none bg-stone-100 flex items-center justify-center">
+            <img
+              src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-02.jpg"
+              alt=""
+              className="w-full h-full object-contain md:object-cover object-center"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
+function Recommendations() {
+  return (
+    <div className="container mx-auto space-y-6">
+      <h1 className="uppercase">You may also like</h1>
+      <Swiper
+        modules={[FreeMode, Navigation, Pagination]}
+        spaceBetween={30}
+        loop={true}
+        freeMode={true}
+        // slidesPerView="auto"
+        slidesPerView={1}
+        breakpoints={{
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 40,
+            enabled: true,
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 45,
+            // enabled: false, autoplay is stopped
+            enabled: true,
+          },
+          1024: {
+            slidesPerView: 5,
+            spaceBetween: 50,
+            enabled: true,
+          },
+        }}
+        className="flex flex-col"
+      >
+        <SwiperNavButtons />
+        {/* <SwiperSlide className="res-slide" />
+         */}
+        {newinItems.map((resource, index) => {
+          return (
+            <SwiperSlide key={`${resource.title}${index}`} className="min-w-60">
+              <MyLink
+                to={resource.link}
+                className="w-full h-full absolute inset-0 border-3 border-lime-400"
+              >
+                <div className="w-full h-[28rem] group relative space-y-2 flex flex-col">
+                  {/* <div className="flex-none w-full h-80 overflow-hidden rounded-none group-hover:opacity-75"> */}
+                  <div className="group relative flex-none w-full h-80 overflow-hidden rounded-none group-hover:opacity-75">
+                    <img
+                      src={resource.imageUrl1 || ""}
+                      alt={resource.title}
+                      className="h-full w-full object-cover object-center lg:h-full lg:w-full transition-opacity duration-300"
+                    />
+                    <img
+                      src={resource.imageUrl2 || ""}
+                      alt="Second Image"
+                      className="hidden group-hover:block h-full w-full object-cover object-center absolute top-0 left-0 transition-opacity duration-300"
+                    />
+                  </div>
+                  <div className="block absolute top-1 right-3 transition-opacity duration-300 z-10">
+                    <LiaHeart className="size-5" />
+                  </div>
+                  <div className="flex flex-col justify-between h-full w-full">
+                    <div className="">
+                      <p className="text-p-sm text-gray-500">
+                        {resource.newCTALine}
+                      </p>
+                      <p className="text-p-md text-black font-medium">
+                        {resource.brand}
+                      </p>
+                      <p className="text-p-sm">{resource.shortDescription}</p>
+                    </div>
+                    <p className="text-p-sm">${resource.price}</p>
+                  </div>
+                </div>
+              </MyLink>
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
+    </div>
+  );
+}
+const SwiperNavButtons = () => {
+  const swiper = useSwiper();
+
+  return (
+    <div className="swiper-nav-btns space-x-10">
+      <button onClick={() => swiper.slidePrev()}>
+        <TbChevronLeft className="size-7" />
+      </button>
+      <button onClick={() => swiper.slideNext()}>
+        <TbChevronRight className="size-7" />
+      </button>
+    </div>
+  );
+};

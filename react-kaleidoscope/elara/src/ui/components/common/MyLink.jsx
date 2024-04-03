@@ -15,7 +15,7 @@ export default function MyLink({ text, to, classes, children }) {
 }
 
 MyLink.propTypes = {
-  text: PropTypes.string.isRequired,
+  text: PropTypes.string,
   to: PropTypes.string.isRequired,
   classes: PropTypes.string,
   children: PropTypes.node, // Add this line to validate children prop

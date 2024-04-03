@@ -139,3 +139,25 @@ export const subCategories = [
   { name: "Running", href: "#" },
   { name: "Black Friday", href: "#" },
 ];
+
+export const completeLook = [
+  {
+    id: "1",
+    brandName: "khaite",
+    href: "#",
+    image:
+      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
+    description: "Jones snake-effect leather sandals",
+    price: 630,
+    collection: "Runway",
+  },
+  {
+    id: "2",
+    brandName: "khaite",
+    href: "#",
+    image:
+      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-02.jpg",
+    description: "Amelia medium textured-leather tote",
+    price: 2120,
+  },
+];
