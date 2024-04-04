@@ -410,7 +410,11 @@ function Accordion({ currentOpen, onCurrenOpen, title, num }) {
               <li>Designer color: Fire Red</li>
             </ul>
           )}
-          {title.toLowerCase() === "Reviews".toLowerCase() && <div></div>}
+          {title.toLowerCase() === "Reviews".toLowerCase() && (
+            <div className="w-full">
+              <Reviews />
+            </div>
+          )}
           {title.toLowerCase() === "Delivery & Returns".toLowerCase() && (
             <div>
               Find out more about our delivery options. Try items in the comfort
@@ -601,3 +605,74 @@ const SwiperNavButtons = () => {
     </div>
   );
 };
+
+function Reviews() {
+  return (
+    <div className="w-5/6 mx-auto flex flex-col gap-4">
+      <div className="flex flex-col gap-2">
+        <div className="flex items-center gap-3">
+          <div className="flex gap-1 items-center">
+            {[0, 1, 2, 3, 4].map((rating) => (
+              <FaRegStar
+                key={rating}
+                // className={`
+                //   ${
+                //     product.rating > rating
+                //       ? "text-gray-900"
+                //       : "text-gray-200"
+                //   }
+                //   "h-5 w-5 flex-shrink-0"
+                // `}
+                className="size-5"
+                aria-hidden="true"
+              />
+            ))}
+          </div>
+          <p className="sr-only">4 out of 5 stars</p>
+          <p>4.6</p>
+          <p>(43 reviews)</p>
+        </div>
+        <p className="pb-3">100% of customers recommend this product</p>
+      </div>
+      <div className="flex flex-col gap-4">
+        <p className="uppercase font-semibold">Most Recent Review</p>
+        <div className="flex justify-between">
+          <div className="space-y-1">
+            <div className="flex gap-1 items-center">
+              {[0, 1, 2, 3, 4].map((rating) => (
+                <FaRegStar
+                  key={rating}
+                  // className={`
+                  //   ${
+                  //     product.rating > rating
+                  //       ? "text-gray-900"
+                  //       : "text-gray-200"
+                  //   }
+                  //   "h-5 w-5 flex-shrink-0"
+                  // `}
+                  className="size-5"
+                  aria-hidden="true"
+                />
+              ))}
+            </div>
+            <p className="text-p-xs text-gray-500">Verified Purchaser</p>
+          </div>
+          <p>11 days ago</p>
+        </div>
+        <p className="uppercase font-medium tracking-wide">Stylish dry!</p>
+        <p className="text-p-xs text-gray-600">
+          I&#39;m 6&#39;1". This item was a perfect fit, kept me dry during my
+          first torrential NYC storm. Great price. Well worth it!
+        </p>
+        <Button classes="uppercase font-semibold w-full bg-transparent text-stone-950 border border-gray-600 hover:text-stone-50 hover:bg-black hover:bg-opacity-65 hover:border-1 hover:border-black">
+          View All Reviews
+        </Button>
+        <p className="text-p-xs text-gray-500">
+          All reviews are verified by ELARA unless otherwise indicated. Where a
+          review states &#39;originally posted&#39; by one of our brand
+          partners; this has not been verified by ELARA.
+        </p>
+      </div>
+    </div>
+  );
+}
