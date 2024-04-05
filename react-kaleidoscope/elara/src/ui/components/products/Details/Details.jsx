@@ -776,7 +776,7 @@ function SizeGuideModal() {
           <p className="text-gray-500">
             Use the below conversion chart to find your size
           </p>
-          <div className="flex flex-row gap-4 w-fit h-fit pt-6">
+          <div className="overflow-x-auto flex flex-row gap-4 pt-6">
             {sizeGuides.map((size) => (
               <CustomRadio
                 key={size.size}
@@ -798,6 +798,7 @@ function SizeGuideModal() {
           <p className="text-gray-500">
             We measure every item by hand to help you choose the best fit
           </p>
+          <ProductMeasurements />
         </div>
         <div className="space-y-2">
           <p>
@@ -858,7 +859,7 @@ const CustomRadio = ({ label, value, name, checked, sizeguide, onChange }) => {
 
   return (
     <label
-      className={`h-fit flex-1 p-3 border ${borderClass} rounded`}
+      className={`min-w-32 h-fit flex-1 p-3 border ${borderClass} rounded`}
       key={label}
     >
       <input
@@ -893,3 +894,122 @@ CustomRadio.propTypes = {
   sizeguide: PropTypes.any,
   onChange: PropTypes.any,
 };
+
+function ProductMeasurements() {
+  const [selectedColumn, setSelectedColumn] = useState(null); // Radio buttons
+  const [unitSelected, setUnitSelected] = useState(false); // Checkbox
+
+  const handleRadioChange = (columnIndex) => {
+    setSelectedColumn(columnIndex);
+  };
+
+  const handleUnitChange = (event) => {
+    setUnitSelected(event.target.checked);
+  };
+
+  // Sample data (updated)
+  const data = [
+    {
+      id: 1,
+      unit: "Bust",
+      name: "Alice",
+      job: "Software Engineer",
+      city: "London",
+    },
+    {
+      id: 2,
+      unit: "Length",
+      name: "Bob",
+      job: "Marketing Manager",
+      city: "Paris",
+    },
+    {
+      id: 3,
+      unit: "Waist",
+      name: "Charlie",
+      job: "Data Scientist",
+      city: "Berlin",
+    },
+  ];
+
+  const columns = [
+    { title: "unit" },
+    ...sizeGuides.map((sizeGuide) => ({
+      title: sizeGuide.size,
+    })),
+  ];
+
+  return (
+    <div>
+      <table className="w-full overflow-x-hidden">
+        <thead>
+          <tr>
+            {columns.map((column, index) => (
+              <th
+                key={column.title + index}
+                className={`${index === 0 ? "" : "border"}`}
+              >
+                {index === 0 ? (
+                  <label className="label cursor-pointer flex justify-start items-center gap-1">
+                    <span className="label">cm</span>
+                    {/* Pass unit as a prop to the label component */}
+                    <input
+                      type="checkbox"
+                      className={`toggle toggle-xs border-1 cursor-pointer ${
+                        unitSelected && "bg-lime-500"
+                      } `}
+                      checked={unitSelected}
+                      onChange={handleUnitChange}
+                      value={unitSelected} // Assign a value for styling
+                    />
+                    <span className="label">in</span>
+                  </label>
+                ) : (
+                  <label className="flex flex-col gap-1 items-center">
+                    <input
+                      type="radio"
+                      id={`radio-${column.title}`}
+                      name="highlight-column"
+                      value={index} // Adjust value for radio buttons
+                      checked={selectedColumn === index}
+                      onChange={() => handleRadioChange(index)}
+                    />
+                    <span className="ml-2">{column.title}</span>
+                  </label>
+                )}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((row) => (
+            <tr key={`key-${row.id}`}>
+              {/* First column with unit from data */}
+              <td
+                key={`unit-${row.id}`}
+                // className={
+                //   unitSelected ? "bg-gray-200 border border-lime-500" : "border"
+                // }
+                className="border"
+              >
+                {row.unit}
+              </td>
+              {columns.slice(1).map((column, index) => (
+                <td
+                  key={`${column.key}-${row.id}`}
+                  className={`w-1/6 ${
+                    selectedColumn === index + 1
+                      ? "bg-gray-200 border border-lime-500"
+                      : "border"
+                  }`}
+                >
+                  {row[column.key]}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
