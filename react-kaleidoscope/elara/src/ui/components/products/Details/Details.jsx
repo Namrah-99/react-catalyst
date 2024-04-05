@@ -16,6 +16,7 @@ import "swiper/css/pagination";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import { newinItems } from "../../../../data/header";
 import MyLink from "../../common/MyLink";
+import { sizeGuides } from "../../../../data/products";
 
 export default function Details() {
   return (
@@ -666,8 +667,8 @@ function Reviews() {
         </div>
         <p className="uppercase font-medium tracking-wide">Stylish dry!</p>
         <p className="text-p-xs text-gray-600">
-          I&#39;m 6&#39;1". This item was a perfect fit, kept me dry during my
-          first torrential NYC storm. Great price. Well worth it!
+          I&#39;m 6&#39;1&quot;. This item was a perfect fit, kept me dry during
+          my first torrential NYC storm. Great price. Well worth it!
         </p>
 
         <label
@@ -718,6 +719,11 @@ function ReviewsDrawer() {
 }
 
 function SizeGuideModal() {
+  const [selectedSize, setSelectedSize] = useState(null); // Initially no size selected
+
+  const handleRadioChange = (newValue) => {
+    setSelectedSize(newValue);
+  };
   return (
     <dialog
       id="my-sizeguide-modal"
@@ -770,6 +776,19 @@ function SizeGuideModal() {
           <p className="text-gray-500">
             Use the below conversion chart to find your size
           </p>
+          <div className="flex flex-row gap-4 w-fit h-fit pt-6">
+            {sizeGuides.map((size) => (
+              <CustomRadio
+                key={size.size}
+                label={size.description}
+                value={size.size}
+                name="size"
+                checked={selectedSize === size.size}
+                onChange={handleRadioChange}
+                sizeguide={size.sizeguide}
+              />
+            ))}
+          </div>
         </div>
         <hr className="border-gray-300 m-6 sm:m-0" />
         <div className="space-y-1">
@@ -831,3 +850,46 @@ function SizeGuideModal() {
     </dialog>
   );
 }
+
+const CustomRadio = ({ label, value, name, checked, sizeguide, onChange }) => {
+  const borderClass = checked
+    ? "border-pink-500"
+    : "border-lime-300 hover:border-blue-500";
+
+  return (
+    <label
+      className={`h-fit flex-1 p-3 border ${borderClass} rounded`}
+      key={label}
+    >
+      <input
+        type="radio"
+        id={label}
+        name={name}
+        value={value}
+        checked={checked}
+        onChange={() => onChange(value)}
+        className="w-5 h-5 border-gray-300 rounded bg-yellow focus:ring-blue-500 dark:focus:ring-blue-600 focus:ring-opacity-50 dark:bg-gray-700"
+      />
+      <div className="py-1 space-y-4">
+        <p>{label}</p>
+        <hr className="border-gray-600 w-2/12" />
+        <ul role="list">
+          {sizeguide.map((countrySize) => (
+            <li key={countrySize.countryCode} className="flex justify-between">
+              <p>{countrySize.countryCode}</p>
+              <p>{countrySize.countrySize}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </label>
+  );
+};
+CustomRadio.propTypes = {
+  label: PropTypes.any,
+  value: PropTypes.any,
+  name: PropTypes.any,
+  checked: PropTypes.any,
+  sizeguide: PropTypes.any,
+  onChange: PropTypes.any,
+};
