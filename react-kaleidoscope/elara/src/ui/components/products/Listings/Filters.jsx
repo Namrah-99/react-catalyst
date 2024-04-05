@@ -44,7 +44,8 @@ export const CategoryFilter = ({
             className="text-[#000] size-5 font-bold"
             onClick={() => {
               // Close the drawer programmatically
-              const drawerElement = document.getElementById("my-drawer-2");
+              const drawerElement =
+                document.getElementById("my-filters-drawer");
               drawerElement.checked = false; // Uncheck the checkbox to close
             }}
           >

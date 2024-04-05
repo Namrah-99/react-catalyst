@@ -23,6 +23,7 @@ export default function Details() {
       <ProductCard />
       <CompleteLook />
       <Recommendations />
+
       {/* <BreadCrumb />
       <Accordions />
       <CompleteLook />
@@ -223,12 +224,14 @@ const ProductCard = () => {
               <div>
                 <p className="text-gray-900 flex justify-between">
                   Size:
-                  <a
+                  <button
                     className="text-gray-500 text-p-xs md:text-p-sm underline underline-offset-4 hover:text-[#0eb1ea]"
-                    href="#"
+                    onClick={() =>
+                      document.getElementById("my-sizeguide-modal").showModal()
+                    }
                   >
                     View size guide
-                  </a>
+                  </button>
                 </p>
                 <div className="mt-4">
                   <label className="sr-only">Choose a size</label>
@@ -292,6 +295,7 @@ const ProductCard = () => {
                   </div>
                 </div>
               </div>
+              <SizeGuideModal />
               {/* Buttons */}
               <div className="w-full md:w-1/2 lg:w-full flex flex-col gap-2 md:gap-3 pt-6 md:mx-auto lg:mx-0">
                 <Button className="">Add to Cart</Button>
@@ -358,7 +362,7 @@ function Accordion({ currentOpen, onCurrenOpen, title, num }) {
 
   function renderAccordionContent(title) {
     return (
-      <div className="overflow-y-auto p-2 text-p-sm text-justify">
+      <div className="w-full overflow-y-auto p-2 text-p-sm text-justify">
         {/* {
       [
         "Editors' Notes",
@@ -367,7 +371,7 @@ function Accordion({ currentOpen, onCurrenOpen, title, num }) {
         "Reviews",
         "Delivery & Returns",
       ].map((acc, accIdx) => ( */}
-        <div>
+        <div className="w-5/6 mx-auto">
           {title.toLowerCase() === "Editors' Notes".toLowerCase() && (
             <p>
               Khaite&#39;s &#39;Wes&#39; maxi dress is made from lightweight
@@ -393,12 +397,14 @@ function Accordion({ currentOpen, onCurrenOpen, title, num }) {
                 <li>Model is 180cm/ 5’11” and is wearing a US 2</li>
               </ul>
               <div className="py-1">
-                <a
+                <button
                   className="text-gray-500 text-p-xs md:text-p-sm underline underline-offset-4 hover:text-[#0eb1ea]"
-                  href="#"
+                  onClick={() =>
+                    document.getElementById("my-sizeguide-modal").showModal()
+                  }
                 >
                   View size guide
-                </a>
+                </button>
               </div>
             </div>
           )}
@@ -410,11 +416,7 @@ function Accordion({ currentOpen, onCurrenOpen, title, num }) {
               <li>Designer color: Fire Red</li>
             </ul>
           )}
-          {title.toLowerCase() === "Reviews".toLowerCase() && (
-            <div className="w-full">
-              <Reviews />
-            </div>
-          )}
+          {title.toLowerCase() === "Reviews".toLowerCase() && <Reviews />}
           {title.toLowerCase() === "Delivery & Returns".toLowerCase() && (
             <div>
               Find out more about our delivery options. Try items in the comfort
@@ -430,8 +432,11 @@ function Accordion({ currentOpen, onCurrenOpen, title, num }) {
   }
 
   return (
-    <div className="flex flex-col gap-4" onClick={() => handleToggle(num)}>
-      <div className="w-full mx-auto cursor-pointer transition-all duration-200 ">
+    <div className="flex flex-col gap-4">
+      <div
+        className="w-full mx-auto cursor-pointer transition-all duration-200"
+        onClick={() => handleToggle(num)}
+      >
         <p className="uppercase font-medium flex gap-3">
           <span>
             {isOpen ? (
@@ -608,7 +613,7 @@ const SwiperNavButtons = () => {
 
 function Reviews() {
   return (
-    <div className="w-5/6 mx-auto flex flex-col gap-4">
+    <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-2">
         <div className="flex items-center gap-3">
           <div className="flex gap-1 items-center">
@@ -664,9 +669,14 @@ function Reviews() {
           I&#39;m 6&#39;1". This item was a perfect fit, kept me dry during my
           first torrential NYC storm. Great price. Well worth it!
         </p>
-        <Button classes="uppercase font-semibold w-full bg-transparent text-stone-950 border border-gray-600 hover:text-stone-50 hover:bg-black hover:bg-opacity-65 hover:border-1 hover:border-black">
+
+        <label
+          htmlFor="my-reviews-drawer"
+          className="text-center text-p-xs md:text-p-sm p-3 truncate bg-stone-950 uppercase font-semibold w-full bg-transparent text-stone-950 border border-gray-600 hover:text-stone-50 hover:bg-black hover:bg-opacity-65 hover:border-1 hover:border-black drawer-button"
+        >
           View All Reviews
-        </Button>
+        </label>
+        <ReviewsDrawer />
         <p className="text-p-xs text-gray-500">
           All reviews are verified by ELARA unless otherwise indicated. Where a
           review states &#39;originally posted&#39; by one of our brand
@@ -674,5 +684,150 @@ function Reviews() {
         </p>
       </div>
     </div>
+  );
+}
+
+function ReviewsDrawer() {
+  return (
+    <div className="drawer drawer-end">
+      <input id="my-reviews-drawer" type="checkbox" className="drawer-toggle" />
+      <div className="drawer-content">
+        {/* Page content here */}
+        {/* <label htmlFor="my-reviews-drawer" className="drawer-button btn btn-primary">
+          Open drawer
+        </label> */}
+      </div>
+      <div className="drawer-side">
+        <label
+          htmlFor="my-reviews-drawer"
+          aria-label="close sidebar"
+          className="drawer-overlay"
+        ></label>
+        <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+          {/* Sidebar content here */}
+          <li>
+            <a>Sidebar Item 1</a>
+          </li>
+          <li>
+            <a>Sidebar Item 2</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+function SizeGuideModal() {
+  return (
+    <dialog
+      id="my-sizeguide-modal"
+      className="modal modal-bottom sm:modal-middle"
+    >
+      <div className="modal-box w-full sm:w-11/12 sm:max-w-5xl bg-stone-100 text-gray-900 rounded-none font-normal text-p-xs space-y-6">
+        <h3 className="uppercase tracking-wider font-medium text-p-sm">
+          Size Guide
+        </h3>
+        <hr className="border-gray-300 m-6 sm:m-0" />
+        <div className="flex flex-col sm:flex-row gap-4">
+          <div className="w-32 h-32 rounded-none bg-stone-100 flex items-center justify-center">
+            <img
+              src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-02.jpg"
+              alt=""
+              className="w-full h-full object-contain md:object-cover object-center"
+            />
+          </div>
+          <div className="grow space-y-4">
+            <p className="font-semibold uppercase">khaite</p>
+            <p className="text-gray-500">
+              Wes pintucked silk-organza maxi dress
+            </p>
+            <ul role="list" className="list-disc pl-4">
+              <li>
+                Fits true to size, however those who are between sizes should
+                take the smaller size
+              </li>
+              <li>
+                Intended to be slightly fitted at the bust and waist, loose at
+                the hip
+              </li>
+              <li>Designed with a detachable, slim-fitting slip</li>
+              <li>Lightweight, non-stretchy fabric</li>
+              <li>Model is 180cm/ 5’11” and is wearing a US 2</li>
+            </ul>
+            <div>
+              <p>Model measurements:</p>
+              <ul role="list" className="list-disc pl-4">
+                <li>Bust: 81cm/ 31.9&quot;</li>
+                <li>Waist: 68cm/ 26.8&quot;</li>
+                <li>Hip: 79cm/ 31.1&quot;</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <hr className="border-gray-300 m-6 sm:m-0" />
+        <div className="space-y-1">
+          <p className="text-h-xs uppercase font-semibold">size conversions</p>
+          <p className="text-gray-500">
+            Use the below conversion chart to find your size
+          </p>
+        </div>
+        <hr className="border-gray-300 m-6 sm:m-0" />
+        <div className="space-y-1">
+          <p className="text-h-xs uppercase font-semibold">
+            product measurements
+          </p>
+          <p className="text-gray-500">
+            We measure every item by hand to help you choose the best fit
+          </p>
+        </div>
+        <div className="space-y-2">
+          <p>
+            Our size and fit team measure all items individually to help you
+            find the perfect fit.
+          </p>
+          <p className="leading-tight text-gray-600">
+            It may be helpful to compare these product measurements to a similar
+            garment you already own. To do this, place the garment on a flat
+            surface and take all measurements from the outside
+          </p>
+        </div>
+
+        <div className="py-3 w-full flex flex-col sm:flex-row gap-3">
+          <div className="flex-1 space-y-2">
+            <p className="font-semibold uppercase tracking-tight">contact us</p>
+            <p>
+              Still not sure what size to purchase? &nbsp;
+              <a
+                href="#"
+                className="underline underline-offset-2 text-gray-500 hover:text-[#0eb1ea]"
+              >
+                Email
+              </a>
+              &nbsp; us or Call on +44 330 022 5700
+            </p>
+          </div>
+          <div className="flex-1  space-y-2">
+            <p className="font-semibold uppercase tracking-tight">
+              returns on exchanges
+            </p>
+            <p>
+              Try your purchase in the comfort of your own home and, if it’s not
+              quite right, let us know and we’ll arrange a free collection from
+              your home or office.
+            </p>
+          </div>
+        </div>
+
+        <form method="dialog">
+          <button className="text-gray-900 btn btn-sm btn-circle border-0 bg-transparent absolute right-2 top-2">
+            ✕
+          </button>
+        </form>
+      </div>
+
+      <form method="dialog" className="modal-backdrop">
+        <button>close</button>
+      </form>
+    </dialog>
   );
 }

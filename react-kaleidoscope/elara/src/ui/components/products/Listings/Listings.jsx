@@ -112,7 +112,11 @@ export default function Listings() {
       <div>
         <ResultsFiltering />
         <div className="drawer lg:drawer-open">
-          <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+          <input
+            id="my-filters-drawer"
+            type="checkbox"
+            className="drawer-toggle"
+          />
           <div className={`drawer-content  ${isLargeScreen && "z-0"} lg:pl-16`}>
             <DrawerContent
               selectedFilters={selectedFilters}
@@ -127,7 +131,7 @@ export default function Listings() {
             }`}
           >
             <label
-              htmlFor="my-drawer-2"
+              htmlFor="my-filters-drawer"
               aria-label="close sidebar"
               className="drawer-overlay"
             ></label>
@@ -202,7 +206,10 @@ function ResultsFiltering() {
       <div className="lg:bg-white h-full lg:w-80">
         <div className="m-2 lg:m-3 lg:w-80 flex flex-col sm:flex-row justify-between items-start gap-x-2 lg:gap-x-0 place-content-center">
           <p className="lg:hidden">
-            <label htmlFor="my-drawer-2" className="drawer-button lg:hidden">
+            <label
+              htmlFor="my-filters-drawer"
+              className="drawer-button lg:hidden"
+            >
               <IoFilterCircleOutline className="inline-flex size-5" /> Filter
             </label>
           </p>
