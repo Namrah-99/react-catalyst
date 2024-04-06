@@ -34,13 +34,19 @@ function MainHeader() {
 
               <div className="grid grid-cols-3 gap-5">
                 <div className="col-span-1">
-                  <Button classes="w-full">Women</Button>
+                  <Button classes="w-full" navigateTo="/women">
+                    Women
+                  </Button>
                 </div>
                 <div className="col-span-1">
-                  <Button classes="w-full">Men</Button>
+                  <Button classes="w-full" navigateTo="/men">
+                    Men
+                  </Button>
                 </div>
                 <div className="col-span-1">
-                  <Button classes="w-full">Kids</Button>
+                  <Button classes="w-full" navigateTo="/kids">
+                    Kids
+                  </Button>
                 </div>
               </div>
             </div>

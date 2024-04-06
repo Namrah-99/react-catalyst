@@ -520,7 +520,7 @@ function CompleteLook() {
 }
 function Recommendations() {
   return (
-    <div className="container mx-auto space-y-6">
+    <div className="container mx-auto space-y-6 text-gray-900">
       <h1 className="uppercase">You may also like</h1>
       <Swiper
         modules={[FreeMode, Navigation, Pagination]}
@@ -617,7 +617,7 @@ function Reviews() {
     <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-2">
         <div className="flex items-center gap-3">
-          <div className="flex gap-1 items-center">
+          {/* <div className="flex gap-1 items-center">
             {[0, 1, 2, 3, 4].map((rating) => (
               <FaRegStar
                 key={rating}
@@ -634,7 +634,28 @@ function Reviews() {
               />
             ))}
           </div>
-          <p className="sr-only">4 out of 5 stars</p>
+          <p className="sr-only">4 out of 5 stars</p> */}
+
+          <div className="rating rating-sm md:rating-md">
+            {[0, 1, 2, 3, 4].map((rating, idx) => (
+              <div key={idx}>
+                {idx === 3 ? (
+                  <input
+                    type="radio"
+                    name="rating"
+                    checked // Set checked for index 3
+                    className="mask mask-star-2 bg-orange-400"
+                  />
+                ) : (
+                  <input
+                    type="radio"
+                    name="rating"
+                    className="mask mask-star-2 bg-orange-400"
+                  />
+                )}
+              </div>
+            ))}
+          </div>
           <p>4.6</p>
           <p>(43 reviews)</p>
         </div>
@@ -854,8 +875,8 @@ function SizeGuideModal() {
 
 const CustomRadio = ({ label, value, name, checked, sizeguide, onChange }) => {
   const borderClass = checked
-    ? "border-pink-500"
-    : "border-lime-300 hover:border-blue-500";
+    ? "border-[#ef7324]"
+    : "border-gray-200 hover:border-[#f7ce26]";
 
   return (
     <label
@@ -869,7 +890,7 @@ const CustomRadio = ({ label, value, name, checked, sizeguide, onChange }) => {
         value={value}
         checked={checked}
         onChange={() => onChange(value)}
-        className="w-5 h-5 border-gray-300 rounded bg-yellow focus:ring-blue-500 dark:focus:ring-blue-600 focus:ring-opacity-50 dark:bg-gray-700"
+        className="w-5 h-5 radio rounded-full border-2 border-gray-300 accent-white unchecked:bg-transparent unchecked:border hover:border-[#f7ce26] checked:bg-[#ef7324] checked:border-2 checked:border-gray-100 checked:ring-1 checked:ring-[#ef7324]"
       />
       <div className="py-1 space-y-4">
         <p>{label}</p>
@@ -955,8 +976,8 @@ function ProductMeasurements() {
                     {/* Pass unit as a prop to the label component */}
                     <input
                       type="checkbox"
-                      className={`toggle toggle-xs border-1 cursor-pointer ${
-                        unitSelected && "bg-lime-500"
+                      className={`toggle toggle-sm border-1 cursor-pointer hover:bg-[#f7ce26]  ${
+                        unitSelected && "bg-[#ef7324]"
                       } `}
                       checked={unitSelected}
                       onChange={handleUnitChange}
@@ -973,6 +994,7 @@ function ProductMeasurements() {
                       value={index} // Adjust value for radio buttons
                       checked={selectedColumn === index}
                       onChange={() => handleRadioChange(index)}
+                      className="size-4 radio rounded-full border-2 border-gray-300 accent-white unchecked:bg-transparent unchecked:border hover:border-[#f7ce26] checked:bg-[#ef7324] checked:border-2 checked:border-gray-100 checked:ring-1 checked:ring-[#ef7324]"
                     />
                     <span className="ml-2">{column.title}</span>
                   </label>
@@ -988,7 +1010,7 @@ function ProductMeasurements() {
               <td
                 key={`unit-${row.id}`}
                 // className={
-                //   unitSelected ? "bg-gray-200 border border-lime-500" : "border"
+                //   unitSelected ? "bg-gray-200 border border-[#ef7324]" : "border"
                 // }
                 className="border"
               >
@@ -999,7 +1021,7 @@ function ProductMeasurements() {
                   key={`${column.key}-${row.id}`}
                   className={`w-1/6 ${
                     selectedColumn === index + 1
-                      ? "bg-gray-200 border border-lime-500"
+                      ? "bg-gray-200 border border-[#ef7324]"
                       : "border"
                   }`}
                 >

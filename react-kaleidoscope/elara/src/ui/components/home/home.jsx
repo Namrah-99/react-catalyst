@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -228,7 +229,9 @@ export function VideoOverlayText() {
           <p className="text-p-sm">
             Elevate your everyday in new-season pieces designed for a great time
           </p>
-          <Button classes="w-1/2 sm:w-fit lg:px-8">Shop winter&#39;24</Button>
+          <Button classes="w-1/2 sm:w-fit lg:px-8" navigateTo="/products">
+            Shop winter&#39;24
+          </Button>
         </div>
       </div>
     </div>
@@ -286,7 +289,12 @@ export function NewArrivals() {
           <div className="w-2/3 h-0.5 bg-gray-300"></div>
         </div>
         {/* <Button classes="block mx-auto w-1/3 md:w-1/3 md:mx-0 md:w-auto mt-5 md:mt-1"> */}
-        <Button classes="block w-1/2 sm:w-fit lg:px-8 ml-2">Shop New In</Button>
+        <Button
+          classes="block w-1/2 sm:w-fit lg:px-8 ml-2"
+          navigateTo="/products"
+        >
+          Shop New In
+        </Button>
       </div>
     </div>
   );
@@ -309,7 +317,7 @@ export function ThreeCards() {
             </div>
             <div className="space-y-2">
               <p className="text-p-md">
-                <a href="#">
+                <a href="/products">
                   {/* <span aria-hidden="true" className="absolute inset-0"></span> */}
                   {item.title}
                 </a>
@@ -317,7 +325,7 @@ export function ThreeCards() {
               <p className="text-p-sm">{item.description}</p>
               <p>
                 <a
-                  href="#"
+                  href="/products"
                   className="text-p-xs cursor-pointer underline underline-offset-4 hover:text-[#0eb1ea] hover:font-semibold hover:tracking-wide"
                 >
                   {item.linkTitle}
@@ -359,7 +367,7 @@ export function TwoCards() {
         </p>
         <p>
           <a
-            href="#"
+            href="/products"
             className="text-p-xs cursor-pointer underline underline-offset-4 hover:text-[#0eb1ea] hover:font-semibold hover:tracking-wide"
           >
             Shop the runway
@@ -454,6 +462,7 @@ export function SlidersSlide() {
 }
 
 export function TopStories({ threecard, width = "w-40" }) {
+  const navigate = useNavigate();
   const [itemsPerRow, setItemsPerRow] = useState(6);
 
   useEffect(() => {
@@ -474,6 +483,7 @@ export function TopStories({ threecard, width = "w-40" }) {
 
   const showMoreLink = () => {
     // Navigate to the next page
+    navigate("/products");
   };
 
   const convertWidthToPixels = (width) => {
@@ -539,7 +549,6 @@ export function TopStories({ threecard, width = "w-40" }) {
           <div className="md:text-center flex-auto">
             <button
               onClick={showMoreLink}
-              href="#"
               className="pt-4 text-p-xs cursor-pointer underline underline-offset-4 tracking-wide hover:text-[#0eb1ea] hover:font-semibold hover:tracking-wider"
             >
               See more
@@ -615,4 +624,3 @@ export function ElaraOffers() {
     </>
   );
 }
-

@@ -84,7 +84,10 @@ function CategoriesCard({ children }) {
             <div className="w-1/3 h-0.5 bg-black"></div>
             <div className="w-2/3 h-0.5 bg-gray-300"></div>
           </div> */}
-          <Button classes="w-1/2 sm:w-fit bg-transparent text-stone-950 border border-stone-950 hover:text-stone-50 hover:bg-black hover:bg-opacity-65 hover:border-1 hover:border-black">
+          <Button
+            classes="w-1/2 sm:w-fit bg-transparent text-stone-950 border border-stone-950 hover:text-stone-50 hover:bg-black hover:bg-opacity-65 hover:border-1 hover:border-black"
+            navigateTo="/products"
+          >
             View the selection
           </Button>
         </div>
