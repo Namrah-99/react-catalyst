@@ -2,7 +2,12 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import { FaRegStar } from "react-icons/fa";
 import { LiaHeart } from "react-icons/lia";
-import { HiChevronUp, HiChevronDown } from "react-icons/hi2";
+import {
+  HiChevronUp,
+  HiChevronDown,
+  HiEllipsisVertical,
+} from "react-icons/hi2";
+import { RiDeleteBin5Fill, RiPencilLine } from "react-icons/ri";
 import { TbChevronLeft, TbChevronRight } from "react-icons/tb";
 import { allfilters, completeLook } from "../../../../data/filters";
 import Button from "../../common/Button";
@@ -17,6 +22,7 @@ import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import { newinItems } from "../../../../data/header";
 import MyLink from "../../common/MyLink";
 import { sizeGuides } from "../../../../data/products";
+import DropDownIconsMenu from "../../../Navbar/DropDownIconsMenu";
 
 export default function Details() {
   return (
@@ -616,7 +622,7 @@ function Reviews() {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-2">
-        <div className="flex items-center gap-3">
+        <div className="flex gap-3">
           {/* <div className="flex gap-1 items-center">
             {[0, 1, 2, 3, 4].map((rating) => (
               <FaRegStar
@@ -725,13 +731,239 @@ function ReviewsDrawer() {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
-          {/* Sidebar content here */}
+        <ul className="menu w-80 min-h-full space-y-4 bg-stone-100">
+          {/* Sidebar content (All Reviews) here */}
           <li>
-            <a>Sidebar Item 1</a>
+            <div className="flex flex-col items-start">
+              <div className="w-full flex flex-row justify-between">
+                <p>Namrah S.</p>
+                <DropDownIconsMenu
+                  ariaLabel="User icon"
+                  href="#"
+                  title="Logged in user"
+                  icon={
+                    <HiEllipsisVertical
+                      className="inline-block h-6 w-6 cursor-pointer rounded-full object-cover object-center"
+                      data-popover-target="review-menu"
+                    />
+                  }
+                  modalId="loggedin-user-modal"
+                >
+                  <ul
+                    tabIndex={0}
+                    className="dropdown-content z-10 menu p-2 shadow bg-stone-100 md:w-40 w-auto mt-0"
+                    role="menu"
+                    data-popover="review-menu"
+                    data-popover-placement="bottom"
+                    // className="absolute z-10 flex min-w-[180px] flex-col gap-2 overflow-auto rounded-md border border-blue-gray-50 bg-white p-3 font-sans text-sm font-normal text-blue-gray-500 shadow-lg shadow-blue-gray-500/10 focus:outline-none"
+                  >
+                    <button
+                      tabIndex="-1"
+                      role="menuitem"
+                      className="flex w-full cursor-pointer select-none items-center gap-2 rounded-md px-3 pt-[9px] pb-2 text-start leading-tight outline-none transition-all hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
+                    >
+                      <RiDeleteBin5Fill />
+                      <p className="block font-sans text-sm font-normal leading-normal text-inherit antialiased">
+                        Delete
+                      </p>
+                    </button>
+                    <hr
+                      className="my-2 border-blue-gray-50"
+                      tabIndex="-1"
+                      role="menuitem"
+                    />
+                    <button
+                      tabIndex="-1"
+                      role="menuitem"
+                      className="flex w-full cursor-pointer select-none items-center gap-2 rounded-md px-3 pt-[9px] pb-2 text-start leading-tight outline-none transition-all hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
+                    >
+                      <RiPencilLine />
+                      <p className="block font-sans text-sm font-normal leading-normal text-inherit antialiased">
+                        Edit
+                      </p>
+                    </button>
+                  </ul>
+                </DropDownIconsMenu>
+              </div>
+
+              <p className="pt-1">
+                The quality is outstanding, and it arrived sooner than expected.
+              </p>
+              <div className="w-full flex flex-row justify-between">
+                <div className="flex gap-1 items-center">
+                  {[0, 1, 2, 3, 4].map((rating) => (
+                    <FaRegStar
+                      key={rating}
+                      // className={`
+                      //   ${
+                      //     product.rating > rating
+                      //       ? "text-gray-900"
+                      //       : "text-gray-200"
+                      //   }
+                      //   "h-5 w-5 flex-shrink-0"
+                      // `}
+                      className="size-5"
+                      aria-hidden="true"
+                    />
+                  ))}
+                </div>
+                <p>14 days</p>
+              </div>
+            </div>
           </li>
           <li>
-            <a>Sidebar Item 2</a>
+            <div className="flex flex-col items-start">
+              <div className="w-full flex flex-row justify-between">
+                <p>Nofal V.</p>
+                <DropDownIconsMenu
+                  ariaLabel="User icon"
+                  href="#"
+                  title="Logged in user"
+                  icon={
+                    <HiEllipsisVertical
+                      className="inline-block h-6 w-6 cursor-pointer rounded-full object-cover object-center"
+                      data-popover-target="review-menu"
+                    />
+                  }
+                  modalId="loggedin-user-modal"
+                >
+                  <ul
+                    tabIndex={0}
+                    className="dropdown-content z-10 menu p-2 shadow bg-stone-100 md:w-40 w-auto mt-0"
+                    role="menu"
+                    data-popover="review-menu"
+                    data-popover-placement="bottom"
+                    // className="absolute z-10 flex min-w-[180px] flex-col gap-2 overflow-auto rounded-md border border-blue-gray-50 bg-white p-3 font-sans text-sm font-normal text-blue-gray-500 shadow-lg shadow-blue-gray-500/10 focus:outline-none"
+                  >
+                    <button
+                      tabIndex="-1"
+                      role="menuitem"
+                      className="flex w-full cursor-pointer select-none items-center gap-2 rounded-md px-3 pt-[9px] pb-2 text-start leading-tight outline-none transition-all hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
+                    >
+                      <RiDeleteBin5Fill />
+                      <p className="block font-sans text-sm font-normal leading-normal text-inherit antialiased">
+                        Delete
+                      </p>
+                    </button>
+                    <hr
+                      className="my-2 border-blue-gray-50"
+                      tabIndex="-1"
+                      role="menuitem"
+                    />
+                    <button
+                      tabIndex="-1"
+                      role="menuitem"
+                      className="flex w-full cursor-pointer select-none items-center gap-2 rounded-md px-3 pt-[9px] pb-2 text-start leading-tight outline-none transition-all hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
+                    >
+                      <RiPencilLine />
+                      <p className="block font-sans text-sm font-normal leading-normal text-inherit antialiased">
+                        Edit
+                      </p>
+                    </button>
+                  </ul>
+                </DropDownIconsMenu>
+              </div>
+
+              <p className="pt-1">
+                It&#39;s reasonably priced, and I&#39;m happy with my purchase.
+              </p>
+              <div className="w-full flex flex-row justify-between">
+                <div className="flex gap-1 items-center">
+                  {[0, 1, 2, 3, 4].map((rating) => (
+                    <FaRegStar
+                      key={rating}
+                      // className={`
+                      //   ${
+                      //     product.rating > rating
+                      //       ? "text-gray-900"
+                      //       : "text-gray-200"
+                      //   }
+                      //   "h-5 w-5 flex-shrink-0"
+                      // `}
+                      className="size-5"
+                      aria-hidden="true"
+                    />
+                  ))}
+                </div>
+                <p>14 days</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div className="flex flex-col items-start">
+              <div className="w-full flex flex-row justify-between">
+                <p>Nialish P.</p>
+                <DropDownIconsMenu
+                  ariaLabel="User icon"
+                  href="#"
+                  title="Logged in user"
+                  icon={
+                    <HiEllipsisVertical
+                      className="inline-block h-6 w-6 cursor-pointer rounded-full object-cover object-center"
+                      data-popover-target="review-menu"
+                    />
+                  }
+                  modalId="loggedin-user-modal"
+                >
+                  <ul
+                    tabIndex={0}
+                    className="dropdown-content z-10 menu p-2 shadow bg-stone-100 md:w-40 w-auto mt-0"
+                    role="menu"
+                    data-popover="review-menu"
+                    data-popover-placement="bottom"
+                    // className="absolute z-10 flex min-w-[180px] flex-col gap-2 overflow-auto rounded-md border border-blue-gray-50 bg-white p-3 font-sans text-sm font-normal text-blue-gray-500 shadow-lg shadow-blue-gray-500/10 focus:outline-none"
+                  >
+                    <button
+                      tabIndex="-1"
+                      role="menuitem"
+                      className="flex w-full cursor-pointer select-none items-center gap-2 rounded-md px-3 pt-[9px] pb-2 text-start leading-tight outline-none transition-all hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
+                    >
+                      <RiDeleteBin5Fill />
+                      <p className="block font-sans text-sm font-normal leading-normal text-inherit antialiased">
+                        Delete
+                      </p>
+                    </button>
+                    <hr
+                      className="my-2 border-blue-gray-50"
+                      tabIndex="-1"
+                      role="menuitem"
+                    />
+                    <button
+                      tabIndex="-1"
+                      role="menuitem"
+                      className="flex w-full cursor-pointer select-none items-center gap-2 rounded-md px-3 pt-[9px] pb-2 text-start leading-tight outline-none transition-all hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
+                    >
+                      <RiPencilLine />
+                      <p className="block font-sans text-sm font-normal leading-normal text-inherit antialiased">
+                        Edit
+                      </p>
+                    </button>
+                  </ul>
+                </DropDownIconsMenu>
+              </div>
+
+              <p className="pt-1">Quality is outstanding.</p>
+              <div className="w-full flex flex-row justify-between">
+                <div className="flex gap-1 items-center">
+                  {[0, 1, 2, 3, 4].map((rating) => (
+                    <FaRegStar
+                      key={rating}
+                      // className={`
+                      //   ${
+                      //     product.rating > rating
+                      //       ? "text-gray-900"
+                      //       : "text-gray-200"
+                      //   }
+                      //   "h-5 w-5 flex-shrink-0"
+                      // `}
+                      className="size-5"
+                      aria-hidden="true"
+                    />
+                  ))}
+                </div>
+                <p>14 days</p>
+              </div>
+            </div>
           </li>
         </ul>
       </div>
