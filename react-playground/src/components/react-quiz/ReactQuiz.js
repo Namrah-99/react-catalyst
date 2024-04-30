@@ -1,4 +1,3 @@
-import { useEffect, useReducer } from "react";
 import Header from "./with-context/components/Header";
 import MainQuizSection from "./with-context/components/MainQuizSection";
 import "./ReactQuiz.css";
