@@ -73,7 +73,7 @@ function Form() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log(cityName, date, notes);
+    // console.log(cityName, date, notes);
 
     if (!cityName || !date) return;
     const newCity = {

@@ -5,13 +5,16 @@ import {
   useContext,
   useCallback,
 } from "react";
+import { citiesData } from "./citiesData";
 
-const BASE_URL = "http://localhost:9000";
+// const BASE_URL = "http://localhost:9000";
 
 const CitiesContext = createContext();
 
 const initialState = {
-  cities: [],
+  cities: localStorage.getItem("cities")
+    ? JSON.parse(localStorage.getItem("cities"))
+    : citiesData,
   isLoading: false,
   currentCity: {},
   error: "",
@@ -56,32 +59,16 @@ function CitiesProvider({ children }) {
     initialState
   );
 
-  useEffect(function () {
-    async function fetchCities() {
-      dispatch({ type: "loading" });
-      try {
-        const response = await fetch(`${BASE_URL}/cities`);
-        const data = await response.json();
-        dispatch({ type: "cities/loaded", payload: data });
-      } catch (error) {
-        dispatch({
-          type: "rejected",
-          payload: "There was an error loading cities ... ",
-        });
-      }
-    }
-
-    fetchCities();
-  }, []);
-
   const getCity = useCallback(
     async function getCity(cityId) {
       if (cityId === currentCity.id) return;
 
       dispatch({ type: "loading" });
       try {
-        const response = await fetch(`${BASE_URL}/cities/${cityId}`);
-        const data = await response.json();
+        // const response = await fetch(`${BASE_URL}/cities/${cityId}`);
+        // const data = await response.json();
+        const data = citiesData.find((city) => city.id === cityId);
+        localStorage.setItem("currentCity", JSON.stringify(data));
         dispatch({ type: "city/loaded", payload: data });
       } catch (error) {
         dispatch({
@@ -96,16 +83,25 @@ function CitiesProvider({ children }) {
   async function createCity(newCity) {
     dispatch({ type: "loading" });
     try {
-      const response = await fetch(`${BASE_URL}/cities`, {
-        method: "POST",
-        body: JSON.stringify(newCity),
-        headers: {
-          "Content-Type": "application/json",
-        },
+      // const response = await fetch(`${BASE_URL}/cities`, {
+      //   method: "POST",
+      //   body: JSON.stringify(newCity),
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      // });
+      // const data = await response.json();
+      const data = {
+        ...newCity,
+        id: (
+          Math.floor(Math.random() * (99999999 - 10000000 + 1)) + 10000000
+        ).toString(),
+      };
+      localStorage.setItem("currentCity", JSON.stringify(data));
+      dispatch({
+        type: "city/created",
+        payload: data,
       });
-      const data = await response.json();
-      dispatch({ type: "city/created", payload: data });
-      console.log(data);
     } catch (error) {
       dispatch({
         type: "rejected",
@@ -117,9 +113,10 @@ function CitiesProvider({ children }) {
   async function deleteCity(id) {
     dispatch({ type: "loading" });
     try {
-      await fetch(`${BASE_URL}/cities/${id}`, {
-        method: "DELETE",
-      });
+      // await fetch(`${BASE_URL}/cities/${id}`, {
+      //   method: "DELETE",
+      // });
+      localStorage.setItem("currentCity", {});
       dispatch({ type: "city/deleted", payload: id });
     } catch (error) {
       dispatch({
@@ -128,6 +125,37 @@ function CitiesProvider({ children }) {
       });
     }
   }
+
+  useEffect(function () {
+    async function fetchCities() {
+      dispatch({ type: "loading" });
+      try {
+        // const response = await fetch(`${BASE_URL}/cities`);
+        // const data = await response.json();
+        const citiesFromStorage = localStorage.getItem("cities");
+        if (citiesFromStorage) {
+          dispatch({
+            type: "cities/loaded",
+            payload: JSON.parse(citiesFromStorage),
+          });
+        }
+      } catch (error) {
+        dispatch({
+          type: "rejected",
+          payload: "There was an error loading cities ... ",
+        });
+      }
+    }
+
+    fetchCities();
+  }, []);
+
+  useEffect(() => {
+    // Update localStorage after state changes
+    localStorage.setItem("cities", JSON.stringify(cities));
+
+    // Dependency array: update only on cities state change
+  }, [cities]);
 
   return (
     <CitiesContext.Provider

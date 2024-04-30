@@ -1,19 +1,17 @@
-import { useEffect } from "react";
 import { useAuth } from "../contexts/FakeAuthcontext";
 import { useNavigate } from "react-router-dom";
 
 function ProtectedRoute({ children }) {
-  const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
+  const { isAuthenticated } = useAuth(); // Access authentication state
 
-  useEffect(
-    function () {
-      if (!isAuthenticated) navigate("/", { replace: true });
-    },
-    [isAuthenticated, navigate]
-  );
+  // Conditional rendering based on authentication
+  if (!isAuthenticated) {
+    navigate("/login"); // Navigate to login if not authenticated
+    return null;
+  }
 
-  return isAuthenticated ? children : null;
+  return children; // Render children if authenticated
 }
 
 export default ProtectedRoute;

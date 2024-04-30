@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 export default function Login() {
   const navigate = useNavigate();
   // PRE-FILL FOR DEV PURPOSES
-  const [email, setEmail] = useState("jack@example.com");
+  const [email, setEmail] = useState("namrah@example.com");
   const [password, setPassword] = useState("qwerty");
 
   const { login, isAuthenticated } = useAuth();
