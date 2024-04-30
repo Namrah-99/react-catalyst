@@ -1,4 +1,10 @@
 ## Screenshots
+<!--[![OasisOps - Hotel Management Application for Admin](/react-kaleidoscope/oasisops/public/readmefileImages/1.png&title=5+things+I+wish+I+knew+before+studying+Computer+Science&lang=en&timestamp=1636628400&background_color=%230d1117&title_color=%23ffffff&stats_color=%23dedede&max_title_lines=1&width=250&border_radius=5&duration=436 "OasisOps - Hotel Management Application for Admin")]([https://youtu.be/Wjj21p3tvcg](https://youtu.be/Iw9FFzhvBKM)?si=b7QYksN87h0wsGpQ) -->
+
+[![Watch the video](/react-kaleidoscope/oasisops/public/readmefileImages/1.png)]([https://www.youtube.com/embed/APOPm01BVrk](https://www.youtube.com/watch?v=Iw9FFzhvBKM))
+
+<div align="center" style="width: 250px; height: 150px;">  <a href="https://www.youtube.com/watch?v=Iw9FFzhvBKM"><img src="/react-kaleidoscope/oasisops/public/readmefileImages/6.png" alt="OasisOps video link"></a>
+</div>
 
 ![Light-mode (login)](/react-kaleidoscope/oasisops/public/readmefileImages/1.png)
 ![Light-mode (dashboard)](/react-kaleidoscope/oasisops/public/readmefileImages/2.png)
