@@ -1,3 +1,8 @@
+## Description
+
+Interactive travel journal app built with React to visualize past trips, explore visited countries on a map, add comments to specific locations, and manage travel details. Utilizes APIs like https://api.bigdatacloud.net/data/reverse-geocode-client and libraries like react-leaflet and navigator.geolocation.getCurrentPosition.
+
+
 ## Screenshots
 
 ![Main Page](/react-kaleidoscope/journey-mapper/public/readmefileImages/1.png)
