@@ -3,6 +3,8 @@ Welcome to my collection of mini React projects! This repository contains a seri
 Projects Included:
 
 - [react-bits-and-pieces](https://react-bits-and-pieces.vercel.app/):  This is a collection of reusable and valuable React components, even though they are of small-scale nature, but you can build vast world of functionalities with these fundamental components.
+- [react-ecomm-app](https://react-catalyst.vercel.app/):  React e-commerce application under development leveraging Tailwind CSS for utility-first styling and DaisyUI for a jumpstart on UI components.
+- 
 
 
 Feel free to explore the projects and use them as a reference or starting point for your own React applications. If you have any questions or feedback, please don't hesitate to reach out.
