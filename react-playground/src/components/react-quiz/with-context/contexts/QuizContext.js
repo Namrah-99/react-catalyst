@@ -1,11 +1,12 @@
 import { createContext, useContext, useReducer, useEffect } from "react";
+import { quizData } from "../../QuizData";
 
 const QuizContext = createContext();
 
 const SECS_PER_QUESTION = 30;
 
 const initialState = {
-  questions: [],
+  questions: quizData,
 
   // 'loading', 'error', 'ready', 'active', 'finished'
   status: "loading",
@@ -84,10 +85,12 @@ function QuizProvider({ children }) {
 
   useEffect(function () {
     // fetch("http://localhost:9000/questions")
-    fetch("/data/questions.json")
-      .then((res) => res.json())
-      .then((data) => dispatch({ type: "dataReceived", payload: data }))
-      .catch((err) => dispatch({ type: "dataFailed" }));
+    //   .then((res) => {
+    //     res.json();
+    //   })
+    //   .then((data) => dispatch({ type: "dataReceived", payload: data }))
+    //   .catch((err) => dispatch({ type: "dataFailed" }));
+    dispatch({ type: "dataReceived", payload: quizData });
   }, []);
 
   return (

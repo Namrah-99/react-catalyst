@@ -11,6 +11,7 @@ import Progress from "./components/Progress";
 import FinishScreen from "./components/FinishScreen";
 import Footer from "./components/Footer";
 import Timer from "./components/Timer";
+import { quizData } from "../QuizData";
 
 const SECS_PER_QUESTION = 30;
 const initialState = {
@@ -81,10 +82,11 @@ export default function ReactQuiz() {
   );
 
   useEffect(() => {
-    fetch("/data/questions.json")
-      .then((res) => res.json())
-      .then((data) => dispatch({ type: "dataReceived", payload: data }))
-      .catch((err) => dispatch({ type: "dataFailed" }));
+    // fetch("http://localhost:9000/questions")
+    //   .then((res) => res.json())
+    //   .then((data) => dispatch({ type: "dataReceived", payload: data }))
+    //   .catch((err) => dispatch({ type: "dataFailed" }));
+    dispatch({ type: "dataReceived", payload: quizData });
   }, []);
 
   return (
