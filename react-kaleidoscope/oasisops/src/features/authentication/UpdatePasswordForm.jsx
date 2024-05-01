@@ -18,10 +18,7 @@ function UpdatePasswordForm() {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <FormRow
-        label="New password (min 8 chars)"
-        error={errors?.password?.message}
-      >
+      <FormRow label="New password (min 8 chars)" error={errors?.password}>
         <Input
           type="password"
           id="password"
@@ -37,10 +34,7 @@ function UpdatePasswordForm() {
         />
       </FormRow>
 
-      <FormRow
-        label="Confirm password"
-        error={errors?.passwordConfirm?.message}
-      >
+      <FormRow label="Confirm password" error={errors?.passwordConfirm}>
         <Input
           type="password"
           autoComplete="new-password"
