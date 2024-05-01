@@ -3,7 +3,12 @@
 
 [![Watch the video](/react-kaleidoscope/oasisops/public/readmefileImages/1.png)]([https://www.youtube.com/embed/APOPm01BVrk](https://www.youtube.com/watch?v=Iw9FFzhvBKM))
 
-<div align="center" style="width: 250px; height: 150px;">  <a href="https://youtu.be/Iw9FFzhvBKM"><img src="/react-kaleidoscope/oasisops/public/readmefileImages/6.png" alt="OasisOps video link"></a>
+<div align="center" style="width: 250px; height: 150px;">  <a href="https://youtu.be/fT2ByuLsdJU" target='_blank' ><img src="/react-kaleidoscope/oasisops/public/readmefileImages/6.png" alt="OasisOps video link"></a>
+</div>
+<div align="center" style="width: 250px; height: 150px;">
+  <a href="https://youtu.be/fT2ByuLsdJU" target="_blank">
+    <img src="/react-kaleidoscope/oasisops/public/readmefileImages/6.png" alt="OasisOps video link">
+  </a>
 </div>
 
 ![Light-mode (login)](/react-kaleidoscope/oasisops/public/readmefileImages/1.png)
