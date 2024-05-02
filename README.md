@@ -11,3 +11,9 @@ Projects Included:
 
 
 Feel free to explore the projects and use them as a reference or starting point for your own React applications. If you have any questions or feedback, please don't hesitate to reach out.
+
+<!-- GitHub Star link -->
+<p align="center">
+  <a href="https://stars.github.com/profiles/denvercoder1/">
+    <img src="https://github.com/DenverCoder1/DenverCoder1/assets/20955511/ca15be3f-d00b-438e-91f6-fb5568c1f632" alt="GitHub Star 2023"/></a>
+</p>
