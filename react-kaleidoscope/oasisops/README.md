@@ -4,6 +4,8 @@
 </div>
 
 ![GIF-OasisOps: Hotel Management Staff App](/react-kaleidoscope/oasisops/public/readmefileImages/OasisOpsGif.gif)
+[Video Link for App Demo](https://drive.google.com/file/d/1eduCaGfSvYvGAIN7Kw4SykOCCos-o4Pw/view?usp=sharing)
+
 
 <p>OasisOps is a feature-rich web application designed to streamline hotel management operations for staff members. It empowers administrators with the tools to efficiently manage settings, cabins, bookings, and user profiles, along with insightful data visualizations for informed decision-making.</p>
 
