@@ -17,3 +17,5 @@ Feel free to explore the projects and use them as a reference or starting point 
   <a href="https://stars.github.com/profiles/denvercoder1/">
     <img src="https://github.com/DenverCoder1/DenverCoder1/assets/20955511/ca15be3f-d00b-438e-91f6-fb5568c1f632" alt="GitHub Star 2023"/></a>
 </p>
+<!--<b>Like these mini project?</b>  Give it a star to show your support!-->
+<p align="center">Kindly consider showing your support for this project by giving it a 🌟 and sharing it with others!</p>
